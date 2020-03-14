@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <title>UNAHAMBRE</title>
+    <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<body>
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    
+    <!--INICIO DEL HEADER-->
+    <header class="encabezado">
+        <nav class="navbar">
+            <div class="marca">
+                <div class="contenedor-logo">
+                    <div class="logo">
+                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
+                    </div><!--fin logo-->
+                </div><!--fin contenedor logo-->
+
+                <div class="text middle">
+                    <span>U</span>
+                    <span>N</span>
+                    <span>A</span>
+                    <span>H</span>
+                    <span class="hidden">A</span>
+                    <span class="hidden">M</span>
+                    <span class="hidden">B</span>
+                    <span class="hidden">R</span>
+                    <span class="hidden">E</span>
+                </div><!--fin animacion nombre-->
+            </div>
+
+            <div class="interaccion">
+                <ul>
+                    <li><a class="active" href="index.html">INICIO</a></li>
+                    <li><a href="login.html">INICIAR SESION</a></li>
+                    <li><a href="registro.html">REGISTRARSE</a></li>
+                </ul>
+                <label id="icon">
+                    <i class="fas fa-bars"></i>
+                </label>       
+            </div>
+        </nav>
+        <div class="separador"></div>
+    </header>
+    <!--FIN DEL HEADER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <!-- INICIO DEL MAIN-->
+
+    <main class="main">
+        <!-----------------------------------BUSQUEDA---------------------------------------------->
+        <section class="busqueda">
+            <div>
+                <h1 id="banner-principal">CATEGORIAS</h1>
+            </div>  
+        </section> <!--fin busqueda-->
+        <!-----------------------------------CATALOGO DE COMIDA------------------------------------>
+        <section class="filtros_menu container-fluid">
+            <div class="row breadcrumb">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <a class="enlace_crumb" href="">Categoria</a>
+                    <a class="enlace_crumb" href="" onclick="refrescar(2)">Menus</a>
+                    <a class="enlace_crumb" href="">Platillo</a>
+                    <a class="enlace_crumb" href="">Pedido</a>
+                    <a class="enlace_crumb" href="">Pago</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 filtro">
+                    <p>FILTROS</p>
+                    <select onchange="refrescar()" class="form-control" name="" id="restaurante">
+                        <option value="0"><h2>Seleccione</h2></option>
+                        <option value="1"><h2>Restaurante</h2></option>
+                        <option value="2"><h2>Menus</h2></option>
+                        <option value="3"><h2>Platillos</h2></option>
+                    </select>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 catalogo">
+                    <div id="contenedor-catalogo" class="row contenedor-catalogo"> <!-----experimento-->   
+                        <div class="card" >
+                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Desayuno</h5>   
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Almuerzo</h5>   
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Cena</h5>   
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Antojos</h5>   
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Bebidas</h5>   
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Grupal</h5>   
+                            </div>
+                        </div>                                              
+                    </div>         
+                </div><!---fin experimento-->
+            </div>
+        </section>
+    </main>
+    <!--FIN DEL MAIN-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- INICIO DEL FOOTER-->
+
+    <footer class="footer" id="contacto">
+        <div class="contactos">
+            <div class="contacto">
+                <p class="nosotros">Contacto</p>
+                <p class="nosotros">(504)99713638</p>
+                <p class="nosotros">lesman@unah.hn</p>
+            </div>
+            <div class="soporte">
+                <p class="nosotros">Soporte</p>
+                <p class="nosotros">Ayuda y Soporte</p>
+                <p class="nosotros">Recursos</p>
+                <p class="nosotros">Blog</p>
+            </div>
+            <div class="empresa">
+                <p class="nosotros">Empresa</p>
+                <p class="nosotros">Sobre Nosotros</p>
+                <p class="nosotros">Terminos</p>
+            </div>
+        </div>
+        <div class="red-social canal">
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/facebook-f-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/google-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/twitter-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/whatsapp-brands.svg" alt="">
+            </a>
+        </div>
+    </footer>
+    <!-- FIN DEL FOOTER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="funcionalidades/controladores_principal.js"></script>
+</body>
+</html>

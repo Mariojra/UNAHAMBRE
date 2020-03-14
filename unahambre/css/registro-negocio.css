@@ -1,0 +1,59 @@
+html{
+    font-size: 62.5%;
+}
+
+.contenedor-negocio{
+    width: 100%;
+    padding-bottom: 3rem ;
+    /* background: url(../img/fondo-negocio.jpg), no-repeat;
+    background-position: center center;
+    background-size: cover; */
+}
+
+/* .contenedor-negocio .formulario{
+    background: #ffffff;
+    width: 50%;
+    border-radius: 0.5rem;
+    padding: 3rem;
+    justify-content: center;
+    margin-left: 12rem;
+    margin-top: 12rem;
+
+} */
+
+p, label {
+    margin-left: 22rem;
+    margin-top: 2.5rem;
+}
+
+#formuRegistro {
+    background-color: #ffffff;
+    margin: 12rem auto;
+    padding: 4rem;
+    width: 100%;
+    min-height: 30rem;
+    min-width: 30rem;
+}
+
+input {
+    padding: 1rem;
+    width: 80%;
+    font-size: 1.6rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 0.1rem solid #aaaaaa;
+
+}
+
+h1{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    padding: 1rem;
+}
+
+h3{
+    padding: 2rem;
+}
+
+.display{
+    display: none;
+}

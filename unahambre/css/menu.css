@@ -1,0 +1,156 @@
+.separador{
+  background: #000000be;
+  width: 100%;
+  height: 10rem;
+}
+
+.busqueda{
+  background: url(../img/almuerzo.jpg), no-repeat;
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+  
+}
+
+.busqueda h1{
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-size: 7rem;
+}
+
+.busqueda div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #0000007a;
+  width: 100%;
+  height: 100%;
+}
+
+/***************************FILTROS Y  MENU****************************************/
+.container-fluid{
+  background: #ffffff;
+  margin-top: 0;
+  padding-top: 2rem;
+}
+
+.row{
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  
+}
+.filtro{
+  border: 0.01rem solid black; 
+  margin-right: 4rem; 
+  height: 100rem;
+  margin-bottom: 2rem;
+  width: 94.4%;
+  border-radius: 0.3rem;
+  background: #195882c7;
+}
+
+.catalogo{
+  border: 0.01rem solid black; 
+  height: 100rem;
+  margin-bottom: 2rem;
+  width: 94.4%;
+  overflow: auto;
+  border-radius: 0.3rem;
+  background: #195882c7;
+}
+
+.enlace_crumb{
+  margin-left: 2rem;
+  font-size: 2.2rem;
+  color: white;
+}
+
+.enlace_crumb:hover{
+  font-style: none;
+  list-style: none;
+  border: none;
+}
+
+.breadcrumb{
+  border:0.1rem solid black;
+  width: 94.4%;
+  height: 5rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  background: #195882c7;
+}
+
+.card{
+  width: 28rem;
+  height: auto;
+  text-align: center;
+}
+.card .card-img-top{
+  height: 80%;
+  background-size: cover;
+  background-position: center center;
+}
+
+.card-title{
+  font-size: 2.5rem;
+  text-align: center;
+  padding-top: 0.4rem;
+  font-weight: bold;
+}
+/*MEDIA QUERY**/
+@media (max-width:992px){
+  .filtro{
+    height: 20rem;
+    margin-right: 0;
+  }
+
+  .contenedor-catalogo{
+    width: 94.4%;
+  }
+
+  .enlace_crumb{
+    font-size: 1.8rem;
+  }
+  .row{
+    width: 94.4%;
+  }
+}
+
+@media (max-width:768px){
+  .filtro{
+    height: 20rem;
+    margin-right: 0;
+  }
+
+  .contenedor-catalogo{
+    width: 94.4%;
+  }
+
+  .enlace_crumb{
+    font-size: 1.6rem;
+  }
+  .row{
+    width: 94.4%;
+  }
+}
+
+@media (max-width:576px){
+  .filtro{
+    height: 20rem;
+    margin-right: 0;
+  }
+
+  .catalogo{
+    width: 94.4%;
+  }
+
+  .enlace_crumb{
+    font-size: 1.5rem;
+  }
+  .row{
+    width: 94.4%;
+  }
+}
