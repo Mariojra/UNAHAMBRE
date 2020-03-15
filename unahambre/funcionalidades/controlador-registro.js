@@ -14,7 +14,7 @@ $("#btn-registro").click(function() {
         // validarContrasena()&&
         // compararContras()
         ) {
-            var datos = {
+            let datos = {
                 nombre:$("#txt-nombres").val(),
                 apellido:$("#txt-apellidos").val(),
                 celular: $("#txt-numTel").val(),
