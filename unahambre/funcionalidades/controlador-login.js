@@ -2,7 +2,7 @@ const Toast = Swal.mixin({
     toast: true,
     position: 'top',
     showConfirmButton: false,
-    timer: 2000,
+    timer: 3000,
     timerProgressBar: true,
     width:'40rem',
     customClass:{
@@ -16,7 +16,7 @@ const Toast = Swal.mixin({
 });
 
 const alert_defaults = Swal.mixin({
-    timer: 2000,
+    timer: 3000,
     timerProgressBar: true,
     onOpen: (modal)=>{
         modal.addEventListener('mouseenter', Swal.stopTimer)
@@ -55,7 +55,7 @@ $("#btn-login").click( () => {
             if(res.data.item!=null){
                 Toast.fire({
                    icon: 'success',
-                   title: 'Signed in successfully'
+                   title: 'Inicio exitoso'+ ' '+ res.data.items[2][0].usuario
                 })
                 // console.log(res.data.items[1][0].id);
                 // console.log(res.data.item);
@@ -63,13 +63,12 @@ $("#btn-login").click( () => {
                 sessionStorage.setItem('userID',res.data.items[1][0].id);
                 console.log(sessionStorage.getItem('token'));
                 console.log(sessionStorage.getItem('userID'));
-                setTimeout(()=>window.location.assign("principal.html"),3000);
+                setTimeout(()=>window.location.assign("principal.html"),3500);
                 
             } else {
                 alert_defaults.fire({
                     icon:"error",
-                    title: res.data.error,
-                    timer: 2000
+                    title: res.data.error
                 });
             }
         }).catch(err=>{
