@@ -1,3 +1,4 @@
+/* conf de sweet alert pequeño */
 const Toast = Swal.mixin({
     toast: true,
     position: 'top',
@@ -14,7 +15,7 @@ const Toast = Swal.mixin({
         toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
 });
-
+/* conf de sweet alert predeterminados */
 const alert_defaults = Swal.mixin({
     timer: 3000,
     timerProgressBar: true,
@@ -51,7 +52,7 @@ $("#btn-login").click( () => {
             url:'http://localhost:3001/api/login',
             data: datos
         }).then(res=>{
-            // console.log(res);
+            console.log(res);
             if(res.data.item!=null){
                 Toast.fire({
                    icon: 'success',
