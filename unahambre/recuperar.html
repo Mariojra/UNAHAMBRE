@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/recuperar_contrasenia.css">
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+        <div class="container contenedor_padre" id="padre">
+            <div>
+                <img src="/img/msecurity.png" alt="" style=" display:block; margin: auto;">
+            </div>
+            <div class="text-center ">
+                <h2>Recuperar Contraseña</h2>
+                <h4 class="py-4" style="font-size: 20px;">
+                    Introduce la dirección de correo electrónico asociada a tu cuenta para recuperar tu Contraseña.
+                </h4>
+            </div>
+            
+            <form action="#" name="formulario" class="justify-center">
+                <div class="form-group ">
+                    <input type="email" name="campo_correo" id="correo" placeholder=" Coreo electrónico" class="form-control" onclick="ocultar_advertencia()">
+                </div>
+                <div class="form-group aviso" id="advertencia">
+                    <div class="alert alert-danger form-control alerta" id="aviso" role="alert">
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <input type="button" class="btn btn-success form-control col-5 text-center" value="Volver atras" onclick="">
+                    <input type="button" class="btn btn-primary form-control col-5 text-center" value="Recuperar contraseña" onclick="validar_correo()" >
+                     -->
+                    <!-- <button class="form-control btn btn-primary col-5" >
+                        <a href="index.html">Volver al inicio</a> 
+                        </button>
+                     <button type="button" class="form-control btn btn-success col-5" style="padding: 0px; margin-left: 3.99rem;" onclick="validar_correo()">            
+                        <span id="password">
+                        Recuperar Contraseña
+                        </span>
+                        <div id="spinner" style="display: none;">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Cargando...
+                        </div>
+                        
+                    </button> -->
+                </div>
+                    <div class="">
+                        <button type="button" class="btn btn-primary btn-sm btn-block recuperar" onclick="validar_correo()">
+                            <span id="password">
+                                Recuperar Contraseña
+                            </span>
+                            <div id="spinner" style="display: none;">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Cargando...
+                            </div>
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-block volve">
+                            <span>
+                            <a href="index.html" style="text-decoration: none; margin: 0%;">Volver al inicio</a> 
+
+                            </span>
+                        </button>
+                        
+                    </div>
+                     
+                
+            </form>
+        </div>
+        
+        
+        <!-- Modal success -->
+        <div class="container">
+            <div class="modal fade" id="modal1">
+                <!-- modal-mg, modal-xs modal-sm-->
+                <div class="modal-dialog modal-xs modal-dialog-centered">
+                    <div class="modal-content" style="border-radius: 14px;">                    
+                        <div class="modal-body text-center">
+                            <div>
+                                <img src="img/greencheck.png" alt="check">
+                            </div>
+                            <h1>Recuperación Exitosa!</h1>
+                            <p>Le hemos enviado un correo con su contraseña, si no ve el correo en su bandeja principal por favor revise su carpeta de SPAM. Gracias!</p>
+                        </div>
+                        <div class="modal-footer"> 
+                                <button class="btn btn-primary tex-center ">
+                                    <a href="login.html">Ir al login</a>
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <button class="btn btn-primary" type="button" data-toggle='modal' data-target='#modal1'>Mostrar modal</button> -->
+        </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="funcionalidades/spinner-botones.js"></script>
+    <script type="text/javascript" src="funcionalidades/controlador_recuperar_contrasenia.js"></script>
+</body>
+</html>
