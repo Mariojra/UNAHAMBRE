@@ -1,0 +1,27 @@
+.swal-customPopup{
+    height: auto;
+    width: 51.2em !important;
+}
+
+.swal-customIcon{
+
+}
+
+.swal-customTitle{
+    font-family:'Roboto',sans-serif !important;
+    font-size: 3em !important;
+}
+
+.swal-customButton{
+    font-size: 1.7008rem !important;
+}
+
+.swal-toastCustomPopup{
+    height: 10rem;
+    margin-top: 9rem;
+}
+
+.swal-toastCustomTitle{
+    font-family:'Roboto',sans-serif !important;
+    font-size: 1.5rem !important;
+}

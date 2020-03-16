@@ -4,7 +4,13 @@ main{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* añadir este estilo solo cuando se esta depurando codigo */
+    overflow-y: scroll;
 }
 
 .span-white{
@@ -121,7 +127,39 @@ a.active,a:hover{
     position: absolute;
     margin: 1.5rem;
 }
+/* --------------------------------EDITS DE ESTILOS DE SWEETALERT-------------------------------------------- */
 
+/* .swal-customPopup{
+    height: auto;
+    width: 51.2em !important;
+}
+
+.swal-customIcon{
+
+}
+
+.swal-customTitle{
+    font-family:'Roboto',sans-serif !important;
+    font-size: 3em !important;
+}
+
+.swal-customButton{
+    font-size: 1.7008rem !important;
+}
+
+.swal-toastCustomPopup{
+    height: 10rem;
+    margin-top: 9rem;
+}
+
+.swal-toastCustomTitle{
+    font-family:'Roboto',sans-serif !important;
+    font-size: 1.5rem !important;
+} */
+
+/* --------------------------------FINAL DE EDITS DE ESTILOS DE SWEETALERT-------------------------------------------- */
+
+/* --------------------------------MEDIA QUERIES---------------------------------------------------------------------- */
 @media (max-width:820px){
     .form-login{
         width: 90%;
@@ -143,3 +181,5 @@ a.active,a:hover{
         width: auto;
     }
 }
+
+/* --------------------------------FINALIZACION MEDIA QUERIES---------------------------------------------------------------------- */
