@@ -1,10 +1,12 @@
 function info_usuarios(){
-    identificador = '1';
+    i = 0;
 
     axios({
         method:'POST',
         url:'http://localhost:3001/api/info-user',
-        data: identificador
+        data: {
+            idUsuario: 5
+        }
     }).then(res=>{
         var div = $('#informacion-perfil');
 
@@ -20,19 +22,19 @@ function info_usuarios(){
         
               <div class="subcontenedor row justify-content-center align-items-center">
                 <div class="parametros col-4"><h3>NOMBRE</h3></div>
-                <div class="col-4">${datos_perfil.Nombre} ${datos_perfil.Apellidos} </div>
+                <div class="col-4">${datos_perfil[i].Nombre} ${datos_perfil[i].Apellidos} </div>
                 <div class="col-4"><a href=""><i class="fas fa-edit"></i></a> </div>
               </div>
         
               <div class="subcontenedor row justify-content-center align-items-center">
                 <div class="parametros col-4"><h3>usuario</h3></div>
-                <div class="col-4">${datos_perfil.Nombre_Usuario}</div>
+                <div class="col-4">${datos_perfil[i].Nombre_Usuario}</div>
                 <div  class="col-4"><a href=""><i class="fas fa-edit"></i></a> </div>
               </div>
         
               <div class="subcontenedor row justify-content-center align-items-center">
                 <div class="parametros col-4"><h3>SEXO</h3></div>
-                <div class="col-4">${datos_perfil.Sexo}</div>
+                <div class="col-4">${datos_perfil[i].Sexo}</div>
                 <div class="col-4"><a href=""><i class="fas fa-edit"></i></a> </div>
               </div>
         
@@ -50,19 +52,19 @@ function info_usuarios(){
         
               <div class="subcontenedor row justify-content-center align-items-center">
                 <div class="parametros col-4"><h3>correo</h3></div>
-                <div class="col-4">${datos_perfil.Correo}</div>
+                <div class="col-4">${datos_perfil[i].Correo}</div>
                 <div class="col-4"><a href=""><i class="fas fa-edit"></i></a> </div>
               </div>
         
               <div class="subcontenedor row justify-content-center align-items-center">
                 <div class="parametros col-4"><h3>telefono</h3></div>
-                <div class="col-4">${datos_perfil.Celular}</div>
+                <div class="col-4">${datos_perfil[i].Celular}</div>
                 <div class="col-4"><a href=""><i class="fas fa-edit"></i></a> </div>
               </div>
             </div>
 
                 </div>`;
-            div.append(tarjeta);
+        div.append(tarjeta);
         console.log(datos_perfil);
     }).catch(function(error){
         console.log(error);
