@@ -5,7 +5,7 @@ function info_usuarios(){
         method:'POST',
         url:'http://localhost:3001/api/info-user',
         data: {
-            idUsuario: 5
+          idUsuario: 5
         }
     }).then(res=>{
         var div = $('#informacion-perfil');
