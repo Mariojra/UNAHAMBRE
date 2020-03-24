@@ -4,14 +4,15 @@
   <title></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/info-perfil.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-  <div id="informacion-perfil" class="container">
+  <div id="info-perfil" class="container">
+    <!-- <input type="button" value="Editar información" class="btn-editar col-6" id="btn-editar-info"> -->
+    <!-- <button type="button" class="btn-editar col-6" id="btn-editar-info">Editar información</button> -->
     <!-- <h2>INFORMACION PERSONAL</h2>
     <p></p>
     <div class="container-fluid foco">
@@ -63,9 +64,104 @@
       </div>
     </div> -->
   </div>
+  <div class="container-fluid foco">
+    <div class="titulo">
+      <button type="button" class="btn-editar col-6" id="btn-editar-info">Editar información</button>
+      <input type="button" value="Cambiar contraseña" class="btn-cambiar-contrasena col-6" id="btn-cambiar-contrasena">
+    </div>
+  </div>
 
+
+    <!-- ----------------------- INICIO DE VENTANA MODA ------------------------------------- -->
+    <div class="modal fade" id="editar-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edición de perfil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form enctype="multipart/form-data">
+                  <div class="">
+                      <div class="row ajust-margin">
+                          <div class="col-lg-12 col-12">
+                              <input type="text" placeholder="Nombre de Usuario" class="form-control modal-input" id="modal-txt-user">
+                          </div>
+                      </div>
+                      <div class="row"> 
+                          <div class="col-lg-6 col-md-6 col-md-6"> 
+                              <input type="text" placeholder="Nombre" class="form-control modal-input" id="modal-txt-nombre">
+                          </div>
+                          <div class="col-lg-6 col-md-6">
+                              <input type="text" placeholder="Apellido" class="form-control modal-input" id="modal-txt-apellido">
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-12 col-md-12">
+                              <input type="tel" placeholder="Numero telefonico" class="form-control modal-input" id="modal-txt-tel">
+                              <p class="modal-p">Con tu número telefonico te contactaremos en las entregas, procura utilizar el de mayor disponibilidad.</p>
+                          </div>                            
+                      </div>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btn-conf-editar">Confirmar cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------- final ventana modal --------------------------------- -->
+
+
+    <!-- ----------------------- INICIO SEGUNDA DE VENTANA MODA ------------------------------------- -->
+    <div class="modal fade" id="cambiar-contrasena" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cambiar contraseña</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form enctype="multipart/form-data">
+                  <div class="">
+                      <div class="row ajust-margin">
+                          <div class="col-lg-12 col-12">
+                              <input type="password" placeholder="Contraseña" class="form-control modal-input" id="modal-txt-contrasena">
+                          </div>
+                      </div>
+                      <div class="row ajust-margin">
+                        <div class="col-lg-12 col-12">
+                            <input type="password" placeholder="Nueva contraseña" class="form-control modal-input" id="modal-txt-Ncontrasena">
+                        </div>
+                      </div>
+                      <div class="row ajust-margin">
+                        <div class="col-lg-12 col-12">
+                            <input type="password" placeholder="Repite la nueva contraseña" class="form-control modal-input" id="modal-txt-RNcontrasena">
+                        </div>
+                      </div>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btn-conf-contrasena">Confirmar cambio</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------- final segunda ventana modal --------------------------------- -->
 </body>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script src="funcionalidades/controlador-perfil.js"></script>
+<!-- <script src="funcionalidades/controlador-modal-edit.js"></script> -->
 
 </html>

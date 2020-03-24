@@ -11,28 +11,38 @@
   <title>PERFIL</title>
 
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
   <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/info-perfil.css">
 
 </head>
 
 <body>
-    <div class="d-flex" id="wrapper" >
+    <div class="d-flex" id="wrapper">
 
 
         <div class="bg-light border-right" id="sidebar-wrapper" >
             <div class="sidebar-heading"> 
-                <div class= "text-center" >
-                    <img src="img/perfil.png" class="rounded-circle rounded img-thumbnail" alt="Cinque Terre" width="150" height="150" >
+                <div class= "text-center div-custom">
+                    <div class="contenedor-img">
+                        <img src="img/perfil.png" class="rounded-circle rounded img-thumbnail pp-img" alt="Cinque Terre" id="pp-img">
+                        <form enctype="multipart/form-data">
+                            <input type="file" name="image" id="file-img" accept="image/*" style="display: none;">
+                        </form>
+                    </div>
+                    <div class="detalles rounded-circle" id="pp-div">
+                        <i class="fas fa-camera icon-edit"></i>
+                        <p class="p-edit">Cambiar foto de perfil</p>
+                    </div>
                     <p>@username</p>
                 </div>
 
             </div>
             <div class="list-group list-group-flush">
+                <a href="informacion-perfil.html" class="list-group-item list-group-item-action bg-light">INICIO</a>
                 <a href="#" id="perfil" class="list-group-item list-group-item-action bg-light">INFORMACION DE PERFIL</a>
-                <a href="#" id="pedidos" class="list-group-item list-group-item-action bg-light">HISTORIAL DE PEDIDOS</a>
-
+                <!-- <a href="#" id="pedidos" class="list-group-item list-group-item-action bg-light">HISTORIAL DE PEDIDOS</a> -->
             </div>
         </div>
    
@@ -48,7 +58,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="informacion-perfil.html">INICIO <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="principal.html">INICIO <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                         </li>
@@ -65,7 +75,8 @@
 
             <div id="contenido-perfil" class="text-center container-fluid">
                 <h3 class="mt-4">BIENVENIDO, LESMAN NOLASCO</h3>
-                <p>Aquí podés gestionar toda tu información personal, ademas de consultar el historial de pedidos y los servicios de membresía.</p>
+                <p style="margin-bottom: 5rem;">Aquí puedes gestionar toda tu información personal, ademas de consultar el historial de pedidos y los servicios de membresía.</p>
+                <img src="img/perfil.svg" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" alt="icono de perfil">
 
             </div>
         </div>
@@ -77,9 +88,10 @@
 
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
   <script src="js/popper-perfil.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
 </body>
 
