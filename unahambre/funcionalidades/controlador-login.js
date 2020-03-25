@@ -1,3 +1,16 @@
+//funcion que se ejecuta al cargar el dom
+document.addEventListener("DOMContentLoaded",()=>{
+    if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='2'){
+        window.location.assign('principal.html');
+
+    } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='1'){
+        console.log("aqui creo que aunque sea dueño de negocio se manda a principal, silva, maneja esto");
+
+    } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='0'){
+        console.log("aqui se debe mandar a la pagina admin");
+    }
+});
+
 /* conf de sweet alert pequeño */
 const Toast = Swal.mixin({
     toast: true,
@@ -15,6 +28,7 @@ const Toast = Swal.mixin({
         toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
 });
+
 /* conf de sweet alert predeterminados */
 const alert_defaults = Swal.mixin({
     timer: 3000,
@@ -58,13 +72,31 @@ $("#btn-login").click( () => {
                    icon: 'success',
                    title: 'Inicio exitoso'+ ' '+ res.data.items[2][0].usuario
                 })
-                // console.log(res.data.items[1][0].id);
-                // console.log(res.data.item);
                 sessionStorage.setItem('token',res.data.item);
                 sessionStorage.setItem('userID',res.data.items[1][0].id);
-                console.log(sessionStorage.getItem('token'));
-                console.log(sessionStorage.getItem('userID'));
-                setTimeout(()=>window.location.assign("principal.html"),3500);
+                sessionStorage.setItem('userName',res.data.items[2][0].usuario);
+                sessionStorage.setItem('rol',res.data.items[4][0].Rol);
+                // setTimeout(()=>window.location.assign("principal.html"),3500);
+                switch(sessionStorage.getItem('rol')){
+                    case '0':
+                        //administrador
+                        //direccionamiento a la pagina de admon
+                        // setTimeout(()=>window.location.assign("admin.html"),3500); cambiar a disposicion de pagina
+                        break;
+                    case '1':
+                        //dueño de local
+                        //siempre redirige a principal?
+                        // setTimeout(()=>window.location.assign("principal.html"),3500);
+                        break;
+                    case '2':
+                        //cliente comun
+                        setTimeout(()=>window.location.assign("principal.html"),3500);
+                        break;
+                    default:
+                        console.log(sessionStorage.getItem('rol'))
+                        alert("ocurrio un error, revisar la variable de sesion")
+                        break;
+                }
                 
             } else {
                 alert_defaults.fire({
@@ -78,6 +110,7 @@ $("#btn-login").click( () => {
     }
 });
 
+//FUNCIONALIDAD OJO MOSTRAR PASSWORD
 let mostrarC = 0;
 
 $("#btn-login-ojo").click(function () {
@@ -96,7 +129,7 @@ $("#btn-login-ojo").click(function () {
     }
 })
 
-
+//FUNCION DE VALIDACION DE CAMPO VACIO
 function validarCampoVacio(id){
     if ($(id).val()==""){
         // $(id).addClass("is-invalid");
@@ -112,8 +145,3 @@ function validarCampoVacio(id){
         return true;
     }
 }
-
-
-// sessionStorage.setItem('token', response.token)
-
-// const token = sessionStorage.getItem('token')
