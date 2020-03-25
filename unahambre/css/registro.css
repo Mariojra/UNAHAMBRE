@@ -48,7 +48,7 @@ input{
     display: flex;
     /*border: 1px solid black;*/
     justify-content: space-between;
-    background: #34495e;
+    background: #204051;
     position: fixed;
     z-index: 3;
 
@@ -238,7 +238,7 @@ div .p-descubri{
 
 .footer{
     width: 100%;
-    background: rgba(6, 85, 60, 0.692);
+    background: #84a9ac;
     display: flex;
     justify-content: space-between;
 }
@@ -252,7 +252,7 @@ div .p-descubri{
 }
 
 .nosotros{
-    color: white;
+    color: rgb(226, 226, 226);
     font-size: 1.6rem;
     line-height: 3rem;
 }
