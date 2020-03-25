@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    console.log("Cargandp documento...");
+    console.log("Cargando documento...");
     
     // Step show event
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
@@ -30,17 +30,20 @@ $(document).ready(function(){
     var btnFinish = $('<button></button>').text('Finalizar').addClass('btn btn-info btn-fin').on('click',function(){
         console.log("click funciona");
         var informacion ={
-            usuario:$("#n-usuario").val(),
-            contrasena:$("#n-password").val(),
-            nombre_local:$("#n-local").val(),
-            ubicacion:$("#n-ubicacion").val(),
+            idUsuario: 1,
+            rolUsuario: 1,
+            nombreRestaurante:$("#n-local").val(),
             telefono: $("#n-telefono").val(),
             correo: $('#n-correo').val(),
+            ubicacion:$("#n-direccion").val(),
+            
+           
         };
         console.log(informacion);
         axios({
-            url:'http://localhost:3001/api/menus',
-            method:'GET'
+            url:'http://localhost:3001/api/insert-restaurante',
+            method:'POST',
+            data: informacion
         }).then(res=>{
             console.log(res);
         })
