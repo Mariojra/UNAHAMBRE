@@ -170,7 +170,6 @@ const cargarCabeceraTablaUsuarios = () =>{
                                   <th scope="col">Correo</th>
                                   <th scope="col">Sexo</th>
                                   <th scope="col">Usuario</th>
-                                  <th scope="col">Contraseña</th>
                                   <th scope="col">Fecha Ingreso</th>
                                   <th scope="col">Foto Perfil</th>
                                 </tr>
@@ -198,7 +197,6 @@ const cargarFilasUsuarios = (datos) =>{
                  <td>${infoUsuarios[i].Correo}</td>
                  <td>${infoUsuarios[i].Sexo}</td>
                  <td>${infoUsuarios[i].Nombre_Usuario}</td>
-                 <td>${infoUsuarios[i].Contrasena}</td>
                  <td>${infoUsuarios[i].Fecha_Ingreso}</td>
                  <td><img src="${infoUsuarios[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
                </tr>
