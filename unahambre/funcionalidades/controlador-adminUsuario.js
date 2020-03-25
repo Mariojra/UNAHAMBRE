@@ -1,3 +1,5 @@
+
+ 
  (function($) {
   "use strict"; // Start of use strict
 
@@ -47,6 +49,14 @@
    });
 
  })(jQuery); // End of use strict
+
+ window.onload = function (){
+  document.getElementById('userSession').innerHTML = sessionStorage.getItem('userName')
+}
+
+function cerrarSesion(){
+  sessionStorage.removeItem('token');
+}
 
 function ImprimirLocales(){
     axios({

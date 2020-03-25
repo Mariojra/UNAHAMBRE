@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         console.log("aqui creo que aunque sea dueño de negocio se manda a principal, silva, maneja esto");
 
     } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='0'){
+        window.location.assign('administracion-usuario.html');
         console.log("aqui se debe mandar a la pagina admin");
     }
 });
@@ -82,6 +83,7 @@ $("#btn-login").click( () => {
                         //administrador
                         //direccionamiento a la pagina de admon
                         // setTimeout(()=>window.location.assign("admin.html"),3500); cambiar a disposicion de pagina
+                        setTimeout(()=>window.location.assign("administracion-usuario.html"),3500);
                         break;
                     case '1':
                         //dueño de local
