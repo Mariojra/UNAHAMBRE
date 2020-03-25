@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin_usuario.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/menu.css">
     <title>UNAHAMBRE</title>
@@ -58,72 +59,147 @@
         <!-----------------------------------BUSQUEDA---------------------------------------------->
         <section class="busqueda">
             <div>
-                <h1 id="banner-principal">CATEGORIAS</h1>
+                <h1>Elije lo que se te antoje</h1>
             </div>  
         </section> <!--fin busqueda-->
         <!-----------------------------------CATALOGO DE COMIDA------------------------------------>
-        <section class="filtros_menu container-fluid">
-            <div class="row breadcrumb">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <a class="enlace_crumb" href="">Categoria</a>
-                    <a class="enlace_crumb" href="" onclick="refrescar(2)">Menus</a>
-                    <a class="enlace_crumb" href="">Platillo</a>
-                    <a class="enlace_crumb" href="">Pedido</a>
-                    <a class="enlace_crumb" href="">Pago</a>
+        <div class="container-fluid contenedor-categorias">
+            <div class="row categorias">
+
+                <div class="col-xl-3 col-md-6 mb-4 categoria">
+                    <div class=" border-left-primary shadow h-100 py-3" onclick="ImprimirCategorias()">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            
+                            <div class="h1 mb-0 font-weight-bold text-primary">Categorias</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-concierge-bell fa-2x text-primary"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 filtro">
-                    <p>FILTROS</p>
-                    <select onchange="refrescar()" class="form-control" name="" id="restaurante">
-                        <option value="0"><h2>Seleccione</h2></option>
-                        <option value="1"><h2>Restaurante</h2></option>
-                        <option value="2"><h2>Menus</h2></option>
-                        <option value="3"><h2>Platillos</h2></option>
-                    </select>
+
+                <div class="col-xl-3 col-md-6 mb-4 categoria">
+                    <div class=" border-left-success shadow h-100 py-3" onclick="ImprimirRestaurantes()">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            
+                            <div class="h1 mb-0 font-weight-bold text-success">Restaurante</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-store fa-2x text-success"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 catalogo">
-                    <div id="contenedor-catalogo" class="row contenedor-catalogo"> <!-----experimento-->   
-                        <div class="card" >
-                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Desayuno</h5>   
-                            </div>
+
+                <div class="col-xl-3 col-md-6 mb-4 categoria">
+                    <div class=" border-left-info shadow h-100 py-3" onclick="ImprimirMenus()">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            
+                            <div class="h1 mb-0 font-weight-bold text-info">Menus</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-utensils fa-2x text-info"></i>
+                          </div>
                         </div>
-                        <div class="card">
-                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Almuerzo</h5>   
-                            </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4 categoria">
+                    <div class=" border-left-warning shadow h-100 py-3" onclick="ImprimirPlatillos()">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            
+                            <div class="h1 mb-0 font-weight-bold text-warning">Platillos</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-pizza-slice fa-2x text-warning"></i>
+                          </div>
                         </div>
-                        <div class="card">
-                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Cena</h5>   
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Antojos</h5>   
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Bebidas</h5>   
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="img/burger2.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Grupal</h5>   
-                            </div>
-                        </div>                                              
-                    </div>         
-                </div><!---fin experimento-->
+                      </div>
+                    </div>
+                </div>
+                    
             </div>
-        </section>
+        </div><!---fin de seleccion de categorias-->
+        <div class="cambioSeleccion">
+            <p id="seleccion">Categorias</p><hr>
+        </div>  
+        <div class="container-fluid contenedor-informacion">
+            <div class="row opciones-informacion" id="cambioDeInformacion">
+              
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Desayuno</h5>
+                    <p class="card-text ">Primer comida que una persona ingiere en su vida cotidiana.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Almuerzo</h5>
+                    <p class="card-text ">Comida que se ingiere en la mitad del dia.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Cena</h5>
+                    <p class="card-text ">Ultima comida del dia.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Antojos</h5>
+                    <p class="card-text ">Comunmente un postre o golosina entre comidas pesadas.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Bebidas</h5>
+                    <p class="card-text ">Gaseosas o frescos naturales.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta">
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Grupal</h5>
+                    <p class="card-text ">Comida para disfrutar entre amigos.</p>
+                   
+                  </div>
+                </div>
+              </div>
+            </div><!--fin row opciones-->
+        </div>
     </main>
     <!--FIN DEL MAIN-->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
