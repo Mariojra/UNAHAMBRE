@@ -25,7 +25,7 @@ function info_usuarios(){
         method:'POST',
         url:'http://localhost:3001/api/info-user',
         data: {
-          idUsuario: 7
+          idUsuario: sessionStorage.getItem('userID')
         }
     }).then(res=>{
         let div = $('#info-perfil');
@@ -111,8 +111,8 @@ $("#btn-conf-editar").click(function(){
       validarCampoVacio('#modal-txt-apellido')&&
       validarCampoVacio('#modal-txt-tel')){
     let data ={
-      idUsuario: 7,//esto vendra en el sessionStorage.
-      nombreUsuario:"Mario Rosales",//esto vendra en el sessionStorage.
+      idUsuario: sessionStorage.getItem('userID'),//esto vendra en el sessionStorage.
+      nombreUsuario:sessionStorage.getItem('userName'),//esto vendra en el sessionStorage.
       nuevoUsuario:$("#modal-txt-user").val(),
       celular:$("#modal-txt-tel").val(),
       nuevoNombre:$("#modal-txt-nombre").val(),
@@ -125,7 +125,7 @@ $("#btn-conf-editar").click(function(){
       data: data
     }).then(res=>{
       // console.log(res);
-      document.getElementById('p-usuario').innerHTML=$("#modal-txt-user").val();
+      document.getElementById('usuario_conten').innerHTML=$("#modal-txt-user").val();
       document.getElementById('div-usuario').innerHTML=$("#modal-txt-user").val();
       document.getElementById('div-nombre').innerHTML=$("#modal-txt-nombre").val() + ' ' + $("#modal-txt-apellido").val();
       document.getElementById('div-celular').innerHTML=$("#modal-txt-tel").val();
@@ -149,7 +149,7 @@ $("#btn-cambiar-contrasena").click(function(){
 $('#btn-conf-contrasena').click(function(){
   //usuario, contrasena, nueva_contrasena forma del json
   let datos = {
-    usuario:7,//con el sessionStorage
+    usuario:sessionStorage.getItem('userID'),//con el sessionStorage
     contrasena: $('#modal-txt-contrasena').val(),
     nueva_contrasena: $('#modal-txt-RNcontrasena').val()
   };

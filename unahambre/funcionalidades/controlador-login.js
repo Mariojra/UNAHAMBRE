@@ -96,7 +96,7 @@ $("#btn-login").click( () => {
                         break;
                     case '2':
                         //cliente comun
-                        // setTimeout(()=>window.location.assign("principal.html"),3500);
+                        setTimeout(()=>window.location.assign("principal.html"),3500);
                         if(sessionStorage.getItem('stepAnterior') == ''){
                             window.location.assign('principal.html');
                         }else{
