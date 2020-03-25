@@ -1,3 +1,8 @@
+
+window.onload = function (){
+  document.getElementById('userSession').innerHTML = sessionStorage.getItem('userName');
+}
+
 const alert_default = Swal.mixin({
   timer: 3000,
   timerProgressBar: true,
@@ -62,6 +67,12 @@ const alert_default = Swal.mixin({
    });
 
  })(jQuery); // End of use strict
+
+
+function cerrarSesion(){
+  sessionStorage.removeItem('token');
+}
+
 
 function ImprimirLocales(){
     axios({
