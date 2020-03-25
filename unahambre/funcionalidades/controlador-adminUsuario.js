@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded",()=>{
+  if(sessionStorage.getItem('token')==undefined){
+      window.location.assign('index.html');
+  } 
+});
 
 window.onload = function (){
   document.getElementById('userSession').innerHTML = sessionStorage.getItem('userName');
