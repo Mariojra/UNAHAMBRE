@@ -74,6 +74,7 @@ const cargarCabeceraTablaLocales = () =>{
                                   <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre Local</th>
+                                    <th scope="col">Dueño</th>
                                     <th scope="col">Ubicacion</th>
                                     <th scope="col">Telefono</th>
                                     <th scope="col">Correo</th>
@@ -96,6 +97,7 @@ const cargarFilasLocales = (datos) =>{
      <tr>
        <th>${infoLocales[i].idRestaurante}</th>
        <td>${infoLocales[i].Nombre_Local}</td>
+       <td>${infoLocales[i].Nombre_Usuario}</td>
        <td>${infoLocales[i].Ubicacion}</td>
        <td>${infoLocales[i].Telefono}</td>
        <td>${infoLocales[i].Correo}</td>
@@ -368,7 +370,7 @@ function GestionUsuarioAdmin(){
     }).then(res=>{
       
       cargarCabeceraTablaEditarUsuarios()
-      cargarFilasEditarUsuarios(res.data.items[0]);
+      cargarFilasEditarUsuariosAdmin(res.data.items[0]);
           
         }).catch(function(error){
             console.log(error);
@@ -386,7 +388,7 @@ function GestionUsuarioPropietario(){
     }).then(res=>{
     
       cargarCabeceraTablaEditarUsuarios()
-      cargarFilasEditarUsuarios(res.data.items[0]);
+      cargarFilasEditarUsuariosPropietario(res.data.items[0]);
           
         }).catch(function(error){
             console.log(error);
@@ -403,7 +405,7 @@ function GestionUsuarioComun(){
     }).then(res=>{
       
       cargarCabeceraTablaEditarUsuarios()
-      cargarFilasEditarUsuarios(res.data.items[0]);
+      cargarFilasEditarUsuariosComun(res.data.items[0]);
           
         }).catch(function(error){
             console.log(error);
@@ -437,7 +439,7 @@ const cargarCabeceraTablaEditarUsuarios = () =>{
                 `;
 }
 
-const cargarFilasEditarUsuarios = (datos) =>{
+const cargarFilasEditarUsuariosAdmin = (datos) =>{
   let infoUsuariosAdmin = datos;
   document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
   for (let i = 0; i < infoUsuariosAdmin.length; i++) {              
@@ -448,6 +450,48 @@ const cargarFilasEditarUsuarios = (datos) =>{
                   <td id="row${i}Apellidos">${infoUsuariosAdmin[i].Apellidos}</td> 
                   <td id="row${i}Nombre_Usuario">${infoUsuariosAdmin[i].Nombre_Usuario}</td>
                   <td id="row${i}Administrador">Administrador</td>
+                  <td id="row${i}Foto_Perfil">${infoUsuariosAdmin[i].Foto_Perfil}</td>
+                  <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
+                  
+                </tr>
+                `;             
+                
+  }
+          
+}
+
+const cargarFilasEditarUsuariosComun = (datos) =>{
+  let infoUsuariosAdmin = datos;
+  document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
+  for (let i = 0; i < infoUsuariosAdmin.length; i++) {              
+      document.querySelector('#DatosUsuariosAdmin').innerHTML += `
+                <tr>
+                  <td id="row${i}idUsuario">${infoUsuariosAdmin[i].idUsuario}</td>
+                  <td id="row${i}Nombre">${infoUsuariosAdmin[i].Nombre}</td>
+                  <td id="row${i}Apellidos">${infoUsuariosAdmin[i].Apellidos}</td> 
+                  <td id="row${i}Nombre_Usuario">${infoUsuariosAdmin[i].Nombre_Usuario}</td>
+                  <td id="row${i}Administrador">Usuario Comun</td>
+                  <td id="row${i}Foto_Perfil">${infoUsuariosAdmin[i].Foto_Perfil}</td>
+                  <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
+                  
+                </tr>
+                `;             
+                
+  }
+          
+}
+
+const cargarFilasEditarUsuariosPropietario = (datos) =>{
+  let infoUsuariosAdmin = datos;
+  document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
+  for (let i = 0; i < infoUsuariosAdmin.length; i++) {              
+      document.querySelector('#DatosUsuariosAdmin').innerHTML += `
+                <tr>
+                  <td id="row${i}idUsuario">${infoUsuariosAdmin[i].idUsuario}</td>
+                  <td id="row${i}Nombre">${infoUsuariosAdmin[i].Nombre}</td>
+                  <td id="row${i}Apellidos">${infoUsuariosAdmin[i].Apellidos}</td> 
+                  <td id="row${i}Nombre_Usuario">${infoUsuariosAdmin[i].Nombre_Usuario}</td>
+                  <td id="row${i}Administrador">Usuario Propietario</td>
                   <td id="row${i}Foto_Perfil">${infoUsuariosAdmin[i].Foto_Perfil}</td>
                   <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
                   
