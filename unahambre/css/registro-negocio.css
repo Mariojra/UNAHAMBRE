@@ -5,6 +5,7 @@ html{
 .contenedor-negocio{
     width: 100%;
     padding-bottom: 3rem ;
+    background: #cae8d5;
     /* background: url(../img/fondo-negocio.jpg), no-repeat;
     background-position: center center;
     background-size: cover; */
