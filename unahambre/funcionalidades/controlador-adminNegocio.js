@@ -1,4 +1,18 @@
-
+//configuracion sweetalert
+const alert_default = Swal.mixin({
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: (modal)=>{
+      modal.addEventListener('mouseenter', Swal.stopTimer)
+      modal.addEventListener('mouseleave', Swal.resumeTimer)
+  },
+  showClass: {
+      popup: 'animated fadeInDown'
+    },
+    hideClass: {
+      popup: 'animated fadeOutUp'
+    }
+});
 
 (function($) {
   "use strict"; // Start of use strict
@@ -200,8 +214,16 @@ async function editarMenu(idMenu){
       }
     }).then(res=>{
       console.log(res)
+      alert_default.fire({
+        icon:'success',
+        title:'Accion realizada con exito'
+      });
     }).catch(function(error){
       console.log(error)
+      alert_default.fire({
+        icon:'error',
+        title:'No se pudo completar la accion'
+      });
     });
      /**TOAST AQUÍ */
   obtenerMenus()
@@ -217,8 +239,16 @@ const eliminarMenu = (idMenu) => {
     }
   }).then(res=>{
     console.log(res)
+    alert_default.fire({
+      icon:'success',
+      title:'Accion realizada con exito'
+    });
   }).catch(function(error){
     console.log(error)
+    alert_default.fire({
+      icon:'error',
+      title:'No se pudo completar la accion'
+    });
   })
    /**TOAST AQUÍ */
   obtenerMenus()
@@ -234,8 +264,16 @@ const eliminarRestaurante = (idRestaurante) => {
     }
   }).then(res=>{
     console.log(res)
+    alert_default.fire({
+      icon:'success',
+      title:'Accion realizada con exito'
+    });
   }).catch(function(error){
     console.log(error)
+    alert_default.fire({
+      icon:'error',
+      title:'No se pudo completar la accion'
+    });
   })
    /**TOAST AQUÍ */
   obtenerRestaurantes()
@@ -250,8 +288,16 @@ const eliminarPlatillo = (idPlatillo) => {
     }
   }).then(res=>{
     console.log(res)
+    alert_default.fire({
+      icon:'success',
+      title:'Accion realizada con exito'
+    });
   }).catch(function(error){
     console.log(error)
+    alert_default.fire({
+      icon:'error',
+      title:'No se pudo completar la accion'
+    });
   })
    /**TOAST AQUÍ */
   obtenerPlatillos();
@@ -272,8 +318,20 @@ const agregarMenu = async () => {
       idCategoria: 0
 
     }
-  }).then(res=> console.log(res)
-  ).catch(err=>console.log(err))
+  }).then(res=>{
+    console.log(res)
+    alert_default.fire({
+      icon:'success',
+      title:'Accion realizada con exito'
+    });
+  }
+  ).catch(err=>{
+    console.log(err)
+    alert_default.fire({
+      icon:'error',
+      title:'No se pudo completar la accion'
+    });
+  })
  /**TOAST AQUÍ */
   obtenerMenus()
 }
@@ -297,8 +355,20 @@ const agregarPlatillo = async () => {
       precio: precioPlatillo
 
     }
-  }).then(res=> console.log(res)
-  ).catch(err=>console.log(err))
+  }).then(res=>{
+    console.log(res)
+    alert_default.fire({
+      icon:'success',
+      title:'Accion realizada con exito'
+    });
+  }
+  ).catch(err=>{
+    console.log(err)
+    alert_default.fire({
+      icon:'error',
+      title:'No se pudo completar la accion'
+    });
+  })
    /**TOAST AQUÍ */
   obtenerPlatillos()
 }
@@ -328,8 +398,16 @@ async function editarPlatillo(){
       }
     }).then(res=>{
       console.log(res)
+      alert_default.fire({
+        icon:'success',
+        title:'Accion realizada con exito'
+      });
     }).catch(function(error){
       console.log(error)
+      alert_default.fire({
+        icon:'error',
+        title:'No se pudo completar la accion'
+      });
     });
      /**TOAST AQUÍ */
   obtenerPlatillos()

@@ -21,7 +21,25 @@ $(document).ready(function(){
 
     });
 
-    
+    //configuracion sweetalerts
+    const alert_default = Swal.mixin({
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (modal)=>{
+            modal.addEventListener('mouseenter', Swal.stopTimer)
+            modal.addEventListener('mouseleave', Swal.resumeTimer)
+        },
+        customClass:{
+            popup:'swal-toastCustomPopup',
+            title:'swal-toastCustomTitle'
+        },
+        showClass: {
+            popup: 'animated fadeInDown'
+          },
+          hideClass: {
+            popup: 'animated fadeOutUp'
+          }
+      });
 
     // Toolbar extra buttons
     var btnFinish = $('<button></button>').text('FINALIZAR')
@@ -33,7 +51,10 @@ $(document).ready(function(){
                                                     elmForm.validator('validate');
                                                     var elmErr = elmForm.find('.has-error');
                                                     if(elmErr && elmErr.length > 0){
-                                                        alert('COMPLETE TODOS LOS CAMPOS REQUERIDOS');
+                                                        alert_default.fire({
+                                                            icon:'error',
+                                                            title:'Complete todos los campos requeridos'
+                                                        });
                                                         return false;
                                                     }else{
 
@@ -56,7 +77,10 @@ $(document).ready(function(){
                                                             console.log(res);
                                                         })
 
-                                                        alert('SOLICITUD ENVIADA CORRECTAMENTE');
+                                                        alert_default.fire({
+                                                            icon:'success',
+                                                            title:'Solicitud enviada correctamente'
+                                                        });
                                                         return false;
                                                     }
                                                 }

@@ -1,3 +1,18 @@
+const alert_default = Swal.mixin({
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: (modal)=>{
+      modal.addEventListener('mouseenter', Swal.stopTimer)
+      modal.addEventListener('mouseleave', Swal.resumeTimer)
+  },
+  showClass: {
+      popup: 'animated fadeInDown'
+    },
+    hideClass: {
+      popup: 'animated fadeOutUp'
+    }
+});
+
  (function($) {
   "use strict"; // Start of use strict
 
@@ -576,6 +591,10 @@ async function editarUsuario(id){
   
   $('#ModalEditar').modal('hide')
   //AQUI DEBE IR LA ALERTA DE SE EDITO CORRECTAMENTE EL USUARIO
+  alert_default.fire({
+    icon:'success',
+    title:'Se edito correctamente el usuario'
+  })
   ImprimirUsuarios()
 
   console.log(id,nombres,apellidos,usuario)
