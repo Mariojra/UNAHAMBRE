@@ -169,7 +169,7 @@ const cargarFilasUsuarios = (datos) =>{
                  <td>${infoUsuarios[i].Nombre_Usuario}</td>
                  <td>${infoUsuarios[i].Contrasena}</td>
                  <td>${infoUsuarios[i].Fecha_Ingreso}</td>
-                 <td>${infoUsuarios[i].Foto_Perfil}</td>
+                 <td><img src="${infoUsuarios[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
                </tr>
                `;
             }
@@ -450,28 +450,28 @@ const cargarFilasEditarUsuariosAdmin = (datos) =>{
                   <td id="row${i}Apellidos">${infoUsuariosAdmin[i].Apellidos}</td> 
                   <td id="row${i}Nombre_Usuario">${infoUsuariosAdmin[i].Nombre_Usuario}</td>
                   <td id="row${i}Administrador">Administrador</td>
-                  <td id="row${i}Foto_Perfil">${infoUsuariosAdmin[i].Foto_Perfil}</td>
+                  <td id="row${i}Foto_Perfil"><img src="${infoUsuariosAdmin[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
                   <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
                   
                 </tr>
                 `;             
                 
   }
-          
+  
 }
 
 const cargarFilasEditarUsuariosComun = (datos) =>{
-  let infoUsuariosAdmin = datos;
+  let infoUsuariosComun = datos;
   document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
-  for (let i = 0; i < infoUsuariosAdmin.length; i++) {              
+  for (let i = 0; i < infoUsuariosComun.length; i++) {              
       document.querySelector('#DatosUsuariosAdmin').innerHTML += `
                 <tr>
-                  <td id="row${i}idUsuario">${infoUsuariosAdmin[i].idUsuario}</td>
-                  <td id="row${i}Nombre">${infoUsuariosAdmin[i].Nombre}</td>
-                  <td id="row${i}Apellidos">${infoUsuariosAdmin[i].Apellidos}</td> 
-                  <td id="row${i}Nombre_Usuario">${infoUsuariosAdmin[i].Nombre_Usuario}</td>
+                  <td id="row${i}idUsuario">${infoUsuariosComun[i].idUsuario}</td>
+                  <td id="row${i}Nombre">${infoUsuariosComun[i].Nombre}</td>
+                  <td id="row${i}Apellidos">${infoUsuariosComun[i].Apellidos}</td> 
+                  <td id="row${i}Nombre_Usuario">${infoUsuariosComun[i].Nombre_Usuario}</td>
                   <td id="row${i}Administrador">Usuario Comun</td>
-                  <td id="row${i}Foto_Perfil">${infoUsuariosAdmin[i].Foto_Perfil}</td>
+                  <td id="row${i}Foto_Perfil"><img src="${infoUsuariosComun[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
                   <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
                   
                 </tr>
@@ -482,17 +482,17 @@ const cargarFilasEditarUsuariosComun = (datos) =>{
 }
 
 const cargarFilasEditarUsuariosPropietario = (datos) =>{
-  let infoUsuariosAdmin = datos;
+  let infoUsuariosPropietario = datos;
   document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
-  for (let i = 0; i < infoUsuariosAdmin.length; i++) {              
+  for (let i = 0; i < infoUsuariosPropietario.length; i++) {              
       document.querySelector('#DatosUsuariosAdmin').innerHTML += `
                 <tr>
-                  <td id="row${i}idUsuario">${infoUsuariosAdmin[i].idUsuario}</td>
-                  <td id="row${i}Nombre">${infoUsuariosAdmin[i].Nombre}</td>
-                  <td id="row${i}Apellidos">${infoUsuariosAdmin[i].Apellidos}</td> 
-                  <td id="row${i}Nombre_Usuario">${infoUsuariosAdmin[i].Nombre_Usuario}</td>
+                  <td id="row${i}idUsuario">${infoUsuariosPropietario[i].idUsuario}</td>
+                  <td id="row${i}Nombre">${infoUsuariosPropietario[i].Nombre}</td>
+                  <td id="row${i}Apellidos">${infoUsuariosPropietario[i].Apellidos}</td> 
+                  <td id="row${i}Nombre_Usuario">${infoUsuariosPropietario[i].Nombre_Usuario}</td>
                   <td id="row${i}Administrador">Usuario Propietario</td>
-                  <td id="row${i}Foto_Perfil">${infoUsuariosAdmin[i].Foto_Perfil}</td>
+                  <td id="row${i}Foto_Perfil"><img src="${infoUsuariosPropietario[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
                   <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
                   
                 </tr>
@@ -575,6 +575,7 @@ async function editarUsuario(id){
   
   
   $('#ModalEditar').modal('hide')
+  //AQUI DEBE IR LA ALERTA DE SE EDITO CORRECTAMENTE EL USUARIO
   ImprimirUsuarios()
 
   console.log(id,nombres,apellidos,usuario)
