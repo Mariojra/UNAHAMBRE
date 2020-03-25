@@ -1,3 +1,38 @@
+document.addEventListener('DOMContentLoaded',function(){
+    if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='2'){
+        window.location.assign('principal.html');
+
+    } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='1'){
+        window.location.assign('administracion-negocio.html');
+
+    } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='0'){
+        window.location.getItem('administracion-usuario.html')
+    }
+});
+
+//configuracion sweetalert
+const alert_defaults = Swal.mixin({
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (modal)=>{
+        modal.addEventListener('mouseenter', Swal.stopTimer)
+        modal.addEventListener('mouseleave', Swal.resumeTimer)
+    },
+    customClass:{
+        popup:'swal-customPopup',
+        title:'swal-customTitle',
+        icon: 'swal-customIcon',
+        confirmButton: 'swal-customButton'
+    },
+    showClass: {
+        popup: 'animated zoomInDown'
+      },
+      hideClass: {
+        popup: 'animated zoomOutUp'
+      }
+});
+
+//peticion registrar usuario
 $("#btn-registro").click(function() {
     console.log("el click funciona correctamente");
     if (
@@ -33,8 +68,16 @@ $("#btn-registro").click(function() {
             }).then(res=>{
                 console.log(res.data)
                 // alert("Usuario registrado con exito");
+                alert_defaults.fire({
+                    icon:'success',
+                    title: 'Usuario registrado con exito'
+                });
             }).catch(err=>{
                 console.log(err)
+                alert_defaults.fire({
+                    icon:'error',
+                    title:res.data.error
+                });
             })
     }
 });
