@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded',function(){
+    if(sessionStorage.getItem('token') == undefined){
+        window.location.assign('index.html')
+    }
+});
+
+
+
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
@@ -37,7 +45,7 @@ $("#file-img").change(function (e) {
         method: 'POST',
         data: fd,
         headers: {
-            'idUsuario': 7,
+            'idUsuario':sessionStorage.getItem('userID') ,
         }
     }).then(res=>{
         console.log(res.data);

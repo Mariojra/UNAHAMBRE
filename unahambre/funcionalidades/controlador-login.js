@@ -1,13 +1,19 @@
 //funcion que se ejecuta al cargar el dom
 document.addEventListener("DOMContentLoaded",()=>{
     if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='2'){
-        window.location.assign('principal.html');
+        if(sessionStorage.getItem('stepAnterior') == ''){
+            window.location.assign('principal.html');
+        }else{
+            window.location.assign('registro-negocio.html');
+        }
+        // window.location.assign('principal.html');
+        
 
     } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='1'){
-        console.log("aqui creo que aunque sea dueño de negocio se manda a principal, silva, maneja esto");
+        window.location.assign('administracion-negocio.html');
 
     } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='0'){
-        window.location.getItem('administracion-usuario.html')
+        window.location.getItem('administracion-usuario.html');
     }
 });
 
@@ -87,15 +93,21 @@ $("#btn-login").click( () => {
                     case '1':
                         //dueño de local
                         //siempre redirige a principal?
-                        // setTimeout(()=>window.location.assign("principal.html"),3500);
+                        setTimeout(()=>window.location.assign("administracion-negocio.html"),3500);
                         break;
                     case '2':
                         //cliente comun
                         setTimeout(()=>window.location.assign("principal.html"),3500);
+                        if(sessionStorage.getItem('stepAnterior') == ''){
+                            window.location.assign('principal.html');
+                        }else{
+                            window.location.assign('registro-negocio.html');
+                        }
+
                         break;
                     default:
-                        console.log(sessionStorage.getItem('rol'))
-                        alert("ocurrio un error, revisar la variable de sesion")
+                        console.log(sessionStorage.getItem('rol'));
+                        console.log("ocurrio un error, revisar la variable de sesion");
                         break;
                 }
                 
