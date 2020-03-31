@@ -82,7 +82,7 @@ function cerrarSesion(){
 function ImprimirLocales(){
     axios({
       method:'GET',
-      url:'http://localhost:3001/api/restaurantes'
+      url:'http://localhost:3001/api/g_mostrar_restaurantes'
           }).then(res=>{
             
            
@@ -126,7 +126,7 @@ const cargarFilasLocales = (datos) =>{
   for (let i = 0; i < infoLocales.length; i++) {
    document.querySelector('#DatosLocales').innerHTML += `
      <tr>
-       <th>${infoLocales[i].idRestaurante}</th>
+       <th>${i+1}</th>
        <td>${infoLocales[i].Nombre_Local}</td>
        <td>${infoLocales[i].Nombre_Usuario}</td>
        <td>${infoLocales[i].Ubicacion}</td>
@@ -141,7 +141,7 @@ const cargarFilasLocales = (datos) =>{
 function ImprimirUsuarios(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/getusuarios'
+    url:'http://localhost:3001/api/admin_global_mostrar_usuarios'
         }).then(res=>{
           cargarCabeceraTablaUsuarios();
           cargarFilasUsuarios(res.data.items);
@@ -189,7 +189,7 @@ const cargarFilasUsuarios = (datos) =>{
             for (let i = 0; i < infoUsuarios.length; i++) {
              document.querySelector('#DatosUsuarios').innerHTML += `
                <tr>
-                 <th>${infoUsuarios[i].idUsuario}</th>
+                 <th>${i+1}</th>
                  <td>${infoUsuarios[i].Nombre}</td>
                  <td>${infoUsuarios[i].Apellidos}</td>
                  <td>${infoUsuarios[i].Celular}</td>
@@ -208,7 +208,7 @@ const cargarFilasUsuarios = (datos) =>{
 function ImprimirMenus(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/menusRestaurantesPropietarios'
+    url:'http://localhost:3001/api/admin_global_menus_restaurante'
         }).then(res=>{
           
           cargarCabeceraTablaMenus();
@@ -252,7 +252,7 @@ const cargarFilasMenus = (datos) =>{
    for (let i = 0; i < infoMenus.length; i++) {
     document.querySelector('#DatosMenu').innerHTML += `
       <tr>
-        <th>${infoMenus[i].idMenu}</th>
+        <th>${i+1}</th>
         <td>${infoMenus[i].Nombre_Menu}</td>
         <td>${infoMenus[i].Nombre_Local}</td>
         <td>${infoMenus[i].Dueño_Local}</td>
@@ -267,7 +267,7 @@ const cargarFilasMenus = (datos) =>{
 function ImprimirPlatillos(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/platilloMenuRestaurante'
+    url:'http://localhost:3001/api/admin_global_platillos_menu'
         }).then(res=>{
           cargarCabeceraTablaPlatillos();
           cargarFilasPlatillos(res.data.items);
@@ -310,7 +310,7 @@ const cargarFilasPlatillos = (datos) =>{
   for (let i = 0; i < infoPlatillo.length; i++) {
       document.querySelector('#DatosPlatillo').innerHTML += `
                 <tr>
-                  <th>${infoPlatillo[i].idPlatillo}</th>
+                  <th>${i+1}</th>
                   <td>${infoPlatillo[i].Nombre}</td>
                   <td>${infoPlatillo[i].Descripcion}</td>
                   <td>${infoPlatillo[i].Precio}</td>
@@ -326,7 +326,7 @@ const cargarFilasPlatillos = (datos) =>{
 function CantidadLocales(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/restaurantes'
+    url:'http://localhost:3001/api/g_mostrar_restaurantes'
         }).then(res=>{
           
           
@@ -345,7 +345,7 @@ CantidadLocales();
 function CantidadUsuarios(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/getusuarios'
+    url:'http://localhost:3001/api/admin_global_mostrar_usuarios'
         }).then(res=>{
           let infoUsuarios = res.data.items;
           
@@ -360,7 +360,7 @@ CantidadUsuarios();
 function  CantidadMenus(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/menusRestaurantesPropietarios'
+    url:'http://localhost:3001/api/admin_global_menus_restaurante'
         }).then(res=>{
           let infoMenu = res.data.items;
           
@@ -375,7 +375,7 @@ CantidadMenus();
 function CantidadPlatillos(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/platilloMenuRestaurante'
+    url:'http://localhost:3001/api/admin_global_platillos_menu'
         }).then(res=>{
           
           let infoPlatillo = res.data.items;
@@ -388,18 +388,107 @@ function CantidadPlatillos(){
 
 CantidadPlatillos();
 
+function ImprimirSolicitudes(){
+  axios({
+    method:'GET',
+    url:'http://localhost:3001/api/admin_global_mostrar_solicitudes'
+        }).then(res=>{
+          cargarCabeceraTablaSolicitudes();
+          cargarFilasSolicitudes(res.data.items)
+        }).catch(function(error){
+            console.log(error);
+        });      
+}
+const cargarCabeceraTablaSolicitudes = () =>{
+  document.querySelector('#Tablas').innerHTML = '';
+  document.querySelector('#Tablas').innerHTML  += `
+                             <div class="col-xl-12 navTabla">
+                             <p class="h2 font-weight-bold text-danger py-2">Solicitudes</p>
+                             <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                              <div class=" input-group ">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                  <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </form> 
+                             <hr class="separador">
+                            </form>
+                           </div>
+                           <div class="col-xl-12">
+                             <table class="table">
+                               <thead class="thead-dark">
+                                 <tr>
+                                   <th scope="col">#</th>
+                                   <th scope="col">Estado Solicitud</th>
+                                   <th scope="col">Nombre Local</th>
+                                   <th scope="col">Nombre Dueño</th>
+                                   <th scope="col">Telefono</th>
+                                   <th scope="col">Ubicacion</th>
+                                   <th scope="col">Fecha Solicitud</th>
+                                 </tr>
+                               </thead>
+                               <tbody id='DatosSolicitud'>
+                               
+                               </tbody>
+                             </table>
+                           </div>
+                 `;
+}
+
+const cargarFilasSolicitudes = (datos) =>{
+  let infoSolicitudes = datos;
+  document.querySelector('#DatosSolicitud').innerHTML = '';
+  for (let i = 0; i < infoSolicitudes.length; i++) {
+      document.querySelector('#DatosSolicitud').innerHTML += `
+                <tr>
+                  <th>${i+1}</th>
+                  <td>${infoSolicitudes[i].EstadoSolicitud}</td>
+                  <td>${infoSolicitudes[i].Nombre_Local}</td>
+                  <td>${infoSolicitudes[i].Nombre_Usuario}</td>
+                  <td>${infoSolicitudes[i].Telefono}</td>
+                  <td>${infoSolicitudes[i].Ubicacion}</td>
+                  <td>${infoSolicitudes[i].FechaSolicitud}</td>
+                </tr>
+                `;
+  }
+  console.log("Datos de Solicitud cargados :",infoSolicitudes);
+}
+
+function CantidadSolicitudes(){
+  axios({
+    method:'GET',
+    url:'http://localhost:3001/api/admin_global_mostrar_solicitudes'
+        }).then(res=>{
+          
+          let infoSolicitudes = res.data.items;
+          document.querySelector('#solicitudes').innerHTML = `${infoSolicitudes.length}  Solicitudes`;
+        }).catch(function(error){
+            console.log(error);
+        });   
+}
+
+CantidadSolicitudes();
+
+
+
+
+/////////////////////////////////////////////////////
+
 function GestionUsuarioAdmin(){
   
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/usuario-rol',
+    url:'http://localhost:3001/api/admin_global_usuario_filtro_rol',
     data:{
       "idRol":0
         }
     }).then(res=>{
       
       cargarCabeceraTablaEditarUsuarios()
-      cargarFilasEditarUsuariosAdmin(res.data.items[0]);
+      cargarFilasGestionUsuario(res.data.items[0]);
           
         }).catch(function(error){
             console.log(error);
@@ -410,14 +499,14 @@ function GestionUsuarioPropietario(){
   
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/usuario-rol',
+    url:'http://localhost:3001/api/admin_global_usuario_filtro_rol',
     data:{
       "idRol":1
         }
     }).then(res=>{
     
       cargarCabeceraTablaEditarUsuarios()
-      cargarFilasEditarUsuariosPropietario(res.data.items[0]);
+      cargarFilasGestionUsuario(res.data.items[0]);
           
         }).catch(function(error){
             console.log(error);
@@ -427,14 +516,14 @@ function GestionUsuarioComun(){
   
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/usuario-rol',
+    url:'http://localhost:3001/api/admin_global_usuario_filtro_rol',
     data:{
       "idRol":2
         }
     }).then(res=>{
       
       cargarCabeceraTablaEditarUsuarios()
-      cargarFilasEditarUsuariosComun(res.data.items[0]);
+      cargarFilasGestionUsuario(res.data.items[0]);
           
         }).catch(function(error){
             console.log(error);
@@ -457,7 +546,7 @@ const cargarCabeceraTablaEditarUsuarios = () =>{
                                   <th scope="col">Rol</th>
                                   <th scope="col">Foto Perfil</th>
                                   <th scope="col"></th>
-                                  
+                                  <th scope="col"></th>
                                 </tr>
                               </thead>
                               <tbody id='DatosUsuariosAdmin'>
@@ -468,77 +557,43 @@ const cargarCabeceraTablaEditarUsuarios = () =>{
                 `;
 }
 
-const cargarFilasEditarUsuariosAdmin = (datos) =>{
-  let infoUsuariosAdmin = datos;
+const cargarFilasGestionUsuario = (datos) =>{
+  let infoUsuarios = datos;
   document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
-  for (let i = 0; i < infoUsuariosAdmin.length; i++) {              
+  for (let i = 0; i < infoUsuarios.length; i++) {              
       document.querySelector('#DatosUsuariosAdmin').innerHTML += `
-                <tr>
-                  <td id="row${i}idUsuario">${infoUsuariosAdmin[i].idUsuario}</td>
-                  <td id="row${i}Nombre">${infoUsuariosAdmin[i].Nombre}</td>
-                  <td id="row${i}Apellidos">${infoUsuariosAdmin[i].Apellidos}</td> 
-                  <td id="row${i}Nombre_Usuario">${infoUsuariosAdmin[i].Nombre_Usuario}</td>
-                  <td id="row${i}Administrador">Administrador</td>
-                  <td id="row${i}Foto_Perfil"><img src="${infoUsuariosAdmin[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
-                  <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
-                  
+                <tr id="tablaUsuario">
+                  <td id="row${i}idUsuario">${i+1}</td>
+                  <td id="row${i}Nombre">${infoUsuarios[i].Nombre}</td>
+                  <td id="row${i}Apellidos">${infoUsuarios[i].Apellidos}</td> 
+                  <td id="row${i}Nombre_Usuario">${infoUsuarios[i].Nombre_Usuario}</td>
+                  <td id="row${i}Rol"></td>
+                  <td id="row${i}Foto_Perfil"><img src="${infoUsuarios[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
+                  <td><button class="btn btn-primary" type="button" onclick="infoModalEditar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
+                  <td id="row${i}BotonEliminar"></td>
                 </tr>
-                `;             
-                
+                `;  
+                if(infoUsuarios[i].Rol_idRol==0){
+                  document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Administrador";
+                }else if(infoUsuarios[i].Rol_idRol == 1){
+                  document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Propietario";
+                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEliminar">Eliminar</button>`;
+                }else if(infoUsuarios[i].Rol_idRol == 2){
+                  document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Comun";
+                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEliminar">Eliminar</button>`;
+                }                       
   }
-  
 }
 
-const cargarFilasEditarUsuariosComun = (datos) =>{
-  let infoUsuariosComun = datos;
-  document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
-  for (let i = 0; i < infoUsuariosComun.length; i++) {              
-      document.querySelector('#DatosUsuariosAdmin').innerHTML += `
-                <tr>
-                  <td id="row${i}idUsuario">${infoUsuariosComun[i].idUsuario}</td>
-                  <td id="row${i}Nombre">${infoUsuariosComun[i].Nombre}</td>
-                  <td id="row${i}Apellidos">${infoUsuariosComun[i].Apellidos}</td> 
-                  <td id="row${i}Nombre_Usuario">${infoUsuariosComun[i].Nombre_Usuario}</td>
-                  <td id="row${i}Administrador">Usuario Comun</td>
-                  <td id="row${i}Foto_Perfil"><img src="${infoUsuariosComun[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
-                  <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
-                  
-                </tr>
-                `;             
-                
-  }
-          
-}
-
-const cargarFilasEditarUsuariosPropietario = (datos) =>{
-  let infoUsuariosPropietario = datos;
-  document.querySelector('#DatosUsuariosAdmin').innerHTML = '';
-  for (let i = 0; i < infoUsuariosPropietario.length; i++) {              
-      document.querySelector('#DatosUsuariosAdmin').innerHTML += `
-                <tr>
-                  <td id="row${i}idUsuario">${infoUsuariosPropietario[i].idUsuario}</td>
-                  <td id="row${i}Nombre">${infoUsuariosPropietario[i].Nombre}</td>
-                  <td id="row${i}Apellidos">${infoUsuariosPropietario[i].Apellidos}</td> 
-                  <td id="row${i}Nombre_Usuario">${infoUsuariosPropietario[i].Nombre_Usuario}</td>
-                  <td id="row${i}Administrador">Usuario Propietario</td>
-                  <td id="row${i}Foto_Perfil"><img src="${infoUsuariosPropietario[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
-                  <td><button class="btn btn-primary" type="button" onclick="infoModal(${i})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
-                  
-                </tr>
-                `;             
-                
-  }
-          
-}
-
-function infoModal(fila){
+function infoModalEditar(fila,rol){
   cadenaFila =`#row${fila}`
   idUsuario = document.querySelector(`${cadenaFila}idUsuario`).innerHTML
   Nombre = document.querySelector(`${cadenaFila}Nombre`).innerHTML
   Apellidos = document.querySelector(`${cadenaFila}Apellidos`).innerHTML
   Nombre_Usuario = document.querySelector(`${cadenaFila}Nombre_Usuario`).innerHTML
-  Administrador = document.querySelector(`${cadenaFila}Administrador`).innerHTML
+  Administrador = document.querySelector(`${cadenaFila}Rol`).innerHTML
   Foto_Perfil = document.querySelector(`${cadenaFila}Foto_Perfil`).innerHTML
+  idRol = rol;
   
   document.querySelector('#contenido_modal').innerHTML = '';
 
@@ -571,7 +626,7 @@ function infoModal(fila){
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="editarUsuario(${idUsuario})">Guardar Cambios</button>
+                        <button type="button" class="btn btn-primary" onclick="editarUsuario(${idUsuario},${idRol})">Guardar Cambios</button>
                       </div>            
   `
   document.querySelector('#NombreModal').value =Nombre
@@ -580,16 +635,15 @@ function infoModal(fila){
   // document.querySelector('#prueba').value = Nombre_Usuario
    console.log("Fila:",cadenaFila,"  idUsuario: ",idUsuario,"  Nombres: ",Nombre,"  Apellidos: ",Apellidos,"  Nombre Usuario: ",Nombre_Usuario,"  Rol: ",Administrador,"  Foto Perfil: ",Foto_Perfil)
 }
- // ese infoUsuarioAdmin tiene un array con todos los usuarios entonces yo lo quiero mandar como parametro en esa funcion editarUsuario y le pongo el [i ] para que me mande
- //usuario seleccionado
-async function editarUsuario(id){
+
+async function editarUsuario(id,rol){
   let nombres =document.querySelector('#NombreModal').value 
   let apellidos =document.querySelector('#ApellidosModal').value 
   let usuario =document.querySelector('#UsuarioModal').value
   
   await axios({
     method:'POST',
-    url:'http://localhost:3001/api/admin/editar-usuario',
+    url:'http://localhost:3001/api/admin_global_editar_usuario',
     data:{
       "idUsuario":id,
       "usuario":usuario,
@@ -609,10 +663,62 @@ async function editarUsuario(id){
     icon:'success',
     title:'Se edito correctamente el usuario'
   })
-  ImprimirUsuarios()
+  if(rol == 0){
+    GestionUsuarioAdmin();
+  }else if(rol == 1){
+    GestionUsuarioPropietario();
+  }else if(rol == 2){
+    GestionUsuarioComun();
+  }  
 
   console.log(id,nombres,apellidos,usuario)
 }
+
+
+function infoModalEliminar(fila,rol){
+  cadenaFila =`#row${fila}`
+  idUsuario = document.querySelector(`${cadenaFila}idUsuario`).innerHTML
+  idRol = rol
+  document.querySelector('#botonEliminar').innerHTML = '';
+  document.querySelector('#botonEliminar').innerHTML = `  
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      <button type="button" class="btn btn-primary" onclick="eliminarUsuario(${idUsuario},${idRol})">Eliminar</button>
+  `;
+}
+
+async function eliminarUsuario(id,rol){
+  console.log("id usuario a eliminar ",id,"rol del usuario que se eliminara ",rol);
+
+  await axios({
+    method:'POST',
+    url:'http://localhost:3001/api/admin_global_eliminar_usuario',
+    data:{
+      "idUsuario":id
+    }
+        }).then(res=>{
+          console.log("Se elimino el usuario")
+        }).catch(function(error){
+            console.log(error);
+        });  
+  
+  
+  
+   $('#ModalEliminar').modal('hide')
+   //AQUI DEBE IR LA ALERTA DE SE EDITO CORRECTAMENTE EL USUARIO
+   alert_default.fire({
+     icon:'success',
+     title:'Se elimino correctamente el usuario'
+   });
+   if(rol == 0){
+    GestionUsuarioAdmin();
+  }else if(rol == 1){
+    GestionUsuarioPropietario();
+  }else if(rol == 2){
+    GestionUsuarioComun();
+  }     
+      
+}
+
 
 
 

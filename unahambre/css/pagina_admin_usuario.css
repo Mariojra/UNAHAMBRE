@@ -32,3 +32,8 @@
     width: 100px;
 
 }
+
+.navTabla{
+    display: flex;
+    justify-content: space-between;
+}

@@ -57,11 +57,11 @@
       <!-- Nav Item - Pages Collapse Menu -->
 
 
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-store"></i>
           <span>Locales</span></a>
-      </li> -->
+      </li> 
 
 
       <li class="nav-item">
@@ -81,15 +81,15 @@
       </li>
 
       <!-- Nav Item - Charts -->
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-utensils"></i>
           <span>Menus</span></a>
-      </li> -->
+      </li> 
 
       
       <!-- Nav Item - Solicitudes -->
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#solicitud" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-envelope-open-text"></i>
           <span>Solicitudes</span>
@@ -103,7 +103,7 @@
             <a class="collapse-item opcion" onclick="">Solicitudes Denegadas</a>
             <a class="collapse-item opcion" onclick="">Mostrar todas...</a>
         </div>
-      </li> -->
+      </li> 
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -175,14 +175,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <!-- <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuraciones
-                </a> -->
+                
                 <a class="dropdown-item" href="informacion-perfil.html">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
@@ -278,12 +271,12 @@
               </div>
             </div>
             <!-- Solicitudes -->
-            <!-- <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2 opcion">
+             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2 opcion" onclick="ImprimirSolicitudes()">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="h2 mb-0 font-weight-bold text-danger" id="solicitud">Solicitudes</div>
+                      <div class="h2 mb-0 font-weight-bold text-danger" id="solicitudes"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-envelope-open-text fa-2x text-danger"></i>
@@ -291,7 +284,7 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div> 
 
         <!-- /.container-fluid -->
 
@@ -355,6 +348,26 @@
     </div>
   </div>
 </div>
+
+  <!--modal de eliminar-->
+  <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Desea eliminar este usuario?
+        </div>
+        <div class="modal-footer" id="botonEliminar">
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

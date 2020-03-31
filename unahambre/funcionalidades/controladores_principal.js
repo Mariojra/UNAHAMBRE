@@ -12,7 +12,7 @@ $(document).ready(function(){
 function ImprimirRestaurantes(){
          axios({
                  method:'GET',
-                 url:'http://localhost:3001/api/restaurantes'
+                 url:'http://localhost:3001/api/g_mostrar_restaurantes'
              }).then(res=>{
                 document.querySelector('#seleccion').innerHTML = 'Restaurantes';
                 document.querySelector('#cambioDeInformacion').innerHTML = '';
