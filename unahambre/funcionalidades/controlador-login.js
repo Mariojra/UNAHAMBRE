@@ -1,22 +1,3 @@
-//funcion que se ejecuta al cargar el dom
-document.addEventListener("DOMContentLoaded",()=>{
-    if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='2'){
-        if(sessionStorage.getItem('stepAnterior') == ''){
-            window.location.assign('principal.html');
-        }else{
-            window.location.assign('registro-negocio.html');
-        }
-        // window.location.assign('principal.html');
-        
-
-    } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='1'){
-        window.location.assign('administracion-negocio.html');
-
-    } else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='0'){
-        window.location.getItem('administracion-usuario.html');
-    }
-});
-
 /* conf de sweet alert pequeño */
 const Toast = Swal.mixin({
     toast: true,
@@ -82,26 +63,26 @@ $("#btn-login").click( () => {
                 sessionStorage.setItem('userID',res.data.items[1][0].id);
                 sessionStorage.setItem('userName',res.data.items[2][0].usuario);
                 sessionStorage.setItem('rol',res.data.items[4][0].Rol);
-                // setTimeout(()=>window.location.assign("principal.html"),3500);
+                // location.replace("principal.html");
                 switch(sessionStorage.getItem('rol')){
                     case '0':
                         //administrador
                         //direccionamiento a la pagina de admon
-                        // setTimeout(()=>window.location.assign("admin.html"),3500); cambiar a disposicion de pagina
-                        setTimeout(()=>window.location.assign("administracion-usuario.html"),3500);
+                        // location.replace("admin.html"); cambiar a disposicion de pagina
+                        location.replace("administracion-usuario.html");
                         break;
                     case '1':
                         //dueño de local
                         //siempre redirige a principal?
-                        setTimeout(()=>window.location.assign("administracion-negocio.html"),3500);
+                        location.replace("administracion-negocio.html");
                         break;
                     case '2':
                         //cliente comun
-                        setTimeout(()=>window.location.assign("principal.html"),3500);
+                        location.replace("principal.html");
                         if(sessionStorage.getItem('stepAnterior') == ''){
-                            window.location.assign('principal.html');
+                            location.replace('principal.html');
                         }else{
-                            window.location.assign('registro-negocio.html');
+                            location.replace('registro-negocio.html');
                         }
 
                         break;
