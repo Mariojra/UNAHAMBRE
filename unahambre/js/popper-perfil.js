@@ -1,8 +1,4 @@
-document.addEventListener('DOMContentLoaded',function(){
-    if(sessionStorage.getItem('token') == undefined){
-        window.location.assign('index.html')
-    }
-});
+
 
 
 

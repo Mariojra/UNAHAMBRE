@@ -59,10 +59,6 @@ window.onload = obtenerPlatillos();
 var cabecera = document.getElementById('table-cabeceras');
 var filas = document.getElementById('table-filas');
 
-/**BORRA EESTOS SET POR FAVOR */
-sessionStorage.setItem('idUsuario', '1');
-sessionStorage.setItem('userName', 'Sujeto0');
-sessionStorage.setItem('idRestaurante', '1');
 
 document.getElementById('userDropdown').text = sessionStorage.getItem('userName')
 function obtenerRestaurantes(){
