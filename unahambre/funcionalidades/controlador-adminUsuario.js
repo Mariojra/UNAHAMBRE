@@ -74,6 +74,7 @@ const alert_default = Swal.mixin({
  })(jQuery); // End of use strict
 
 
+
 function cerrarSesion(){
   sessionStorage.removeItem('token');
 }
@@ -96,8 +97,13 @@ function ImprimirLocales(){
 const cargarCabeceraTablaLocales = () =>{
   document.querySelector('#Tablas').innerHTML = '';
   document.querySelector('#Tablas').innerHTML  += `
-                              <div class="col-xl-12">
-                              <p class="h2 font-weight-bold text-primary py-2">Locales</p><hr class="separador">
+                              <div class="col-xl-12 navTabla">
+                              <p class="h2 font-weight-bold text-primary py-2">Locales</p>
+                              <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class=" input-group ">
+                                  <input type="text" id="formulario" onkeyup="filtrarLocales()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
+                                </div>
+                              </form>
                             </div>
                             <div class="col-xl-12">
                               <table class="table">
@@ -155,8 +161,13 @@ function ImprimirUsuarios(){
 const cargarCabeceraTablaUsuarios = () =>{
   document.querySelector('#Tablas').innerHTML = '';
   document.querySelector('#Tablas').innerHTML  += `
-                            <div class="col-xl-12">
-                            <p class="h2 font-weight-bold text-success py-2">Usuarios</p><hr class="separador">
+                            <div class="col-xl-12 navTabla">
+                            <p class="h2 font-weight-bold text-success py-2">Usuarios</p>
+                            <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class=" input-group ">
+                                  <input type="text" id="formulario" onkeyup="filtrarUsuarios()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
+                                </div>
+                            </form>
                           </div>
                           <div class="col-xl-12">
                             <table class="table">
@@ -222,8 +233,13 @@ function ImprimirMenus(){
 const cargarCabeceraTablaMenus = () =>{
   document.querySelector('#Tablas').innerHTML = '';
   document.querySelector('#Tablas').innerHTML  += `
-                            <div class="col-xl-12">
-                            <p class="h2 font-weight-bold text-info py-2">Menus</p><hr class="separador">
+                            <div class="col-xl-12 navTabla">
+                            <p class="h2 font-weight-bold text-info py-2">Menus</p>
+                            <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class=" input-group ">
+                                  <input type="text" id="formulario" onkeyup="filtrarMenus()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
+                                </div>
+                            </form>
                           </div>
                           <div class="col-xl-12">
                             <table class="table">
@@ -280,8 +296,13 @@ function ImprimirPlatillos(){
 const cargarCabeceraTablaPlatillos = () =>{
   document.querySelector('#Tablas').innerHTML = '';
   document.querySelector('#Tablas').innerHTML  += `
-                             <div class="col-xl-12">
-                             <p class="h2 font-weight-bold text-warning py-2">Platillos</p><hr class="separador">
+                             <div class="col-xl-12 navTabla">
+                             <p class="h2 font-weight-bold text-warning py-2">Platillos</p>
+                             <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class=" input-group ">
+                                  <input type="text" id="formulario" onkeyup="filtrarPlatillos()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
+                                </div>
+                            </form>
                            </div>
                            <div class="col-xl-12">
                              <table class="table">
@@ -394,7 +415,7 @@ function ImprimirSolicitudes(){
     url:'http://localhost:3001/api/admin_global_mostrar_solicitudes'
         }).then(res=>{
           cargarCabeceraTablaSolicitudes();
-          cargarFilasSolicitudes(res.data.items)
+          cargarFilasSolicitudes(res.data.items);
         }).catch(function(error){
             console.log(error);
         });      
@@ -406,15 +427,8 @@ const cargarCabeceraTablaSolicitudes = () =>{
                              <p class="h2 font-weight-bold text-danger py-2">Solicitudes</p>
                              <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                               <div class=" input-group ">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                  <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                  </button>
-                                </div>
+                                <input type="text" id="formulario" onkeyup="filtrarSolicitudes()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
                               </div>
-                            </form> 
-                             <hr class="separador">
                             </form>
                            </div>
                            <div class="col-xl-12">
@@ -471,11 +485,256 @@ function CantidadSolicitudes(){
 }
 
 CantidadSolicitudes();
+//////////////////////////////////////////////////////////////////////////////////////////////
+function filtrarSolicitudes(){
+  axios({
+    method:'GET',
+    url:'http://localhost:3001/api/admin_global_mostrar_solicitudes'
+        }).then(res=>{
+          cargarFiltroSolicitudes(res.data.items);
+        }).catch(function(error){
+            console.log(error);
+        });      
+}
+
+const cargarFiltroSolicitudes = (data) =>{
+  let formulario = document.querySelector('#formulario');
+  let resultado = document.querySelector('#DatosSolicitud')
+  let texto = formulario.value.toLowerCase();
+
+  resultado.innerHTML = '';
+  let cont = 0;
+  for(let soli of data){
+  
+    let nombre_dueno = soli.Nombre_Usuario.toLowerCase();
+    let telefono = soli.Telefono.toLowerCase();
+    let ubicacion = soli.Ubicacion.toLowerCase();
+    if((nombre_dueno.indexOf(texto) !==-1) || (telefono.indexOf(texto) !==-1)||(ubicacion.indexOf(texto)!==-1)){
+      resultado.innerHTML += `
+      <tr>
+        <th>${cont+1}</th>
+        <td>${soli.EstadoSolicitud}</td>
+        <td>${soli.Nombre_Local}</td>
+        <td>${soli.Nombre_Usuario}</td>
+        <td>${soli.Telefono}</td>
+        <td>${soli.Ubicacion}</td>
+        <td>${soli.FechaSolicitud}</td>
+      </tr>
+      `;
+    }
+    cont++;
+  }
+}
+
+function filtrarLocales(){
+  axios({
+    method:'GET',
+    url:'http://localhost:3001/api/g_mostrar_restaurantes'
+        }).then(res=>{
+          cargarFiltroLocal(res.data.items);
+        }).catch(function(error){
+            console.log(error);
+        });      
+}
+
+const cargarFiltroLocal= (data) =>{
+  let formulario = document.querySelector('#formulario');
+  let resultado = document.querySelector('#DatosLocales')
+  let texto = formulario.value.toLowerCase();
+
+  resultado.innerHTML = '';
+  let cont = 0;
+  for(let local of data){
+    let nombre_local = local.Nombre_Local.toLowerCase();
+    let nombre_usuario = local.Nombre_Usuario.toLowerCase();
+    let ubicacion = local.Ubicacion.toLowerCase();
+    let telefono = local.Telefono.toLowerCase();
+    if((nombre_local.indexOf(texto) !==-1)||(nombre_usuario.indexOf(texto) !==-1)||(ubicacion.indexOf(texto) !==-1)||(telefono.indexOf(texto) !==-1)){
+      resultado.innerHTML += `
+      <tr>
+       <th>${cont+1}</th>
+       <td>${local.Nombre_Local}</td>
+       <td>${local.Nombre_Usuario}</td>
+       <td>${local.Ubicacion}</td>
+       <td>${local.Telefono}</td>
+       <td>${local.Correo}</td>
+     </tr>
+     `;
+    }
+    cont++;
+  }
+  
+}
 
 
+function filtrarUsuarios(){
+  axios({
+    method:'GET',
+    url:'http://localhost:3001/api/admin_global_mostrar_usuarios'
+        }).then(res=>{
+          cargarFiltroUsuario(res.data.items);
+          
+        }).catch(function(error){
+            console.log(error);
+        });      
+}
 
+const cargarFiltroUsuario = (data) =>{
+  let formulario = document.querySelector('#formulario');
+  let resultado = document.querySelector('#DatosUsuarios')
+  let texto = formulario.value.toLowerCase();
 
-/////////////////////////////////////////////////////
+  resultado.innerHTML = '';
+  let cont = 0;
+  for(let usuario of data){
+  
+    let nombres = usuario.Nombre.toLowerCase();
+    let apellidos = usuario.Apellidos.toLowerCase();
+    let celular = usuario.Celular.toLowerCase();
+    let num_id = usuario.Numero_Identidad.toLowerCase();
+    let correo = usuario.Correo.toLowerCase();
+    let sexo = usuario.Sexo.toLowerCase();
+    let nombre_usuario = usuario.Nombre_Usuario.toLowerCase();
+    if((nombres.indexOf(texto) !==-1)||(apellidos.indexOf(texto) !==-1)||(celular.indexOf(texto) !==-1)||(num_id.indexOf(texto) !==-1)||(correo.indexOf(texto) !==-1)||(sexo.indexOf(texto) !==-1)||(nombre_usuario.indexOf(texto) !==-1)){
+      resultado.innerHTML += `
+      <tr>
+        <th>${cont+1}</th>
+        <td>${usuario.Nombre}</td>
+        <td>${usuario.Apellidos}</td>
+        <td>${usuario.Celular}</td>
+        <td>${usuario.Numero_Identidad}</td>
+        <td>${usuario.Correo}</td>
+        <td>${usuario.Sexo}</td>
+        <td>${usuario.Nombre_Usuario}</td>
+        <td>${usuario.Fecha_Ingreso}</td>
+        <td><img src="${usuario.Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
+      </tr>
+      `;
+    }
+    cont++;
+  }
+}
+
+const cargarFiltroGestionUsuario = (data) =>{
+  let formulario = document.querySelector('#formulario');
+  let resultado = document.querySelector('#DatosUsuariosAdmin')
+  let texto = formulario.value.toLowerCase();
+  let infoUsuarios = data;
+  resultado.innerHTML = '';
+  
+  for(let i = 0; i < infoUsuarios.length; i++){
+  
+    let nombres = infoUsuarios[i].Nombre.toLowerCase();
+    let apellidos = infoUsuarios[i].Apellidos.toLowerCase();
+    let nombre_usuario = infoUsuarios[i].Nombre_Usuario.toLowerCase();
+    if((nombres.indexOf(texto) !==-1)||(apellidos.indexOf(texto) !==-1)||(nombre_usuario.indexOf(texto) !==-1)){
+      resultado.innerHTML += `
+      <tr id="tablaUsuario">
+                  <td id="row${i}idUsuario">${i+1}</td>
+                  <td id="row${i}Nombre">${infoUsuarios[i].Nombre}</td>
+                  <td id="row${i}Apellidos">${infoUsuarios[i].Apellidos}</td> 
+                  <td id="row${i}Nombre_Usuario">${infoUsuarios[i].Nombre_Usuario}</td>
+                  <td id="row${i}Rol"></td>
+                  <td id="row${i}Foto_Perfil"><img src="${infoUsuarios[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
+                  <td><button class="btn btn-primary" type="button" onclick="infoModalEditar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
+                  <td id="row${i}BotonEliminar"></td>
+                </tr>
+                `;  
+                if(infoUsuarios[i].Rol_idRol==0){
+                  document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Administrador";
+                }else if(infoUsuarios[i].Rol_idRol == 1){
+                  document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Propietario";
+                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEliminar">Eliminar</button>`;
+                }else if(infoUsuarios[i].Rol_idRol == 2){
+                  document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Comun";
+                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEliminar">Eliminar</button>`;
+                }  
+    }
+    
+  }
+}
+
+function filtrarMenus(){
+  axios({
+    method:'GET',
+    url:'http://localhost:3001/api/admin_global_menus_restaurante'
+        }).then(res=>{
+          cargarFiltroMenu(res.data.items);
+        }).catch(function(error){
+            console.log(error);
+        });      
+
+}
+
+const cargarFiltroMenu = (data) =>{
+  let formulario = document.querySelector('#formulario');
+  let resultado = document.querySelector('#DatosMenu')
+  let texto = formulario.value.toLowerCase();
+
+  resultado.innerHTML = '';
+  let cont = 0;
+  for(let menu of data){
+  
+    let nombre_menu = menu.Nombre_Menu.toLowerCase();
+    let nombre_local = menu.Nombre_Local.toLowerCase();
+    let nombre_propietario = menu.Dueño_Local.toLowerCase();
+    if((nombre_menu.indexOf(texto) !==-1)||(nombre_local.indexOf(texto) !==-1)||(nombre_propietario.indexOf(texto) !==-1)){
+      resultado.innerHTML += `
+      <tr>
+        <th>${cont+1}</th>
+        <td>${menu.Nombre_Menu}</td>
+        <td>${menu.Nombre_Local}</td>
+        <td>${menu.Dueño_Local}</td>
+        <td>${menu.Fecha_Registro}</td>
+        <td><img src="${menu.Foto_Menu}" class="img_menu" alt="imagen perfil"></td>
+      </tr>
+      `;
+    }
+    cont++;
+  }
+}
+
+function filtrarPlatillos(){
+  axios({
+    method:'GET',
+    url:'http://localhost:3001/api/admin_global_platillos_menu'
+        }).then(res=>{
+          cargarFiltroPlatillo(res.data.items);
+        }).catch(function(error){
+            console.log(error);
+        });      
+}
+
+const cargarFiltroPlatillo = (data) =>{
+  let formulario = document.querySelector('#formulario');
+  let resultado = document.querySelector('#DatosPlatillo')
+  let texto = formulario.value.toLowerCase();
+
+  resultado.innerHTML = '';
+  let cont = 0;
+  for(let platillo of data){
+  
+    let nombre_platillo = platillo.Nombre.toLowerCase();
+    let descripcion = platillo.Descripcion.toLowerCase();
+    let precio = platillo.Precio
+    let nombre_local = platillo.Nombre_Local.toLowerCase();
+    if((nombre_platillo.indexOf(texto) !==-1)||(descripcion.indexOf(texto) !==-1)||(precio == texto)||(nombre_local.indexOf(texto) !==-1)){
+      resultado.innerHTML += `
+      <tr>
+        <th>${cont+1}</th>
+        <td>${platillo.Nombre}</td>
+        <td>${platillo.Descripcion}</td>
+        <td>${platillo.Precio}</td>
+        <td>${platillo.Fecha_Registro}</td>
+        <td><img src="${platillo.Foto_Menu}" class="img_menu" alt="imagen perfil"></td>
+        <td>${platillo.Nombre_Local}</td>
+      </tr>
+      `;
+    }
+    cont++;
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////////
 
 function GestionUsuarioAdmin(){
   
@@ -487,9 +746,9 @@ function GestionUsuarioAdmin(){
         }
     }).then(res=>{
       
-      cargarCabeceraTablaEditarUsuarios()
+      cargarCabeceraGestionUsuariosAdmin();
       cargarFilasGestionUsuario(res.data.items[0]);
-          
+      
         }).catch(function(error){
             console.log(error);
         });      
@@ -505,9 +764,9 @@ function GestionUsuarioPropietario(){
         }
     }).then(res=>{
     
-      cargarCabeceraTablaEditarUsuarios()
+      cargarCabeceraGestionUsuariosPropietario();
       cargarFilasGestionUsuario(res.data.items[0]);
-          
+        
         }).catch(function(error){
             console.log(error);
         });      
@@ -522,18 +781,134 @@ function GestionUsuarioComun(){
         }
     }).then(res=>{
       
-      cargarCabeceraTablaEditarUsuarios()
+      cargarCabeceraGestionUsuariosComun()
       cargarFilasGestionUsuario(res.data.items[0]);
-          
+       
         }).catch(function(error){
             console.log(error);
         });      
 }
-const cargarCabeceraTablaEditarUsuarios = () =>{
+
+function filtrarUsuariosAdmin(){
+  axios({
+    method:'POST',
+    url:'http://localhost:3001/api/admin_global_usuario_filtro_rol',
+    data:{
+      "idRol":0
+        }
+    }).then(res=>{
+      cargarFiltroGestionUsuario(res.data.items[0]);
+    }).catch(function(error){
+      console.log(error);
+    });
+}
+
+function filtrarUsuariosComun(){
+  axios({
+    method:'POST',
+    url:'http://localhost:3001/api/admin_global_usuario_filtro_rol',
+    data:{
+      "idRol":2
+        }
+    }).then(res=>{
+      cargarFiltroGestionUsuario(res.data.items[0]);
+    }).catch(function(error){
+      console.log(error);
+    });
+}
+
+function filtrarUsuariosPropietarios(){
+  axios({
+    method:'POST',
+    url:'http://localhost:3001/api/admin_global_usuario_filtro_rol',
+    data:{
+      "idRol":1
+        }
+    }).then(res=>{
+      cargarFiltroGestionUsuario(res.data.items[0]);
+    }).catch(function(error){
+      console.log(error);
+    });
+}
+
+
+
+const cargarCabeceraGestionUsuariosAdmin = () =>{
   document.querySelector('#Tablas').innerHTML = '';
   document.querySelector('#Tablas').innerHTML  += `
-                            <div class="col-xl-12">
-                            <p class="h2 font-weight-bold text-success py-2">Usuarios</p><hr class="separador">
+                            <div class="col-xl-12 navTabla">
+                            <p class="h2 font-weight-bold text-success py-2">Usuarios Administradores</p>
+                            <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class=" input-group ">
+                                  <input type="text" id="formulario" onkeyup="filtrarUsuariosAdmin()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
+                                </div>
+                            </form>
+                          </div>
+                          <div class="col-xl-12">
+                            <table class="table">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Nombres</th>
+                                  <th scope="col">Apellidos</th>
+                                  <th scope="col">Nombre Usuario</th>
+                                  <th scope="col">Rol</th>
+                                  <th scope="col">Foto Perfil</th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody id='DatosUsuariosAdmin'>
+                               
+                              </tbody>
+                            </table>
+                          </div>
+                `;
+}
+
+const cargarCabeceraGestionUsuariosPropietario = () =>{
+  document.querySelector('#Tablas').innerHTML = '';
+  document.querySelector('#Tablas').innerHTML  += `
+                            <div class="col-xl-12 navTabla">
+                            <p class="h2 font-weight-bold text-success py-2">Usuarios Propietarios</p>
+                            <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class=" input-group ">
+                                  <input type="text" id="formulario" onkeyup="filtrarUsuariosPropietarios()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
+                                </div>
+                            </form>
+                          </div>
+                          <div class="col-xl-12">
+                            <table class="table">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Nombres</th>
+                                  <th scope="col">Apellidos</th>
+                                  <th scope="col">Nombre Usuario</th>
+                                  <th scope="col">Rol</th>
+                                  <th scope="col">Foto Perfil</th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody id='DatosUsuariosAdmin'>
+                               
+                              </tbody>
+                            </table>
+                          </div>
+                `;
+}
+
+const cargarCabeceraGestionUsuariosComun = () =>{
+  document.querySelector('#Tablas').innerHTML = '';
+  document.querySelector('#Tablas').innerHTML  += `
+                            <div class="col-xl-12 navTabla">
+                            <p class="h2 font-weight-bold text-success py-2">Usuarios Comunes</p>
+                            <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class=" input-group ">
+                                  <input type="text" id="formulario" onkeyup="filtrarUsuariosComun()" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"> 
+                                </div>
+                            </form>
                           </div>
                           <div class="col-xl-12">
                             <table class="table">
