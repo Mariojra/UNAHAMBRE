@@ -6,7 +6,7 @@ function info_usuarios(){
 
     axios({
         method:'POST',
-        url:'http://localhost:3001/api/info-user',
+        url:'https://api-unahambre.herokuapp.com/api_usuario/info-user',
         data: {
           idUsuario: sessionStorage.getItem('userID')
         }
@@ -32,7 +32,7 @@ function info_username(){
 
     axios({
         method:'POST',
-        url:'http://localhost:3001/api/info-user',
+        url:'https://api-unahambre.herokuapp.com/api_usuario/info-user',
         data: {
           idUsuario: sessionStorage.getItem('userID')
         }

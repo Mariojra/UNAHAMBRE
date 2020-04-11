@@ -62,7 +62,7 @@ $("#btn-registro").click(function() {
             console.log(datos);
             axios({
                 method:'POST',
-                url:'http://localhost:3001/api/insertuser',
+                url:'https://api-unahambre.herokuapp.com/api_usuario/registrar_usuario',
                 data:datos
 
             }).then(res=>{

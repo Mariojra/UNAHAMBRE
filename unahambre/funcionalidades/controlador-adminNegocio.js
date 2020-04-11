@@ -68,7 +68,7 @@ document.getElementById('userDropdown').text = sessionStorage.getItem('userName'
 function obtenerRestaurantes(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/restaurantes'
+    url:'https://api-unahambre.herokuapp.com/api_propietario/restaurantes'
 }).then(res=>{
   cargarCabeceraRestaurantes();
   cargarFilasResturantes(res.data.items);
@@ -114,7 +114,7 @@ function obtenerMenus(){
   axios({
 
 method: 'GET',
-url : 'http://localhost:3001/api/menus'
+url : 'https://api-unahambre.herokuapp.com/api_propietario/menus'
 }).then(res=>{
   cargarCabeceraMenu();
   cargarFilasMenu(res.data.items);
@@ -156,7 +156,7 @@ function obtenerPlatillos(){
   document.getElementById('btnAgregar').text = 'Agregar Platillo'
   axios({
     method: 'GET',
-    url: 'http://localhost:3001/api/platillos'
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/platillos'
   }).then(res=>{
     cargarCabeceraPlatillos();
     cargarFilasPlatillos(res.data.items);
@@ -206,7 +206,7 @@ async function editarMenu(idMenu){
 
     await axios({
       method: 'PUT',
-      url: 'http://localhost:3001/api/admin/modificar_menus',
+      url: 'https://api-unahambre.herokuapp.com/api_propietario/admin/modificar_menus',
       data : {
         idMenu: idMenu,
         nombreMenu: newNombreMenu,
@@ -233,7 +233,7 @@ const eliminarMenu = (idMenu) => {
 
   axios({
     method: 'POST',
-    url: 'http://localhost:3001/api/eliminar-menu',
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/eliminar-menu',
     data: {
       idMenu: idMenu
     }
@@ -258,7 +258,7 @@ const eliminarRestaurante = (idRestaurante) => {
 
   axios({
     method: 'PUT',
-    url: 'http://localhost:3001/api/admin-borrar-local',
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/admin-borrar-local',
     data: {
       idRestaurante: idRestaurante
     }
@@ -282,7 +282,7 @@ const eliminarRestaurante = (idRestaurante) => {
 const eliminarPlatillo = (idPlatillo) => {
   axios({
     method: 'POST',
-    url: 'http://localhost:3001/api/eliminar-platillo',
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/eliminar-platillo',
     data: {
       idPlatillo : idPlatillo
     }
@@ -310,7 +310,7 @@ const agregarMenu = async () => {
   let nombreMenu = document.getElementById('nombreMenuAgregar').value;
  await axios({
     method: 'POST',
-    url: 'http://localhost:3001/api/insertar-menu',
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/insertar-menu',
     data :{
       tipoMenu: nombreMenu,
       idRestaurante: 4,
@@ -346,7 +346,7 @@ const agregarPlatillo = async () => {
   let precioPlatillo = document.getElementById('precioPlatilloAgregar').value;
  await axios({
     method: 'POST',
-    url: 'http://localhost:3001/api/insertar-platillo',
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/insertar-platillo',
     data :{
       nombre: nombrePlatillo,
       descripcion: descripcionPlatillo,
@@ -386,7 +386,7 @@ async function editarPlatillo(){
 
     await axios({
       method: 'PUT',
-      url: 'http://localhost:3001/api/admin/modificar-platillo',
+      url: 'https://api-unahambre.herokuapp.com/api_propietario/admin/modificar-platillo',
       data : {
         nombrePlatillo: newNombre,
         descripcion: newDescripcion,

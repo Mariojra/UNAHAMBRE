@@ -58,7 +58,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#" onclick="GestionLocales()">
             <i class="fas fa-store"></i>
           <span>Locales</span></a>
       </li> 
@@ -341,18 +341,55 @@
     </div>
   </div>
 
-  <!--modal de edicion-->
+  <!---modal agregar menu-->
+  <div class="modal fade" id="modalAgregarMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="contenido_modal_agregar_menu">
+        
+      </div>
+    </div>
+  </div>
+  <!--modal editar usuario-->
 
-<div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" id="contenido_modal">
+    <div class="modal-content" id="contenido_modal_editar_usuario">
       
     </div>
   </div>
 </div>
 
-  <!--modal de eliminar-->
-  <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--modal editar local-->
+<div class="modal fade" id="ModalEditarLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="contenido_modal_editar_local">
+      
+    </div>
+  </div>
+</div>
+
+<!--modal de eliminar local-->
+<div class="modal fade" id="ModalEliminarLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Local</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Desea eliminar este local?
+      </div>
+      <div class="modal-footer" id="botonEliminarLocal">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal de eliminar Usuario-->
+  <div class="modal fade" id="ModalEliminarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -364,7 +401,7 @@
         <div class="modal-body">
           ¿Desea eliminar este usuario?
         </div>
-        <div class="modal-footer" id="botonEliminar">
+        <div class="modal-footer" id="botonEliminarUsuario">
           
         </div>
       </div>

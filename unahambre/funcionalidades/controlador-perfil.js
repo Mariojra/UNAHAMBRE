@@ -23,7 +23,7 @@ function info_usuarios(){
 
     axios({
         method:'POST',
-        url:'http://localhost:3001/api/info-user',
+        url:'https://api-unahambre.herokuapp.com/api_usuario/info-user',
         data: {
           idUsuario: sessionStorage.getItem('userID')
         }
@@ -121,7 +121,7 @@ $("#btn-conf-editar").click(function(){
     // console.log("esta es la data"+data);
     axios({
       method:'PUT',
-      url:'http://localhost:3001/api/cambiar-info-usuario',
+      url:'https://api-unahambre.herokuapp.com/api_usuario/cambiar-info-usuario',
       data: data
     }).then(res=>{
       // console.log(res);
@@ -156,7 +156,7 @@ $('#btn-conf-contrasena').click(function(){
   // console.log(datos);
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/cambiar-contrasena',
+    url:'https://api-unahambre.herokuapp.com/api_usuario/cambiar-contrasena',
     data: datos
   }).then(res=>{
     console.log(res);
