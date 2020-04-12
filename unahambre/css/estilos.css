@@ -82,7 +82,7 @@ input{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:flex-end;
+    align-items:start;
 }
 
 @media (max-width: 576px){
@@ -123,7 +123,7 @@ input{
 .contenedor-sesion,
 .contenedor-menu{
     /*border: 1px solid black;*/
-    width: 150px;
+    /* width: 150px; */
 }
 
 .text,.medio{

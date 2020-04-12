@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="funcionalidades/controlador-navegacion.js"></script>
     <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/log_user.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/admin_usuario.css">
     <link rel="stylesheet" href="css/estilos.css">
@@ -55,9 +56,14 @@
             <div class="interaccion">
                 <ul>
                     <li><a class="active" href="index.html">INICIO</a></li>
-                    <li><a href="login.html">INICIAR SESION</a></li>
-                    <li><a href="registro.html">REGISTRARSE</a></li>
+                    <li id="ocultar_login"><a href="login.html">INICIAR SESION</a></li>
+                    <li id="ocultar_registro"><a href="registro.html">REGISTRARSE</a></li>
                 </ul>
+
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user">
+                </div>
+
                 <label id="icon">
                     <i class="fas fa-bars"></i>
                 </label>       

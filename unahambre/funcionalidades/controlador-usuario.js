@@ -6,9 +6,12 @@ function info_usuarios(){
 
     axios({
         method:'POST',
-        url:'http://localhost:3001/api/info-user',
+        url:'https://api-unahambre.herokuapp.com/api_usuario/informacion_usuario',
         data: {
           idUsuario: sessionStorage.getItem('userID')
+        },
+        headers: {
+            'access-token': sessionStorage.getItem('token')
         }
     }).then(res=>{
         var div2 = $('#contenido-perfil');
@@ -28,17 +31,23 @@ function info_usuarios(){
 }
 
 function info_username(){
+    if (sessionStorage.getItem('userProfile') != undefined) {
+        document.getElementById("imageUser").src = sessionStorage.getItem('userProfile')
+    }
     i = 0;
 
     axios({
         method:'POST',
-        url:'http://localhost:3001/api/info-user',
+        url:'https://api-unahambre.herokuapp.com/api_usuario/informacion_usuario',
         data: {
           idUsuario: sessionStorage.getItem('userID')
+        }, 
+        headers: {
+            'access-token': sessionStorage.getItem('token')
         }
     }).then(res=>{
         var div3 = $('#usuario_conten');
-
+        console.log(res.data)
         const datos_perfil3 =res.data.items;
             var contenido3 = `<div>
             <p>${datos_perfil3[i].Nombre_Usuario}</p>

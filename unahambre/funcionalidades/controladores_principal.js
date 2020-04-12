@@ -12,7 +12,7 @@ $(document).ready(function(){
 function ImprimirRestaurantes(){
          axios({
                  method:'GET',
-                 url:'http://localhost:3001/api/restaurantes'
+                 url:'https://api-unahambre.herokuapp.com/api_producto/g_mostrar_restaurantes'
              }).then(res=>{
                 document.querySelector('#seleccion').innerHTML = 'Restaurantes';
                 document.querySelector('#cambioDeInformacion').innerHTML = '';
@@ -41,7 +41,7 @@ function ImprimirRestaurantes(){
      function ImprimirMenus(){
         axios({
                 method:'GET',
-                url:'http://localhost:3001/api/menus'
+                url:'https://api-unahambre.herokuapp.com/api_producto/g_mostrar_menus'
             }).then(res=>{
                document.querySelector('#seleccion').innerHTML = 'Menus';
                document.querySelector('#cambioDeInformacion').innerHTML = '';
@@ -140,7 +140,7 @@ function ImprimirCategorias(){
 function ImprimirPlatillos(){
     axios({
         method:'GET',
-        url:'http://localhost:3001/api/platillos'
+        url:'https://api-unahambre.herokuapp.com/api_producto/g_mostrar_platillos'
     }).then(res=>{
        document.querySelector('#seleccion').innerHTML = 'Platillos';
        document.querySelector('#cambioDeInformacion').innerHTML = '';
@@ -163,4 +163,4 @@ function ImprimirPlatillos(){
      }).catch(function(error){
         console.log(error);
      }); 
-}
+}   

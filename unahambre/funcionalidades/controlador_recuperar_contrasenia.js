@@ -16,7 +16,7 @@ function validar_correo() {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:3001/api/checkcorreo',
+            url: 'https://api-unahambre.herokuapp.com/api_usuario/recuperar_password',
             data: obj_json
 
         }).then(res => {

@@ -1,8 +1,8 @@
 
 
-window.onload = function (){
-  document.getElementById('userSession').innerHTML = sessionStorage.getItem('userName');
-}
+// window.onload = function (){
+//   document.getElementById('userSession').innerHTML = sessionStorage.getItem('userName');
+// }
 
 const alert_default = Swal.mixin({
   timer: 3000,
@@ -78,7 +78,7 @@ function cerrarSesion(){
 function ImprimirLocales(){
     axios({
       method:'GET',
-      url:'http://localhost:3001/api/restaurantes'
+      url:'https://api-unahambre.herokuapp.com/api_admin/restaurantes'
           }).then(res=>{
             
            
@@ -137,7 +137,7 @@ const cargarFilasLocales = (datos) =>{
 function ImprimirUsuarios(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/getusuarios'
+    url:'https://api-unahambre.herokuapp.com/api_admin/admin_global_mostrar_usuarios'
         }).then(res=>{
           cargarCabeceraTablaUsuarios();
           cargarFilasUsuarios(res.data.items);
@@ -204,7 +204,7 @@ const cargarFilasUsuarios = (datos) =>{
 function ImprimirMenus(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/menusRestaurantesPropietarios'
+    url:'https://api-unahambre.herokuapp.com/api_admin/menusRestaurantesPropietarios'
         }).then(res=>{
           
           cargarCabeceraTablaMenus();
@@ -263,7 +263,7 @@ const cargarFilasMenus = (datos) =>{
 function ImprimirPlatillos(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/platilloMenuRestaurante'
+    url:'https://api-unahambre.herokuapp.com/api_admin/platilloMenuRestaurante'
         }).then(res=>{
           cargarCabeceraTablaPlatillos();
           cargarFilasPlatillos(res.data.items);
@@ -322,10 +322,10 @@ const cargarFilasPlatillos = (datos) =>{
 function CantidadLocales(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/restaurantes'
+    url:'https://api-unahambre.herokuapp.com/api_admin/restaurantes'
         }).then(res=>{
           
-          
+          console.log(res);
           let infoLocales = res.data.items;
           
           document.querySelector('#local').innerHTML= `${infoLocales.length}  Locales`;
@@ -341,7 +341,7 @@ CantidadLocales();
 function CantidadUsuarios(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/getusuarios'
+    url:'https://api-unahambre.herokuapp.com/api_admin/getusuarios'
         }).then(res=>{
           let infoUsuarios = res.data.items;
           
@@ -356,7 +356,7 @@ CantidadUsuarios();
 function  CantidadMenus(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/menusRestaurantesPropietarios'
+    url:'https://api-unahambre.herokuapp.com/api_admin/menusRestaurantesPropietarios'
         }).then(res=>{
           let infoMenu = res.data.items;
           
@@ -371,7 +371,7 @@ CantidadMenus();
 function CantidadPlatillos(){
   axios({
     method:'GET',
-    url:'http://localhost:3001/api/platilloMenuRestaurante'
+    url:'https://api-unahambre.herokuapp.com/api_admin/platilloMenuRestaurante'
         }).then(res=>{
           
           let infoPlatillo = res.data.items;
@@ -388,7 +388,7 @@ function GestionUsuarioAdmin(){
   
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/usuario-rol',
+    url:'https://api-unahambre.herokuapp.com/api_admin/usuario-rol',
     data:{
       "idRol":0
         }
@@ -406,7 +406,7 @@ function GestionUsuarioPropietario(){
   
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/usuario-rol',
+    url:'https://api-unahambre.herokuapp.com/api_admin/usuario-rol',
     data:{
       "idRol":1
         }
@@ -423,7 +423,7 @@ function GestionUsuarioComun(){
   
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/usuario-rol',
+    url:'https://api-unahambre.herokuapp.com/api_admin/usuario-rol',
     data:{
       "idRol":2
         }
@@ -585,7 +585,7 @@ async function editarUsuario(id){
   
   await axios({
     method:'POST',
-    url:'http://localhost:3001/api/admin/editar-usuario',
+    url:'https://api-unahambre.herokuapp.com/api_admin/admin/editar-usuario',
     data:{
       "idUsuario":id,
       "usuario":usuario,

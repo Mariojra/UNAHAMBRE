@@ -70,9 +70,12 @@ $(document).ready(function(){
                                                         };
                                                         console.log(informacion);
                                                         axios({
-                                                            url:'http://localhost:3001/api/insert-restaurante',
+                                                            url:'https://api-unahambre.herokuapp.com/api_producto/registrar_restaurante',
                                                             method:'POST',
-                                                            data: informacion
+                                                            data: informacion,                    
+                                                            headers: {
+                                                            'access-token': sessionStorage.getItem('token')
+                                                        }
                                                         }).then(res=>{
                                                             console.log(res);
                                                         })

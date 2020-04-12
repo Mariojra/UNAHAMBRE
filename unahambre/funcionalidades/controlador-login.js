@@ -50,7 +50,7 @@ $("#btn-login").click( () => {
         // console.log(datos);
         axios({
             method: 'POST',
-            url:'http://localhost:3001/api/login',
+            url: 'https://api-unahambre.herokuapp.com/api_login',
             data: datos
         }).then(res=>{
             console.log(res);
@@ -63,6 +63,7 @@ $("#btn-login").click( () => {
                 sessionStorage.setItem('userID',res.data.items[1][0].id);
                 sessionStorage.setItem('userName',res.data.items[2][0].usuario);
                 sessionStorage.setItem('rol',res.data.items[4][0].Rol);
+                sessionStorage.setItem('userProfile', res.data.items[5][0].foto)
                 // location.replace("principal.html");
                 switch(sessionStorage.getItem('rol')){
                     case '0':
@@ -78,12 +79,7 @@ $("#btn-login").click( () => {
                         break;
                     case '2':
                         //cliente comun
-                        location.replace("principal.html");
-                        if(sessionStorage.getItem('stepAnterior') == ''){
-                            location.replace('principal.html');
-                        }else{
-                            location.replace('registro-negocio.html');
-                        }
+                        location.replace("principal.html");                    
 
                         break;
                     default:

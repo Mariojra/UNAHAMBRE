@@ -18,15 +18,21 @@ const alert_default = Swal.mixin({
 
 //funcion al cargar pagina renderizada
 function info_usuarios(){
+  if (sessionStorage.getItem('userProfile') != undefined) {
+    document.getElementById("imageUser").src = sessionStorage.getItem('userProfile')
+  }
   console.log('se entro a la funcion');
     let i = 0;
 
     axios({
         method:'POST',
-        url:'http://localhost:3001/api/info-user',
-        data: {
+      url:'https://api-unahambre.herokuapp.com/api_usuario/informacion_usuario',
+      data: {
           idUsuario: sessionStorage.getItem('userID')
-        }
+      },
+      headers: {
+        'access-token': sessionStorage.getItem('token')
+      }
     }).then(res=>{
         let div = $('#info-perfil');
 
@@ -121,7 +127,10 @@ $("#btn-conf-editar").click(function(){
     // console.log("esta es la data"+data);
     axios({
       method:'PUT',
-      url:'http://localhost:3001/api/cambiar-info-usuario',
+      url:'https://api-unahambre.herokuapp.com/api_usuario/cambiar_informacion_usuario',
+      headers: {
+        'access-token': sessionStorage.getItem('token')
+      },
       data: data
     }).then(res=>{
       // console.log(res);
@@ -156,7 +165,10 @@ $('#btn-conf-contrasena').click(function(){
   // console.log(datos);
   axios({
     method:'POST',
-    url:'http://localhost:3001/api/cambiar-contrasena',
+    url:'https://api-unahambre.herokuapp.com/api_usuario/cambiar-contrasena',
+    headers: {
+      'access-token': sessionStorage.getItem('token')
+    },
     data: datos
   }).then(res=>{
     console.log(res);
