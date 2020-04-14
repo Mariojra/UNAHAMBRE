@@ -80,13 +80,18 @@
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
+      <!-- Nav Item - Menus -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" onclick="GestionMenu()" href="#">
             <i class="fas fa-utensils"></i>
           <span>Menus</span></a>
       </li> 
 
+      <li class="nav-item">
+        <a class="nav-link" onclick="GestionPlatillo()"  href="#">
+          <i class="fas fa-utensil-spoon"></i>
+          <span>Platillos</span></a>
+      </li> 
       
       <!-- Nav Item - Solicitudes -->
       <li class="nav-item">
@@ -130,19 +135,7 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-           <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class=" input-group ">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form> 
-
-          
+         
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -349,6 +342,24 @@
       </div>
     </div>
   </div>
+
+  <!---modal agregar nuevo menu-->
+  <div class="modal fade" id="modalAgregarNuevoMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="contenido_modal_agregar__nuevo_menu">
+        
+      </div>
+    </div>
+  </div>
+
+  <!---modal agregar platillo-->
+  <div class="modal fade" id="modalAgregarPlatillo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="contenido_modal_agregar_platillo">
+        
+      </div>
+    </div>
+  </div>
   <!--modal editar usuario-->
 
 <div class="modal fade" id="ModalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -359,10 +370,29 @@
   </div>
 </div>
 
+<!--modal editar platillo-->
+
+<div class="modal fade" id="ModalEditarPlatillo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="contenido_modal_editar_platillo">
+      
+    </div>
+  </div>
+</div>
+
 <!--modal editar local-->
 <div class="modal fade" id="ModalEditarLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="contenido_modal_editar_local">
+      
+    </div>
+  </div>
+</div>
+
+<!--modal editar menu-->
+<div class="modal fade" id="ModalEditarMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="contenido_modal_editar_menu">
       
     </div>
   </div>
@@ -408,6 +438,45 @@
     </div>
   </div>
 
+  <!--modal de eliminar Menu-->
+  <div class="modal fade" id="ModalEliminarMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Menu</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Desea eliminar este menu?
+        </div>
+        <div class="modal-footer" id="botonEliminarMenu">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--modal de eliminar Platillo-->
+  <div class="modal fade" id="ModalEliminarPlatillo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Platillo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Desea eliminar este menu?
+        </div>
+        <div class="modal-footer" id="botonEliminarPlatillo">
+          
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Bootstrap core JavaScript-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
