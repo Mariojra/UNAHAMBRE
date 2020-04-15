@@ -410,10 +410,9 @@ document.getElementById('btn-compra').addEventListener('click',function(){
             let foto = cartRow.getElementsByClassName('cart-item-image')[0].src;
             let json_orden = {id:cartId, nombre:nombrePlatillo, cantidad:cantidad, foto:foto};
             info_orden.push(json_orden);
+            
         }
-        console.log(id);
-        console.log(info_orden);
-        console.log('el total de su compra es : '+ total);
+       
         realizar_pago(id, info_orden, total)
         return id, info_orden, total;
 

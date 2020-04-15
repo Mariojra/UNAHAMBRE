@@ -6,60 +6,66 @@ function realizar_pago(id, orden, total ){
     var descripcion = 'Descripción pedido: '
     var idProductos = ''
     var ubicacion = 'unah'  //cambiar
+    // var ubicacion = ubicacion_pedido
+
     var tiempo = 30 //cambiar 
 
     for (let index = 0; index < id.length; index++) {
-        idProductos += `${id[index]},`       
+        for (let i = 0; i < orden[index].cantidad;  i++) {
+            idProductos += `${id[index]},`
+            
+            
+        }       
     }
+
     for (let index = 0; index < orden.length; index++) {
-        descripcion += `${orden[index].nombre}, `;
+        descripcion += `${orden[index].cantidad} ${orden[index].nombre}, `;
         
     }
-    
     var nombre = 'Unahambre' //Nombre del restaurante
     // foto, por ahora se usa una defautl 
-     axios({
-         method: 'POST',
-         url: 'http://localhost:3001/api_pago/realizar_pago',
-         data:{ "monto": monto, 
-                 "descripcion": descripcion,
-                 "nombre": nombre,
-                 "idProductos": idProductos,
-                 "ubicacion" : ubicacion,
-                 "tiempo": tiempo
-             },
-             headers: {
-                 "access-token": sessionStorage.getItem('token')
-             }
+      axios({
+          method: 'POST',
+          url: 'https://api-unahambre.herokuapp.com/api_pago/realizar_pago',
+          data:{ "monto": monto, 
+                  "descripcion": descripcion,
+                  "nombre": nombre,
+                  "idProductos": idProductos,
+                  "ubicacion" : ubicacion,
+                  "tiempo": tiempo
+              },
+              headers: {
+                  "access-token": sessionStorage.getItem('token')
+              }
     
-     }).then(res => {
-         console.log(res.data)
-        if (res.data.id != undefined) {
+      }).then(res => {
 
-            const id = res.data.id
-          //  console.log(id)
-                stripe.redirectToCheckout({
-        
-          //     //   Make the id field from the Checkout Session creation API response
-          //     //   available to this file, so you can provide it as parameter here
-          //     //   instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-                    sessionId: id
-                }).then(function (result) {
-                    alert('No es posible realizar el pedido, intenta más tarde..')
-                    window.location.assign('index.html')
-          //     //   If `redirectToCheckout` fails due to a browser or network
-          //     //   error, display the localized error message to your customer
-          //     //   using `result.error.message`.
-                });
+         if (res.data.id != undefined) {
+
+                const id = res.data.id
+                //  console.log(id)
+                        stripe.redirectToCheckout({
+                
+                //     //   Make the id field from the Checkout Session creation API response
+                    //   available to this file, so you can provide it as parameter here
+                //     //   instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+                            sessionId: id
+                    }).then(function (result) {
+                            alert('No es posible realizar el pedido, intenta más tarde..')
+                            window.location.assign('index.html')
+                            //     //   If `redirectToCheckout` fails due to a browser or network
+                            //     //   error, display the localized error message to your customer
+                            //     //   using `result.error.message`.
+                        });
             
-        } else {
-            alert('no se ha podido realizar completar el pedido, intentalo más tarde..')
-        }
+         } else {
+             alert('no se ha podido realizar completar el pedido, intentalo más tarde..')
+         }
 
-     }).catch(err => {
-         alert('no se ha podido realizar completar el pedido, intentalo más tarde..')
-         console.log(err)
-     })
+      }).catch(err => {
+          alert('no se ha podido realizar completar el pedido, intentalo más tarde..')
+          console.log(err)
+      })
 
 
 }
