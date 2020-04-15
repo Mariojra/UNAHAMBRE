@@ -45,8 +45,14 @@ $("#file-img").change(function (e) {
             'access-token':sessionStorage.getItem('token')
         }
     }).then(res=>{
-        console.log(res.data);
+        sessionStorage.setItem('userProfile', res.data)
+        document.getElementById('imageUser').src = res.data
+        document.getElementById('user_img').src = res.data
+        document.getElementById('user_img2').src = res.data
+
+
         readURL(this);
+
         //CODIGO FUNCIONAL, PROBLEMA CON RECORRIDO ENTRE CARPETAS DE WINDOWS
         // let spdr = res.data.split('\\');
         // console.log(spdr);

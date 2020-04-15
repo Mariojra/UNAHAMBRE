@@ -49,7 +49,6 @@ function info_username(){
         }
     }).then(res=>{
         var div3 = $('#usuario_conten');
-        console.log(res.data)
         const datos_perfil3 =res.data.items;
             var contenido3 = `<div>
             <p>${datos_perfil3[i].Nombre_Usuario}</p>
