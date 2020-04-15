@@ -86,7 +86,7 @@ function usuario_log() {
   }
   // Carga los datos si el usuario esta logueado
   var nombre
-  var foto
+  var foto = "img/perfil.png"
   var mostrar = 'none'
   var mostrar_0 = 'none'
   var mostrar_1 = 'none'
@@ -96,7 +96,7 @@ function usuario_log() {
     // document.getElementById('nombreUsuario_log').innerHTML = sessionStorage.getItem('userName')
     nombre = sessionStorage.getItem('userName')
   }
-  if (sessionStorage.getItem('userProfile') != undefined) {
+  if (sessionStorage.getItem('userProfile') != 'null') {
     // document.getElementById('user_img').src = sessionStorage.getItem('userProfile')
     // document.getElementById('user_img2').src = sessionStorage.getItem('userProfile')
     foto = sessionStorage.getItem('userProfile')

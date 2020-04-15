@@ -7,7 +7,8 @@
 
 .contenedor-seleccionAdmin{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     overflow: auto;
     /* overflow-x: auto; */
     margin-bottom: 2rem;
@@ -31,4 +32,13 @@
 .img_menu{
     width: 100px;
 
+}
+
+.navTabla{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-search{
+    width: 60% ;
 }

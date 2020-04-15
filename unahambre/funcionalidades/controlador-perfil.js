@@ -19,9 +19,11 @@ const alert_default = Swal.mixin({
 //funcion al cargar pagina renderizada
 function info_usuarios(){
   if (sessionStorage.getItem('userProfile') != undefined) {
-    document.getElementById("imageUser").src = sessionStorage.getItem('userProfile')
+    if(sessionStorage.getItem('userProfile') != 'null'){
+      document.getElementById("imageUser").src = sessionStorage.getItem('userProfile')
+    }
   }
-  console.log('se entro a la funcion');
+  
     let i = 0;
 
     axios({
