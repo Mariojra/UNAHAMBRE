@@ -37,7 +37,7 @@ $("#file-img").change(function (e) {
     fd.append("image",img);
     // console.log(fd);
     axios({
-        url:'http://localhost:3001/api/upload-profile-pic',
+        url:'https://api-unahambre.herokuapp.com/api_usuario/upload-profile-pic',
         method: 'POST',
         data: fd,
         headers: {

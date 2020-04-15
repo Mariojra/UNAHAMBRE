@@ -73,11 +73,11 @@
       <!-- Nav Item - Pages Collapse Menu -->
 
 
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="GestionLocales()">
             <i class="fas fa-store"></i>
           <span>Locales</span></a>
-      </li> -->
+      </li> 
 
 
       <li class="nav-item">
@@ -96,16 +96,21 @@
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">
+      <!-- Nav Item - Menus -->
+      <li class="nav-item">
+        <a class="nav-link" onclick="GestionMenu()" href="#">
             <i class="fas fa-utensils"></i>
           <span>Menus</span></a>
-      </li> -->
+      </li> 
 
+      <li class="nav-item">
+        <a class="nav-link" onclick="GestionPlatillo()"  href="#">
+          <i class="fas fa-utensil-spoon"></i>
+          <span>Platillos</span></a>
+      </li> 
       
       <!-- Nav Item - Solicitudes -->
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#solicitud" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-envelope-open-text"></i>
           <span>Solicitudes</span>
@@ -114,12 +119,12 @@
         <div id="solicitud" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Estado de las Solicitudes:</h6>
-            <a class="collapse-item opcion" onclick="">Solicitudes en Espera</a>
+            <a class="collapse-item opcion" onclick="prueba()">Solicitudes en Espera</a>
             <a class="collapse-item opcion" onclick="">Solicitudes Aprobada</a>
             <a class="collapse-item opcion" onclick="">Solicitudes Denegadas</a>
             <a class="collapse-item opcion" onclick="">Mostrar todas...</a>
         </div>
-      </li> -->
+      </li> 
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -146,78 +151,13 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-          <!-- <form class=" d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class=" input-group ">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form> -->
+          
 
           <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-           
-            
+          <ul class="navbar-nav ml-auto">            
             <div class="topbar-divider d-none d-sm-block"></div>
             <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
             <div id="mostrar_drop_user"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="userSession"></span> -->
-                <!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
-              </a>          
-
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <!-- <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuraciones
-                </a> -->
-                <a class="dropdown-item" href="informacion-perfil.html">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <div class="dropdown-divider"></div>
-                
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Cerrar Sesion
-                </a>
-              </div>
-            </li>
-
-            
-
           </ul>
 
         </nav>
@@ -300,12 +240,12 @@
               </div>
             </div>
             <!-- Solicitudes -->
-            <!-- <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-danger shadow h-100 py-2 opcion">
+             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2 opcion" onclick="ImprimirSolicitudes()">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="h2 mb-0 font-weight-bold text-danger" id="solicitud">Solicitudes</div>
+                      <div class="h2 mb-0 font-weight-bold text-danger" id="solicitudes"></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-envelope-open-text fa-2x text-danger"></i>
@@ -313,8 +253,7 @@
                   </div>
                 </div>
               </div>
-            </div> -->
-
+            </div> 
         <!-- /.container-fluid -->
 
       </div>
@@ -350,33 +289,152 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <!--modal de edicion-->
+
+  <!---modal agregar menu-->
+  <div class="modal fade" id="modalAgregarMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="contenido_modal_agregar_menu">
+        
+      </div>
+    </div>
+  </div>
+
+  <!---modal agregar nuevo menu-->
+  <div class="modal fade" id="modalAgregarNuevoMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="contenido_modal_agregar__nuevo_menu">
+        
+      </div>
+    </div>
+  </div>
+
+  <!---modal agregar platillo-->
+  <div class="modal fade" id="modalAgregarPlatillo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="contenido_modal_agregar_platillo">
+        
+      </div>
+    </div>
+  </div>
+  <!--modal editar usuario-->
+
+  <div class="modal fade" id="ModalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="contenido_modal_editar_usuario">
+      
+    </div>
+  </div>
+  </div>
+
+  <!--modal editar platillo-->
+
+  <div class="modal fade" id="ModalEditarPlatillo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="contenido_modal_editar_platillo">
+      
+    </div>
+  </div>
+  </div>
+
+  <!--modal editar local-->
+  <div class="modal fade" id="ModalEditarLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="contenido_modal_editar_local">
+      
+    </div>
+  </div>
+  </div>
+
+  <!--modal editar menu-->
+  <div class="modal fade" id="ModalEditarMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="contenido_modal_editar_menu">
+      
+    </div>
+  </div>
+  </div>
+
+  <!--modal de eliminar local-->
+  <div class="modal fade" id="ModalEliminarLocal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Local</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Desea eliminar este local?
+      </div>
+      <div class="modal-footer" id="botonEliminarLocal">
+        
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!--modal de eliminar Usuario-->
+  <div class="modal fade" id="ModalEliminarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <button class="btn btn-primary" type="button" data-dismiss="modal" onclick="cerar_sesion()">Cerrar sesion</button>
+        <div class="modal-body">
+          ¿Desea eliminar este usuario?
+        </div>
+        <div class="modal-footer" id="botonEliminarUsuario">
+          
         </div>
       </div>
     </div>
   </div>
 
-  <!--modal de edicion-->
-
-<div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" id="contenido_modal">
-      
+  <!--modal de eliminar Menu-->
+  <div class="modal fade" id="ModalEliminarMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Menu</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Desea eliminar este menu?
+        </div>
+        <div class="modal-footer" id="botonEliminarMenu">
+          
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+  <!--modal de eliminar Platillo-->
+  <div class="modal fade" id="ModalEliminarPlatillo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Platillo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Desea eliminar este menu?
+        </div>
+        <div class="modal-footer" id="botonEliminarPlatillo">
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

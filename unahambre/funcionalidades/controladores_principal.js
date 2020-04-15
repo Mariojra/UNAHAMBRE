@@ -144,7 +144,7 @@ function ImprimirPlatillos(){
     }).then(res=>{
        document.querySelector('#seleccion').innerHTML = 'Platillos';
        document.querySelector('#cambioDeInformacion').innerHTML = '';
-       var data_platillos = res.data.items;
+       var data_platillos = res.data.items[0];
        for (let i = 0; i < data_platillos.length; i++) {
        document.querySelector('#cambioDeInformacion').innerHTML  += `
                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
