@@ -50,13 +50,15 @@ input{
 
 /**************************HEADER*****************************/
 
+
+/* Problemas con Boostrap */
 .navbar{
-    background:    #ac4806a4   ;
+    background:    #204051   ;
     width: 100%;
     height: 10rem;
     margin: 0 auto;
     display: flex;
-    /*border: 1px solid black;*/
+    /* border: 1px solid black; */
     justify-content: space-between;
     position: fixed;
     z-index: 1;
@@ -100,7 +102,7 @@ input{
 }
 
 .text{
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 4rem;
     font-weight: bold;
     cursor: pointer;
@@ -160,7 +162,7 @@ nav a {
 }
 
 a.active,a:hover{
-    border: 0.1rem solid rgb(0, 0, 0);
+    border: 0.1rem solid rgb(255, 255, 255);
     transition: .5s;
     text-decoration: none;
     list-style: none;
@@ -176,49 +178,7 @@ nav #icon {
     display: none;
 }
 
-@media (max-width: 1048px){
-    nav ul {
-        margin-right: 2rem;
 
-    }
-
-    nav a {
-        font-size: 1.7rem;
-    }
-
-} 
-
-@media (max-width: 992px){
-    nav #icon{
-        display: block;
-    }
-    nav ul {
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        background: #2f3640;
-        top: 9.5rem;
-        left: -100%;
-        text-align: center;
-        transition: all .5s;
-    }
-    nav li {
-        display: block;
-        margin: 5rem 0rem;
-        line-height: 3rem;
-    }
-    nav a {
-        font-size: 2rem;
-    }
-    a.active,a:hover{
-        border: none;
-        color: #3498db;
-
-    }
-    nav ul.show {
-        left: 0;    
-    }
-}
 
 
 
@@ -272,6 +232,20 @@ nav #icon {
     text-decoration: none;
 }
 
+.yellow{
+    color: rgb(0, 0, 0);
+    background: #cae8d5;
+    font-size: 2.5rem;
+    border-radius: 10px;
+    padding: 20px 35px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family:'Roboto',sans-serif;
+    border: none;
+}
+
+
 /***************************CATALOGO DE COMIDAS*****************************/
 
  .titulo-comidas{
@@ -296,6 +270,7 @@ nav #icon {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .tarjetaIndex{
     width: 30rem;
@@ -317,6 +292,77 @@ nav #icon {
     font-weight: bold;
 }
 
+/* --------------------------------- Preguntas y Respuestas ------------------------------- */
+
+.preguntas{
+    padding: 5rem;
+}
+
+.rotulo h1 {
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.accordion{
+    width: 100%;
+    background: #fff;
+}
+
+.accordion-tab > .accordion-toggle{
+    position: absolute;
+    display: none;
+}
+
+.accordion-tab > label{
+    color: #fff;
+    background: #3b6978; 
+    /* background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%); */
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    position: relative;
+    display: block;
+    padding: 13px 40px 13px 20px;
+    border-top: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.accordion-tab > .accordion-content{
+    max-height: 0;
+    transition: all .40s;
+    overflow: hidden;
+    background-color: #cae8d5;
+}
+
+.accordion-tab > label:after {
+    content: '\f078';
+    position: absolute;
+    top: 13px;
+    right: 20px;
+    font-family: fontawesome;
+    transform: rotate(90deg);
+    transition:transform .30s ;
+}
+
+.accordion-tab > .accordion-toggle:checked ~ label:after{
+    transform: rotate(0deg);
+}
+
+.accordion-tab > .accordion-toggle:checked ~ .accordion-content{
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.accordion-tab > .accordion-content p {
+    margin: 15px 0;
+    padding: 0 20px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+
+
 
 
 
@@ -329,6 +375,11 @@ nav #icon {
 
 }
 
+.texto-negocio p {
+    padding: 2rem;
+    font-size: 1.7rem;
+}
+
 .registro-negocio .texto-negocio{
     max-width: 80%;
     text-align: center;
@@ -339,12 +390,12 @@ nav #icon {
     align-items: center;
     width: 40%;
     padding: 2rem;
+    background: #3b6978;
 }
 /************************************FOOTER******************************************/
 
 .footer{
     width: 100%;
-    height: 20vh;
     background:  #1f618d ;
     display: flex;
     justify-content: space-between;
@@ -450,6 +501,50 @@ nav #icon {
     .registro-negocio
     .btn-negocio{
         width: 100%;
+    }
+}
+
+@media (max-width: 1048px){
+    nav ul {
+        margin-right: 2rem;
+
+    }
+
+    nav a {
+        font-size: 1.7rem;
+    }
+
+} 
+
+@media (max-width: 992px){
+    nav #icon{
+        display: block;
+    }
+    nav ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2f3640;
+        top: 9.5rem;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav li {
+        display: block;
+        margin: 5rem 0rem;
+        line-height: 3rem;
+    }
+    nav a {
+        font-size: 2rem;
+    }
+    a.active,a:hover{
+        border: none;
+        color: #3498db;
+
+    }
+    nav ul.show {
+        left: 0;    
     }
 }
 
