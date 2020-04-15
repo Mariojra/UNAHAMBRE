@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   pagina_actual = pagina_actual_split[pagina_actual_split.length - 1]
   if (sessionStorage.getItem('token') == undefined || sessionStorage.getItem('userID') == undefined) {
     // si el usuario no está logueado
-    console.log(pagina_actual)
+    
     if (pagina_actual == 'login.html' || pagina_actual == 'principal.html' || pagina_actual == 'recuperar.html' || pagina_actual === 'registro.html' || pagina_actual === 'index.html') {
     } else {
       // para las demas páginas que requieren que el usuario esté logueado   
@@ -62,7 +62,7 @@ function Verificar_storage_token() {
       sessionStorage.removeItem('userName')
       location.replace('login.html')
     } else {
-      console.log('usuario verificado')
+      // console.log('usuario verificado')
     }
   }).catch(function (error) {
     console.log(error);
