@@ -6,6 +6,8 @@
     <script src="funcionalidades/controlador-navegacion.js"></script>
     <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/log_user.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/custom-swal.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/admin_usuario.css">
     <link rel="stylesheet" href="css/estilos.css">
@@ -87,7 +89,23 @@
         <div class="container-fluid contenedor-categorias">
             <div class="row categorias">
 
-                <div class="col-xl-3 col-md-6 mb-4 categoria">
+                <div class="col-xl-4 col-md-6 mb-4 categoria">
+                  <div class=" border-left-primary shadow h-100 py-3" onclick="ImprimirRestaurantes()">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                
+                          <div class="h1 mb-0 font-weight-bold text-primary">Restaurante</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-store fa-2x text-primary"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="col-xl-3 col-md-6 mb-4 categoria">
                     <div class=" border-left-primary shadow h-100 py-3" onclick="ImprimirCategorias()">
                       <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -97,22 +115,6 @@
                           </div>
                           <div class="col-auto">
                             <i class="fas fa-concierge-bell fa-2x text-primary"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-md-6 mb-4 categoria">
-                    <div class=" border-left-success shadow h-100 py-3" onclick="ImprimirRestaurantes()">
-                      <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                          <div class="col mr-2">
-                            
-                            <div class="h1 mb-0 font-weight-bold text-success">Restaurante</div>
-                          </div>
-                          <div class="col-auto">
-                            <i class="fas fa-store fa-2x text-success"></i>
                           </div>
                         </div>
                       </div>
@@ -133,15 +135,15 @@
                         </div>
                       </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="col-xl-3 col-md-6 mb-4 categoria">
+                <div class="col-xl-4 col-md-6 mb-4 categoria">
                     <div class=" border-left-warning shadow h-100 py-3" onclick="ImprimirPlatillos()">
                       <div class="card-body">
                         <div class="row no-gutters align-items-center">
                           <div class="col mr-2">
                             
-                            <div class="h1 mb-0 font-weight-bold text-warning">Platillos</div>
+                            <div class="h1 mb-0 font-weight-bold text-warning">Platillo Recomendado</div>
                           </div>
                           <div class="col-auto">
                             <i class="fas fa-pizza-slice fa-2x text-warning"></i>
@@ -150,16 +152,77 @@
                       </div>
                     </div>
                 </div>
+
+                <div class="col-xl-4 col-md-6 mb-4 categoria">
+                  <div class=" border-left-success shadow h-100 py-3" onclick="mostrarCarrito()">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                
+                          <div class="h1 mb-0 font-weight-bold text-success">Mi orden</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                     
             </div>
         </div><!---fin de seleccion de categorias-->
+
+
+        <!-- VENTANA MODAL PARA CARRO DE COMPRAS -->
+        <div class="modal" tabindex="-1" role="dialog" id="modal-compras">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 2.5rem;">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+
+                <section class="container-c" id="orden">
+                  <h2 class="section-header">ORDEN</h2>
+                  <div class="cart-row">
+                    <span class="cart-item cart-header cart-column">PLATO</span>
+                    <span class="cart-price cart-header cart-column">PRECIO</span>
+                    <span class="cart-quantity cart-header cart-column">CANTIDAD</span>
+                  </div>
+                  <div class="cart-items" id="items">
+                  </div>
+  
+                  <div class="cart-total">
+                    <strong class="cart-total-title">Total</strong>
+                    <span class="cart-total-price">Lps.0</span>
+                  </div>
+                  <button class="btn btn-primary btn-purchase" type="button" id="btn-compra">EFECTUAR COMPRA</button>
+                </section>
+
+
+              </div>
+              <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- FIN DE VENTANA MODAL PARA CARRO DE COMPRAS -->
+
         <div class="cambioSeleccion">
-            <p id="seleccion">Categorias</p><hr>
+            <p id="seleccion">Restaurantes</p>
+            <hr>
         </div>  
         <div class="container-fluid contenedor-informacion">
             <div class="row opciones-informacion" id="cambioDeInformacion">
+
               
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+
+              <!-- <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
                 <div class="card shadow tamanioTarjeta" >
                   <img src="img/burger2.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
@@ -218,7 +281,7 @@
                    
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div><!--fin row opciones-->
         </div>
     </main>
@@ -262,13 +325,10 @@
     </footer>
     <!-- FIN DEL FOOTER-->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <!-- <script src="js/jquery-3.4.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="funcionalidades/controladores_principal.js"></script>
 </body>
 </html>
