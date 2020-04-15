@@ -20,7 +20,7 @@ function realizar_pago(id, orden, total ){
     // foto, por ahora se usa una defautl 
      axios({
          method: 'POST',
-         url: 'https://api-unahambre.herokuapp.com/api_pago/realizar_pago',
+         url: 'http://localhost:3001/api_pago/realizar_pago',
          data:{ "monto": monto, 
                  "descripcion": descripcion,
                  "nombre": nombre,
