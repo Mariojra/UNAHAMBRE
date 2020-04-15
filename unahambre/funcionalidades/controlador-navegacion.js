@@ -121,7 +121,7 @@ function usuario_log() {
         </button>
         <div class="dropdown-content" style="text-decoration: block;">
             <div class="info_user" >
-                <img class="user_img2" id="user_img" src="${foto}" alt="" width="50" height="50">
+                <img class="user_img2" id="user_img2" src="${foto}" alt="" width="50" height="50">
                 <p id="nombreUsuario_log">${nombre}</p>
                 <p id="correo_log"></p>
                 <hr>
