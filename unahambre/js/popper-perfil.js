@@ -42,6 +42,7 @@ $("#file-img").change(function (e) {
         data: fd,
         headers: {
             'idUsuario':sessionStorage.getItem('userID') ,
+            'access-token':sessionStorage.getItem('token')
         }
     }).then(res=>{
         console.log(res.data);

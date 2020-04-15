@@ -32,7 +32,9 @@ function info_usuarios(){
 
 function info_username(){
     if (sessionStorage.getItem('userProfile') != undefined) {
-        document.getElementById("imageUser").src = sessionStorage.getItem('userProfile')
+        if(sessionStorage.getItem('userProfile') != 'null'){
+            document.getElementById("imageUser").src = sessionStorage.getItem('userProfile')
+        }
     }
     i = 0;
 
