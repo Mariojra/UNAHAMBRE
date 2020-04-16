@@ -1,0 +1,588 @@
+/* estilos generales */
+html{
+    font-size: 62.5%; /*Reset para rems 1px = 0.1rem*/
+}
+*{
+    margin:0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.6rem;
+}
+
+p, label{
+    font-size: 1.3rem;
+    margin-bottom:1rem;
+    margin-top:0.7rem;
+}
+
+h3{
+    font-size: 3rem;
+}
+
+a{
+    color: #e74c3c;
+}
+
+li{
+    font-size: 2rem;
+}
+
+input{
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+}
+/* fin de estilos generales */
+
+/***********************************HEADER*************************************/
+
+
+.navbar-registro{
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    /*border: 1px solid black;*/
+    justify-content: space-between;
+    background: #204051;
+    position: fixed;
+    z-index: 3;
+
+}
+
+.logo{
+    width: 7rem;
+    height: 7rem;
+    background-color:burlywood;
+    border-radius: 50%;
+}
+
+.marca,
+.interaccion{
+    display: flex;
+}
+
+.contenedor-logo,
+.contenedor-sesion,
+.contenedor-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-end;
+}
+
+/***************************ANIMACION MARCA*****************************/
+
+.middle{
+    display: flex;
+}
+
+.text{
+    color: #ffffff;
+    font-size: 4rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: start;
+}
+
+.hidden{
+    max-width: 0;
+    opacity: 0;
+    transition: 1.8s ease-in;
+}
+
+.text:hover .hidden{
+    opacity: 1;
+    max-width: 10rem;
+} 
+
+.contenedor-logo,
+.contenedor-sesion,
+.contenedor-menu{
+    /*border: 1px solid black;*/
+    width: 150px;
+}
+
+.text,.medio{
+    width: rem;
+    /*border: 1px solid black;*/
+    padding: 2.5rem 0 2.5rem 0;
+}
+
+/***************************SESION Y MENU*****************************/
+
+.interaccion{
+    margin-top: 1.5rem;
+}
+
+nav ul {
+    float: right;
+    margin-right: 4rem;
+
+}
+
+nav li {
+    display: inline-block;
+    margin: 0rem 0.8rem;
+    line-height: 8rem;
+}
+
+nav a {
+    color: #ffffff;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    border: 0.1rem solid transparent;
+    padding: 0.7rem 1rem;
+    border-radius: 0.3rem;
+
+}
+
+a.active,a:hover{
+    border: 0.1rem solid #ffffff;
+    transition: .5s;
+}
+
+nav #icon {
+    color: #ffffff;
+    font-size: 3rem;
+    line-height: 8rem;
+    float: right;
+    margin-right: 4rem;
+    cursor: pointer;
+    display: none;
+}
+
+
+
+
+
+
+
+/***********************************MAIN*************************************/
+/* estilos contenedor */
+.contenedor-registro{
+    width: 100%;
+    padding-bottom: 3rem ;
+    background: url(../img/registro.jpg), no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /* height: 90vh; */
+}
+
+.contenedor-registro .contenido-registro{
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-registro .formulario{
+    background: #ffffff;
+    width: 50%;
+    border-radius: 0.5rem;
+    padding: 3rem;
+    justify-content: center;
+    margin-left: 12rem;
+    margin-top: 10rem;
+    margin-top: 12rem;
+    /* text-align: center; */
+}
+
+.contenedor-registro .form-control {
+    width: 100%;
+    height: 4rem;
+    font-size: 1.3rem;
+}
+
+.contenedor-registro .btn-registro{
+    cursor: pointer;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.7rem;
+    background:  #3498db;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.contenedor-registro .div-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-registro{
+    width: 100%;
+    background:  #d5dbdb;
+}
+
+div .p-descubri{
+    width: 40%;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    font-weight: 550;
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+}
+
+/************************************FOOTER******************************************/
+
+.footer{
+    width: 100%;
+    background: #84a9ac;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contactos{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nosotros{
+    color: rgb(226, 226, 226);
+    font-size: 1.6rem;
+    line-height: 3rem;
+}
+
+
+/* Barra de Contactos */
+
+.barra{
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: block;
+
+}
+.barra-contactos{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+
+}
+.barra-contactos li {
+    list-style: none;
+}
+
+.barra-contactos li a {
+    display: block;
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: #262626;
+    margin: 1rem;
+    transition: .5s;
+}
+
+.barra-contactos li a span {
+    position: absolute;
+    transition: transform .5s;
+}
+
+.barra-contactos li a span:nth-child(1),
+.barra-contactos li a span:nth-child(3){
+    width: 100%;
+    height: 0.1rem;
+    background: #262626;
+}
+
+.barra-contactos li a span:nth-child(1){
+    top: 0;
+    left: 0;
+    transform-origin:right ;
+}
+
+
+/* -------------------estilo necesario para validacion en radio buttons */
+.radio-isvalid{
+    color: #93D3A2;
+}
+
+.radio-isinvalid{
+    color: #F2B5BB;
+}
+
+.barra-contactos li a:hover span:nth-child(1){
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s;
+}
+.barra-contactos li a span:nth-child(3){
+    bottom: 0;
+    left: 0;
+    transform-origin:left ;
+}
+
+.barra-contactos li a:hover span:nth-child(3){
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s;
+}
+
+.barra-contactos li a span:nth-child(2),
+.barra-contactos li a span:nth-child(4){
+    width: 0.1rem;
+    height: 100%;
+    background: #262626;
+}
+
+.barra-contactos li a span:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: scaleY(0);
+    transform-origin:bottom;
+}
+
+.barra-contactos li a:hover span:nth-child(2){
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform .5s;
+}
+
+.barra-contactos li a span:nth-child(4){
+    top: 0;
+    right: 0;
+    transform: scaleY(0);
+    transform-origin:top;
+}
+
+.barra-contactos li a:hover span:nth-child(4){
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform .5s;
+}
+
+@media only screen and (max-width: 768px) {
+    .contenedor-registro .formulario{
+        width: 90%; 
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 13rem;   
+        
+    }
+
+    .lista-uno{
+        display: none;
+    }
+    .banner-registro .p-descubri{
+        margin: auto;
+        width: 80%;
+        font-size: small;
+    }
+    .nosotros{
+        font-size: 1rem;
+    }
+
+    body{
+        background: rgb(160, 160, 175);
+    }
+     
+}
+
+@media (max-width: 1048px){
+    nav ul {
+        margin-right: 2rem;
+
+    }
+
+    nav a {
+        font-size: 1.7rem;
+    }
+
+} 
+
+@media (max-width: 909px){
+    nav #icon{
+        display: block;
+    }
+    nav ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2f3640;
+        top: 9.5rem;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        z-index: 1;
+    }
+    nav li {
+        display: block;
+        margin: 5rem 0rem;
+        line-height: 3rem;
+    }
+    nav a {
+        font-size: 2rem;
+    }
+    a.active,a:hover{
+        border: none;
+        color: #3498db;
+
+    }
+    nav ul.show {
+        left: 0;    
+    }
+    .lista-uno{
+        margin-top: 10rem;
+    }
+    
+    .contenedor-formulario{
+        width: 100%;
+    }
+
+    .barra-contactos{
+        margin-top: 5rem;
+    }
+}
+
+/* ESTILOS VALIDACION DE CONTRASEÑA */
+.was-validated .form-control:valid, .form-control.is-medium{
+     border-color: #ffe75e;
+     padding-right: calc(1.5em + 0.75rem);
+     background-image: url("../img/key-silhouette-security-tool-interface-symbol-of-password_icon-icons.com_54503.svg");
+     background-repeat: no-repeat;
+     background-position: right calc(0.375em + 0.1875rem) center;
+     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    
+}
+
+.was-validated .form-control:valid:focus, .form-control.is-medium:focus {
+    border-color: #ffe75e;
+    box-shadow: 0 0 0 0.2rem rgba(245, 245, 3, 0.25);
+  }
+
+.medium-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #ffe75e;
+  }
+
+  .valid-feedbackP {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #28a745;
+  }
+
+  .valid-feedbackR {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #28a745;
+  }
+
+.is-medium ~ .medium-feedback{
+    display: block;
+}
+
+.was-validated .form-control:valid, .form-control.is-validR {
+    border-color: #28a745;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+  
+  .was-validated .form-control:valid:focus, .form-control.is-validR:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+
+  .was-validated .form-control:valid, .form-control.is-validP {
+    border-color: #28a745;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+  
+  .was-validated .form-control:valid:focus, .form-control.is-validP:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+
+  .is-validP ~ .valid-feedbackP{
+      display: block;
+  }
+
+  .is-validR ~ .valid-feedbackR{
+    display: block;
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalidR {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+  
+  .was-validated .form-control:invalid:focus, .form-control.is-invalidR:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+
+  .was-validated .form-control:invalid, .form-control.is-invalidP {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+  
+  .was-validated .form-control:invalid:focus, .form-control.is-invalidP:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+
+  .invalid-feedbackR {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
+
+  .invalid-feedbackP {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
+
+  .is-invalidR ~ .invalid-feedbackR{
+    display: block;
+}
+
+.is-invalidP ~ .invalid-feedbackP{
+    display: block;
+}

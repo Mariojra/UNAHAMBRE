@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/registro.css">
+    <title>UNAHAMBRE</title>
+    <script src="funcionalidades/controlador-navegacion.js"></script>
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/log_user.css">
+    <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
+    <script src="js/jquery-3.4.1.js"></script>
+  <script>
+      $(document).ready(function(){
+          $('#icon').click(function(){
+              $('ul').toggleClass('show'); 
+          })
+      });
+  </script>
+<body class="hide_scroll">
+  
+    <div class="preloader_centrado" id="cargado">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    
+    <!--INICIO DEL HEADER-->
+    <header class="encabezado">
+        <nav class="navbar-registro">
+            <div class="marca">
+                <div class="contenedor-logo">
+                    <div class="logo">
+                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
+                    </div><!--fin logo-->
+                </div><!--fin contenedor logo-->
+
+                <div class="text middle">
+                    <span>U</span>
+                    <span>N</span>
+                    <span>A</span>
+                    <span>H</span>
+                    <span class="hidden">A</span>
+                    <span class="hidden">M</span>
+                    <span class="hidden">B</span>
+                    <span class="hidden">R</span>
+                    <span class="hidden">E</span>
+                </div><!--fin animacion nombre-->
+            </div>
+
+            <div class="interaccion">
+                <ul>
+                    <li><a class="active" href="index.html">INICIO</a></li>
+                    <li><a href="principal.html">MENU</a></li>
+                    <li><a href="#contacto">CONTACTOS</a></li>
+                    <li><a id="ocultar_login" href="login.html">INICIAR SESION</a></li>
+                    <li><a id="ocultar_registro" href="registro.html">REGISTRARSE</a></li>
+                    <li></li>
+                   
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">PERFIL</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a id="cerrar-sesion" class="dropdown-item" href="index.html" onclick="cerrarSesion()">CERRAR SESION</a>
+                            <a id="cerrar-sesion" class="dropdown-item" href="informacion-perfil.html">VER MI INFORMACION</a>
+                        </div>
+
+                    </li> -->
+
+                </ul>
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user"></div>
+
+                <label id="icon">
+                    <i class="fas fa-bars"></i>
+                </label>       
+            </div>
+        </nav>
+    </header>
+    <!--FIN DEL HEADER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <!-- INICIO DEL MAIN-->
+
+    <main class="main">
+        <!-----------------------------------BUSQUEDA---------------------------------------------->
+        <section class="busqueda">
+            <h1>Tu comida de siempre, a tu disposición</h1>
+            <a href="principal.html" class="yellow">BUSCAR COMIDA</a>
+        </section> <!--fin busqueda-->
+
+
+        <!-- Preguntas y Respuestas -->
+
+        <div class="preguntas container-fluid">
+            <div class="row justify-content-center">
+                <div class="rotulo col-md-10">
+                    <h1>¿TIENES ALGUNA DUDA?</h1>
+                </div>
+                
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="accordion-tab">
+                                <input id="toggle1" type="checkbox" class="accordion-toggle" name="toggle" />
+                                <label for="toggle1">Precios de Envío</label>
+                                <div class="accordion-content">
+                                    
+                                   
+                                    <p>
+                                        Nuestros precios estan sujetos a la cantidad de platillos por ordenes y al restaurante afiliado (10%) y cargos extra por pedidos en horas saturadas de pedidos.
+                
+                                    </p>
+                                </div>
+                            </div>                                                  
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="accordion-tab">
+                                <input id="toggle2" type="checkbox" class="accordion-toggle" name="toggle" />
+                                <label for="toggle2">Facturación</label>
+                                <div class="accordion-content">
+                                                                                    
+                                    <p>
+                                        La debida facturación queda en poder y obligación del restaurante/local que provea un determinado producto, los reclamos de las mismas quedan a disposición de los mismos. 
+                                    </p>
+                                    <p>
+                                        Unicamente, nos encargamos del correcto y legal proceso de facturación de pagos en línea y todo lo que conlleve manejos de fondos electrónicos.
+                                    </p>
+
+                                </div>
+                            </div>                                                  
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="accordion-tab">
+                                <input id="toggle3" type="checkbox" class="accordion-toggle" name="toggle" />
+                                <label for="toggle3">Puntos de Entrega</label>
+                                <div class="accordion-content">
+                                    <p>
+                                      Actualmente hacemos la entrega en todos los edificios, banquetas, áreas verdes, aulas y pisos de Ciudad Universitaria, Tegucigalpa.  
+                                    </p>
+    
+                                </div>
+                            </div>                                                  
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="accordion-tab">
+                                <input id="toggle4" type="checkbox" class="accordion-toggle" name="toggle" />
+                                <label for="toggle4"> ¿La página te va mal?</label>
+                                <div class="accordion-content">
+                                    
+                                    <p>
+                                        1. Revisa tu conexión a internet.
+                                        <br>
+                                        2. Recarga la página.
+                                        <br>
+                                        3. Reinicia tu navegador.
+                                        <br>
+                                        4. Valida que tus datos de usuario sean los correctos.
+                                    </p>
+                                </div>
+                            </div>                                                  
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="accordion-tab">
+                                <input id="toggle5" type="checkbox" class="accordion-toggle" name="toggle" />
+                                <label for="toggle5">Horarios</label>
+                                <div class="accordion-content">
+                                    
+                                    <p>
+                                    Los horarios estan a disposición en la información de cada restaurante, se notificará la disponibilidad de los mismos por factores como protestas, paros o dias feriados.
+                                    </p>
+
+                                </div>
+                            </div>                                                  
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="accordion-tab">
+                                <input id="toggle6" type="checkbox" class="accordion-toggle" name="toggle" />
+                                <label for="toggle6">Términos y Condiciones</label>
+                                <div class="accordion-content">
+                                    
+                                    <p>
+                                        <a href ="img/TYCUNAHAMBRE.pdf" target="_blank">Ver y Descargar</a>
+            
+                                    </p>
+
+                                </div>
+                            </div>                                                  
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+        
+        
+    
+                    
+
+
+            </div>
+            
+    
+        </div>
+        <!-- Fin de Preguntas y Respuestas -->
+        
+        <!-----------------------------------INVITACION-------------------------------------------->
+        <section class="invitacion">
+               <!-----------------------------------NEGOCIO-------------------------------------------->
+        <div class="registro-negocio container-fluid">
+            <div class="row justify-content-center">
+                <div class="texto-negocio col">
+                    <h3 id="unete">¡UNETE A NOSOTROS!</h3>
+                    <p>
+                        El objetivo primordial del grupo es, con dedicacion y esfuerzo, conseguir
+                        <br>
+                        la confianza de nuestros  clientes y ofrecer la mejor calidad de todos  
+                        <br> 
+                        nuestros servicios, mediante continua innovacion para elevar las ganancias 
+                        <br>
+                        y el exito que dia con dia demanda la sociedad a todos nuestros afiliados.
+                         
+                    </p>
+                    <a id="redireccionar-n" class="btn-negocio btn btn-primary btn-large" href="login.html">REGISTRAR MI NEGOCIO</a>
+
+                </div>
+            </div>
+        </div> 
+        <!-- FIN DE NEGOCIO -->
+        </section> <!--fin invitacion-->
+    </main>
+    
+    <!--FIN DEL MAIN-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- INICIO DEL FOOTER-->
+
+    <footer class="footer">
+        <div class="modificacion container-fluid">
+            <div class="row">
+                <div class="contactos col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="contacto">
+                        <p class="nosotros">Contacto</p>
+                        <p class="nosotros">(504)99713638</p>
+                        <p class="nosotros">lesmanface@unah.hn</p>
+                    </div>
+                    <div class="soporte">
+                        <p class="nosotros">Soporte</p>
+                        <p class="nosotros">Ayuda y Soporte</p>
+                        <p class="nosotros">Recursos</p>
+                        <p class="nosotros">Blog</p>
+                    </div>
+                    <div class="empresa">
+                        <p class="nosotros">Empresa</p>
+                        <p class="nosotros">Sobre Nosotros</p>
+                        <p class="nosotros">Terminos</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <ul class="barra-contactos">
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fab fa-google"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+    <!-- FIN DEL FOOTER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- <script src="js/jquery-3.4.1.slim.min.js"></script> -->
+    <script src="js/popper.min.js"></script>
+
+    <!-- iconos  -->
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="funcionalidades/controlador-landing.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

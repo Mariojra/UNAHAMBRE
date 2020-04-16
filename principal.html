@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funcionalidades/controlador-navegacion.js"></script>
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/log_user.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/custom-swal.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin_usuario.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <title>UNAHAMBRE</title>
+    <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<body class="hide_scroll">
+  
+  <div class="preloader_centrado" id="cargado">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    
+    <!--INICIO DEL HEADER-->
+    <header class="encabezado">
+        <nav class="navbar">
+            <div class="marca">
+                <div class="contenedor-logo">
+                    <div class="logo">
+                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
+                    </div><!--fin logo-->
+                </div><!--fin contenedor logo-->
+
+                <div class="text middle">
+                    <span>U</span>
+                    <span>N</span>
+                    <span>A</span>
+                    <span>H</span>
+                    <span class="hidden">A</span>
+                    <span class="hidden">M</span>
+                    <span class="hidden">B</span>
+                    <span class="hidden">R</span>
+                    <span class="hidden">E</span>
+                </div><!--fin animacion nombre-->
+            </div>
+
+            <div class="interaccion">
+                <ul>
+                    <li><a class="active" href="index.html">INICIO</a></li>
+                    <li id="ocultar_login"><a href="login.html">INICIAR SESION</a></li>
+                    <li id="ocultar_registro"><a href="registro.html">REGISTRARSE</a></li>
+                </ul>
+
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user">
+                </div>
+
+                <label id="icon">
+                    <i class="fas fa-bars"></i>
+                </label>       
+            </div>
+        </nav>
+        <div class="separador"></div>
+    </header>
+    <!--FIN DEL HEADER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <!-- INICIO DEL MAIN-->
+
+    <main class="main">
+        <!-----------------------------------BUSQUEDA---------------------------------------------->
+        <section class="busqueda">
+            <div>
+                <h1>Elije lo que se te antoje</h1>
+            </div>  
+        </section> <!--fin busqueda-->
+        <!-----------------------------------CATALOGO DE COMIDA------------------------------------>
+        <div class="container-fluid contenedor-categorias">
+            <div class="row categorias">
+
+                <div class="col-xl-4 col-md-6 mb-4 categoria">
+                  <div class=" border-left-primary shadow h-100 py-3" onclick="ImprimirRestaurantes()">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                
+                          <div class="h1 mb-0 font-weight-bold text-primary">Restaurante</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-store fa-2x text-primary"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="col-xl-3 col-md-6 mb-4 categoria">
+                    <div class=" border-left-primary shadow h-100 py-3" onclick="ImprimirCategorias()">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            
+                            <div class="h1 mb-0 font-weight-bold text-primary">Categorias</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-concierge-bell fa-2x text-primary"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4 categoria">
+                    <div class=" border-left-info shadow h-100 py-3" onclick="ImprimirMenus()">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            
+                            <div class="h1 mb-0 font-weight-bold text-info">Menus</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-utensils fa-2x text-info"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div> -->
+
+                <div class="col-xl-4 col-md-6 mb-4 categoria">
+                    <div class=" border-left-warning shadow h-100 py-3" onclick="ImprimirPlatillos()">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            
+                            <div class="h1 mb-0 font-weight-bold text-warning">Platillo Recomendado</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-pizza-slice fa-2x text-warning"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 mb-4 categoria">
+                  <div class=" border-left-success shadow h-100 py-3" onclick="mostrarCarrito()">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                
+                          <div class="h1 mb-0 font-weight-bold text-success">Mi orden</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                    
+            </div>
+        </div><!---fin de seleccion de categorias-->
+
+
+        <!-- VENTANA MODAL PARA CARRO DE COMPRAS -->
+        <div class="modal" tabindex="-1" role="dialog" id="modal-compras">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 2.5rem;">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+
+                <section class="container-c" id="orden">
+                  <h2 class="section-header">ORDEN</h2>
+                  <div class="cart-row">
+                    <span class="cart-item cart-header cart-column">PLATO</span>
+                    <span class="cart-price cart-header cart-column">PRECIO</span>
+                    <span class="cart-quantity cart-header cart-column">CANTIDAD</span>
+                  </div>
+                  <div class="cart-items" id="items">
+                  </div>
+  
+                  <div class="cart-total">
+                    <strong class="cart-total-title">Total</strong>
+                    <span class="cart-total-price">Lps.0</span>
+                  </div>
+                  <button class="btn btn-primary btn-purchase" type="button" id="btn-compra">EFECTUAR COMPRA</button>
+                </section>
+
+
+              </div>
+              <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- FIN DE VENTANA MODAL PARA CARRO DE COMPRAS -->
+
+        <div class="cambioSeleccion">
+            <p id="seleccion">Restaurantes</p>
+            <hr>
+        </div>  
+        <div class="container-fluid contenedor-informacion">
+            <div class="row opciones-informacion" id="cambioDeInformacion">
+
+              
+
+              <!-- <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Desayuno</h5>
+                    <p class="card-text ">Primer comida que una persona ingiere en su vida cotidiana.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Almuerzo</h5>
+                    <p class="card-text ">Comida que se ingiere en la mitad del dia.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Cena</h5>
+                    <p class="card-text ">Ultima comida del dia.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Antojos</h5>
+                    <p class="card-text ">Comunmente un postre o golosina entre comidas pesadas.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta" >
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Bebidas</h5>
+                    <p class="card-text ">Gaseosas o frescos naturales.</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                <div class="card shadow tamanioTarjeta">
+                  <img src="img/burger2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title h1 text-info">Grupal</h5>
+                    <p class="card-text ">Comida para disfrutar entre amigos.</p>
+                   
+                  </div>
+                </div>
+              </div> -->
+            </div><!--fin row opciones-->
+        </div>
+    </main>
+    <!--FIN DEL MAIN-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- INICIO DEL FOOTER-->
+
+    <footer class="footer" id="contacto">
+        <div class="contactos">
+            <div class="contacto">
+                <p class="nosotros">Contacto</p>
+                <p class="nosotros">(504)99713638</p>
+                <p class="nosotros">lesman@unah.hn</p>
+            </div>
+            <div class="soporte">
+                <p class="nosotros">Soporte</p>
+                <p class="nosotros">Ayuda y Soporte</p>
+                <p class="nosotros">Recursos</p>
+                <p class="nosotros">Blog</p>
+            </div>
+            <div class="empresa">
+                <p class="nosotros">Empresa</p>
+                <p class="nosotros">Sobre Nosotros</p>
+                <p class="nosotros">Terminos</p>
+            </div>
+        </div>
+        <div class="red-social canal">
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/facebook-f-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/google-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/twitter-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/whatsapp-brands.svg" alt="">
+            </a>
+        </div>
+    </footer>
+    <!-- FIN DEL FOOTER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://js.stripe.com/v3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="funcionalidades/client.js"></script>
+    <script src="funcionalidades/controladores_principal.js"></script>
+</body>
+</html>

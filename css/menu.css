@@ -1,0 +1,280 @@
+.separador{
+  background: #000000be;
+  width: 100%;
+  height: 10rem;
+}
+
+.busqueda{
+  background: url(../img/almuerzo.jpg), no-repeat;
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+  
+}
+
+.busqueda h1{
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-size: 7rem;
+}
+
+.busqueda div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #0000007a;
+  width: 100%;
+  height: 100%;
+}
+
+/***************************FILTROS Y  MENU****************************************/
+
+.contenedor-categorias{
+  width: 100%;
+  height: auto;
+  
+}
+
+.categorias{
+  width: 80%;
+  height: auto;
+}
+
+.categoria div{
+  cursor: pointer;
+}
+
+.categoria{
+  margin: 0;
+  padding: 1rem;
+}
+
+
+#ejemplo{
+  width: 100%;
+  height: 50vh;
+}
+
+/*************************** MENU****************************************/
+.cambioSeleccion{
+  width: 80%;
+  margin: 0 auto;
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.cambioSeleccion hr{
+  background: rgb(211, 13, 13);
+}
+
+.contenedor-informacion{
+  width: 100%;
+  height: auto;
+  
+}
+
+.opciones-informacion{
+  width: 80%;
+  min-height: 85rem;
+  max-height: 85rem;
+  overflow: auto;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.tarjetaMenu{
+  width: 100%;
+  height: 40rem;
+  margin-bottom: 3rem;
+  
+}
+
+.tamanioTarjeta{
+  height: 100%;
+  
+}
+
+/* estilos navegacion compra */
+
+.shopping{
+  background: #f6f8fa;
+  padding: 5rem;
+  border: 0.1rem solid;
+  border-radius: 1rem;
+  box-shadow: 5px 10px 18px #B7B7B7;
+  position: relative;
+  margin: 0 auto;
+}
+
+.icon-shopp{
+  display: block;
+  text-align: center;
+  border: 0.5rem solid #B7B7B7;
+  border-radius: 50%;
+  width: 8rem;
+  padding: 1rem;
+  margin: 1rem auto;
+}
+
+.icon-shopp i{
+  font-size: 5rem;
+}
+
+.message-shopp{
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.btn-seleccionar{
+  width: 100%;
+  /* margin-top: 2rem; */
+}
+
+.display-none{
+  display:none;
+}
+
+.img-c{
+  height: 19rem;
+  max-height: 19rem;
+  width: 100%;
+}
+
+/* ESTILOS DE WEB DEV SIMPLIFIED */
+.container-c{
+  width: auto;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5em;
+}
+
+.content-section{
+  margin: 1em;
+}
+
+.section-header{
+  font-family: "Metal Mania";
+  font-weight: normal;
+  color: #333;
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.cart-row{
+  display: flex;
+}
+
+.cart-item{
+  width: 45%;
+}
+
+.cart-header{
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.cart-column{
+  display: flex;
+  align-items: center;
+  border-bottom: 0.2rem solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 20rem;
+}
+
+.btn-danger {
+  color: white;
+  background-color: #EB5757;
+  border: none;
+  border-radius: .3em;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background-color: #CC4C4C;
+}
+/* .cart-items{
+
+} */
+
+.cart-total{
+  text-align: end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.cart-total-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: black;
+  margin-right: 20px;
+}
+
+.cart-total-price {
+  color: #333;
+  font-size: 1.1em;
+}
+
+.cart-quantity {
+  width: 35%;
+}
+
+.cart-quantity-c{
+  justify-content: center;
+}
+
+.cart-quantity-input {
+  height: 34px;
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid #56CCF2;
+  background-color: #eee;
+  color: #333;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-right: 25px;
+  margin-bottom: 0rem;
+}
+
+.cart-item-title {
+  color: #333;
+  margin-left: .5em;
+  font-size: 1.2em;
+}
+
+.cart-item-image {
+  width: 75px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.cart-price {
+  /* width: 20%; */
+  font-size: 1.2em;
+  color: #333;
+}
+
+.cart-row:last-child {
+  border-bottom: 0.2rem solid black;
+}
+
+.cart-row:last-child .cart-column {
+  border: none;
+}
+
+.btn-purchase {
+  display: block;
+  margin: 40px auto 80px auto;
+  font-size: 1em;
+  width: 80%;
+}
+/* FIN estilos navegacion compra */
+
+
