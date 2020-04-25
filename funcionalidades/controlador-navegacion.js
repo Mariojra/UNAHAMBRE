@@ -114,7 +114,7 @@ function usuario_log() {
 
 
   var drop_user = `
-                     <div class="dropdown" style="float:right; display: block; margin-top: 10px;" id="log_user">
+                     <div class="dropdown" style="float:right; display: block;" id="log_user">
         <button class="dropbtn">
             <img class="user_img" id="user_img" src="${foto}" alt="" width="50" height="50">
             ${nombre}

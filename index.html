@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/registro.css"> -->
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/registro.css">
     <title>UNAHAMBRE</title>
     <script src="funcionalidades/controlador-navegacion.js"></script>
     <link rel="stylesheet" href="css/preloader.css">
@@ -37,52 +37,57 @@
     
     <!--INICIO DEL HEADER-->
     <header class="encabezado">
-        <nav class="navbar-registro">
+        <nav class="navbar navbar navbar-color-0" id="navbar">
             <div class="marca">
                 <div class="contenedor-logo">
                     <div class="logo">
-                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
-                    </div><!--fin logo-->
-                </div><!--fin contenedor logo-->
-
-                <div class="text middle">
-                    <span>U</span>
-                    <span>N</span>
-                    <span>A</span>
-                    <span>H</span>
-                    <span class="hidden">A</span>
-                    <span class="hidden">M</span>
-                    <span class="hidden">B</span>
-                    <span class="hidden">R</span>
-                    <span class="hidden">E</span>
-                </div><!--fin animacion nombre-->
+                        <img class="logo" src="img/logo-unahambre.png" alt="Logo de la pagina">
+                    </div>
+                    <!--fin logo-->
+                </div>
+                <!--fin contenedor logo-->
+                <div class="name-unahambre">
+                    <p>Unahambre</p>
+                </div>
+    
+                <!-- <div class="text middle">
+                        <span>U</span>
+                        <span>N</span>
+                        <span>A</span>
+                        <span>H</span>
+                        <span class="hidden">A</span>
+                        <span class="hidden">M</span>
+                        <span class="hidden">B</span>
+                        <span class="hidden">R</span>
+                        <span class="hidden">E</span>
+                    </div>fin animacion nombre -->
             </div>
-
+    
             <div class="interaccion">
                 <ul>
-                    <li><a class="active" href="index.html">INICIO</a></li>
-                    <li><a href="principal.html">MENU</a></li>
-                    <li><a href="#contacto">CONTACTOS</a></li>
-                    <li><a id="ocultar_login" href="login.html">INICIAR SESION</a></li>
-                    <li><a id="ocultar_registro" href="registro.html">REGISTRARSE</a></li>
+                    <li><a class="active" href="index.html">Inicio</a></li>
+                    <li><a href="principal.html">Menús</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a id="ocultar_login" href="login.html">Iniciar Sesión</a></li>
+                    <li><a id="ocultar_registro" href="registro.html">Registrarse</a></li>
                     <li></li>
-                   
+    
                     <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">PERFIL</a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a id="cerrar-sesion" class="dropdown-item" href="index.html" onclick="cerrarSesion()">CERRAR SESION</a>
-                            <a id="cerrar-sesion" class="dropdown-item" href="informacion-perfil.html">VER MI INFORMACION</a>
-                        </div>
-
-                    </li> -->
-
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">PERFIL</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a id="cerrar-sesion" class="dropdown-item" href="index.html" onclick="cerrarSesion()">CERRAR SESION</a>
+                                <a id="cerrar-sesion" class="dropdown-item" href="informacion-perfil.html">VER MI INFORMACION</a>
+                            </div>
+    
+                        </li> -->
+    
                 </ul>
                 <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
                 <div id="mostrar_drop_user"></div>
-
+    
                 <label id="icon">
                     <i class="fas fa-bars"></i>
-                </label>       
+                </label>
             </div>
         </nav>
     </header>
@@ -327,7 +332,18 @@
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- <script src="js/jquery-3.4.1.slim.min.js"></script> -->
     <script src="js/popper.min.js"></script>
+    
+    <!-- Script para cambiar el color del navbar -->
+        <script>
+            $(window).scroll(() => {
+                if ($("#navbar").offset().top > 200) {
+                    $("#navbar").addClass("navbar-color ")
+                } else {
+                    $("#navbar").removeClass("navbar-color ")
+                }
+            })
 
+        </script>
     <!-- iconos  -->
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
