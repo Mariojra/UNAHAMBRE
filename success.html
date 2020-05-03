@@ -17,33 +17,7 @@
         crossorigin="anonymous"></script>
 </head>
 <body style="background-color: black;" >
-    <script>
-        //configuracion sweetalert
-            const alert_default = Swal.mixin({
-                closeOnClickOutside: false,
-                allowOutsideClick: false,
-                timer: 3000,
-                timerProgressBar: true,
-                onOpen: (modal) => {
-                    modal.addEventListener('mouseenter', Swal.stopTimer)
-                    modal.addEventListener('mouseleave', Swal.resumeTimer)
-                    // modal.addEventListener('onclick', location.replace('principal.html'))
-                },
-                showClass: {
-                    popup: 'animated fadeInDown'
-                },
-                hideClass: {
-                    popup: 'animated fadeOutUp'
-                }
-            });
-            addEventListener('DOMContentLoaded', async () => {                
-                          await alert_default.fire({
-                               icon: 'success',
-                               title: 'El pedido se ha realizado exitosamente..'
-                           });
-                           location.replace('principal.html')
-            })
-
-    </script>
+    <h3 id="succes_procesando" style="color: aliceblue;">Procesando...</h3>
+    <script src="funcionalidades/controlador-success.js" > </script>
 </body>
 </html>
