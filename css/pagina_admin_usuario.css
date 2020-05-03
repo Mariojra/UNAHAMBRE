@@ -42,3 +42,15 @@
 .navbar-search{
     width: 60% ;
 }
+
+.datosTabla{
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+}
+
+.sin-busqueda{
+    width: 100%;
+    height: 100%;
+    
+}

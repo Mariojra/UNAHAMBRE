@@ -69,8 +69,65 @@ const alert_default = Swal.mixin({
 
  })(jQuery); // End of use strict
 
+function ImprimirTransacciones(){
+  axios({
+    method:'GET',
+    url:'https://api-unahambre.herokuapp.com/api_admin/mostrar_historial_transacciones',
+    headers: {
+      'access-token': sessionStorage.getItem('token')
+    }
+    }).then(res=>{
+      cargarCabeceraTablaTransacciones();
+      cargarFilasTransacciones(res.data.items);
+      console.log(res);
+    }).catch(function(error){
+        console.log(error);
+    });
+}
 
- function ImprimirUsuarios(){
+const cargarCabeceraTablaTransacciones = () =>{
+  document.querySelector('#Tablas').innerHTML = '';
+  document.querySelector('#Tablas').innerHTML  += `
+                            <div class="col-xl-12 navTabla">
+                            <p class="h2 font-weight-bold text-success py-2">Transacciones</p>
+                          </div>
+                          <div class="col-xl-12">
+                            <table class="table">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Usuario</th>
+                                  <th scope="col">Local</th>
+                                  <th scope="col">Monto</th>
+                                  <th scope="col">Fecha</th>
+                                </tr>
+                              </thead>
+                              <tbody  id='DatosTransaccion'>
+                               
+                              </tbody>
+                            </table>
+                          </div>
+                `;
+}
+
+const cargarFilasTransacciones = (datos) =>{
+  let infoTransacciones = datos;
+           document.querySelector('#DatosTransaccion').innerHTML = '';
+
+            for (let i = 0; i < infoTransacciones.length; i++) {
+             document.querySelector('#DatosTransaccion').innerHTML += `
+               <tr>
+                 <th>${i+1}</th>
+                 <th>${infoTransacciones[i].Nombre_Usuario}</th>
+                 <th>${infoTransacciones[i].Nombre_Local}</th>
+                 <th>${infoTransacciones[i].Monto}</th>
+                 <th>${infoTransacciones[i].Fecha_Transaccion}</th>
+               </tr>
+               `;
+            }
+}
+
+function ImprimirUsuarios(){
   axios({
     method:'GET',
     url:'https://api-unahambre.herokuapp.com/api_admin/admin_global_mostrar_usuarios',
@@ -114,11 +171,12 @@ const cargarCabeceraTablaUsuarios = () =>{
                                   <th scope="col">Foto Perfil</th>
                                 </tr>
                               </thead>
-                              <tbody id='DatosUsuarios'>
+                              <tbody  id='DatosUsuarios'>
                                
                               </tbody>
                             </table>
                           </div>
+                          <div class="resultado"></div>
                 `;
 }
 
@@ -195,6 +253,17 @@ const cargarFiltroUsuario = (data) =>{
     }
     cont++;
   }
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
+  }
 }
 
 const cargarFiltroGestionUsuario = (data) =>{
@@ -218,7 +287,7 @@ const cargarFiltroGestionUsuario = (data) =>{
                   <td id="row${i}Nombre_Usuario">${infoUsuarios[i].Nombre_Usuario}</td>
                   <td id="row${i}Rol"></td>
                   <td id="row${i}Foto_Perfil"><img src="${infoUsuarios[i].Foto_Perfil}" class="img_menu" alt="imagen perfil"></td>
-                  <td><button class="btn btn-primary" type="button" onclick="infoModalEditar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEditar">Editar</button></td>
+                  <td id="row${i}BotonEditar"></td>
                   <td id="row${i}BotonEliminar"></td>
                 </tr>
                 `;  
@@ -226,11 +295,13 @@ const cargarFiltroGestionUsuario = (data) =>{
                   document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Administrador";
                 }else if(infoUsuarios[i].Rol_idRol == 1){
                   document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Propietario";
-                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEliminar">Eliminar</button>`;
+                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminarUsuario(${i},${infoUsuarios[i].Rol_idRol},${infoUsuarios[i].idUsuario})" data-toggle="modal" data-target="#ModalEliminarUsuario">Eliminar</button>`;
+                  document.querySelector(`#row${i}BotonEditar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEditarUsuario(${i},${infoUsuarios[i].Rol_idRol},${infoUsuarios[i].idUsuario})" data-toggle="modal" data-target="#ModalEditarUsuario">Editar</button>`;
                 }else if(infoUsuarios[i].Rol_idRol == 2){
                   document.querySelector(`#row${i}Rol`).innerHTML = "Usuario Comun";
-                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminar(${i},${infoUsuarios[i].Rol_idRol})" data-toggle="modal" data-target="#ModalEliminar">Eliminar</button>`;
-                }  
+                  document.querySelector(`#row${i}BotonEliminar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEliminarUsuario(${i},${infoUsuarios[i].Rol_idRol},${infoUsuarios[i].idUsuario})" data-toggle="modal" data-target="#ModalEliminarUsuario">Eliminar</button>`;
+                  document.querySelector(`#row${i}BotonEditar`).innerHTML = `<button class="btn btn-primary" type="button" onclick="infoModalEditarUsuario(${i},${infoUsuarios[i].Rol_idRol},${infoUsuarios[i].idUsuario})" data-toggle="modal" data-target="#ModalEditarUsuario">Editar</button>`;
+                }   
     }
     
   }
@@ -377,11 +448,12 @@ const cargarCabeceraGestionUsuariosAdmin = () =>{
                                   <th></th>
                                 </tr>
                               </thead>
-                              <tbody id='DatosUsuariosAdmin'>
+                              <tbody  id='DatosUsuariosAdmin'>
                                
                               </tbody>
                             </table>
                           </div>
+                          <div class="resultado"></div>
                 `;
 }
 
@@ -410,11 +482,12 @@ const cargarCabeceraGestionUsuariosPropietario = () =>{
                                   <th scope="col"></th>
                                 </tr>
                               </thead>
-                              <tbody id='DatosUsuariosAdmin'>
+                              <tbody  id='DatosUsuariosAdmin'>
                                
                               </tbody>
                             </table>
                           </div>
+                          <div class="resultado"></div>
                 `;
 }
 
@@ -443,11 +516,12 @@ const cargarCabeceraGestionUsuariosComun = () =>{
                                   <th scope="col"></th>
                                 </tr>
                               </thead>
-                              <tbody id='DatosUsuariosAdmin'>
+                              <tbody  id='DatosUsuariosAdmin'>
                                
                               </tbody>
                             </table>
                           </div>
+                          <div class="resultado"></div>
                 `;
 }
 
@@ -647,10 +721,9 @@ function ImprimirLocales(){
           }
       
           }).then(res=>{
-            
-           
             cargarCabeceraTablaLocales();
             cargarFilasLocales(res.data.items);
+            console.log(res.data.items);
           }).catch(function(error){
               console.log(error);
           });      
@@ -679,23 +752,26 @@ const cargarCabeceraTablaLocales = () =>{
                                     <th scope="col">Correo</th>
                                   </tr>
                                 </thead>
-                                <tbody id='DatosLocales'>
+                                <tbody  id='DatosLocales'>
                                  
                                 </tbody>
                               </table>
                             </div>
+                            <div class="resultado"></div>
                   `;
 }
 
 const cargarFilasLocales = (datos) =>{
   let infoLocales = datos
+  let cont = 0;
   document.querySelector('#DatosLocales').innerHTML = '';
 
   for (let i = 0; i < infoLocales.length; i++) {
     if(infoLocales[i].EstadoRestaurante == 'Activo'){
+      cont++;
       document.querySelector('#DatosLocales').innerHTML += `
       <tr>
-        <th>${i+1}</th>
+        <th>${cont}</th>
         <td>${infoLocales[i].Nombre_Local}</td>
         <td>${infoLocales[i].Nombre_Usuario}</td>
         <td>${infoLocales[i].Ubicacion}</td>
@@ -750,6 +826,17 @@ const cargarFiltroLocal= (data) =>{
     }
     cont++;
   }
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
+  }
   
 }
 
@@ -781,10 +868,11 @@ const cargarFiltroGestionLocales =(data)=>{
     let ubicacion = infoLocales[i].Ubicacion.toLowerCase();
     let telefono = infoLocales[i].Telefono.toLowerCase();
     if(infoLocales[i].EstadoRestaurante == 'Activo'){
+      cont++;
       if((nombre_local.indexOf(texto) !==-1)||(nombre_usuario.indexOf(texto) !==-1)||(ubicacion.indexOf(texto) !==-1)||(telefono.indexOf(texto) !==-1)){
         resultado.innerHTML += `
         <tr>
-        <td id="row${i}idLocal">${i+1}</th>
+        <td id="row${i}idLocal">${cont}</th>
         <td id="row${i}NombreLocal">${infoLocales[i].Nombre_Local}</td>
         <td id="row${i}NombreUsuario">${infoLocales[i].Nombre_Usuario}</td>
         <td id="row${i}Ubicacion">${infoLocales[i].Ubicacion}</td>
@@ -797,9 +885,19 @@ const cargarFiltroGestionLocales =(data)=>{
       `;
       }
     }
-    cont++;
+    
   }
-
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
+  }
 }
 ///////////////////////////////////////////GESTION LOCALES CRUD////////////////////////////////////////////////
 function GestionLocales(){
@@ -812,6 +910,7 @@ function GestionLocales(){
         }).then(res=>{
           cargarCabeceraGestionLocales();
           cargarFilasGestionLocales(res.data.items);
+          console.log("info ",res.data.items);
         }).catch(function(error){
             console.log(error);
         });  
@@ -843,23 +942,26 @@ const cargarCabeceraGestionLocales = () =>{
                                     <th></th>
                                   </tr>
                                 </thead>
-                                <tbody id='DatosGestionLocales'>
+                                <tbody  id='DatosGestionLocales'>
                                  
                                 </tbody>
                               </table>
                             </div>
+                            <div class="resultado"></div>
                   `;
 }
 
 const cargarFilasGestionLocales = (datos) =>{
-  let infoLocales = datos
+  let infoLocales = datos;
+  let cont = 0;
   document.querySelector('#DatosGestionLocales').innerHTML = '';
 
   for (let i = 0; i < infoLocales.length; i++) {
     if(infoLocales[i].EstadoRestaurante == 'Activo'){
+      cont++;
       document.querySelector('#DatosGestionLocales').innerHTML += `
       <tr>
-        <td id="row${i}idLocal">${i+1}</th>
+        <td id="row${i}idLocal">${cont}</th>
         <td id="row${i}NombreLocal">${infoLocales[i].Nombre_Local}</td>
         <td id="row${i}NombreUsuario">${infoLocales[i].Nombre_Usuario}</td>
         <td id="row${i}Ubicacion">${infoLocales[i].Ubicacion}</td>
@@ -1134,11 +1236,12 @@ const cargarCabeceraTablaMenus = () =>{
                                   <th scope="col">Foto Menu</th>
                                 </tr>
                               </thead>
-                              <tbody id='DatosMenu'>
+                              <tbody  id='DatosMenu'>
                                
                               </tbody>
                             </table>
                           </div>
+                          <div class="resultado"></div>
                 `;
 }
 
@@ -1202,6 +1305,17 @@ const cargarFiltroMenu = (data) =>{
     }
     cont++;
   }
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
+  }
 }
 
 
@@ -1247,6 +1361,17 @@ const cargarFiltroGestionMenu =(data)=>{
     }
     cont++;
   }
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
+  }
 }
 ///////////////////////////////////////////GESTION MENU CRUD////////////////////////////////////////////////
 function GestionMenu(){
@@ -1291,11 +1416,12 @@ const cargarCabeceraGestionMenus = () =>{
                                   <th></th>
                                 </tr>
                                 </thead>
-                                <tbody id='DatosGestionMenus'>
+                                <tbody  id='DatosGestionMenus'>
                                  
                                 </tbody>
                               </table>
                             </div>
+                            <div class="resultado"></div>
                   `;
 }
 
@@ -1692,11 +1818,12 @@ const cargarCabeceraTablaPlatillos = () =>{
                                    <th scope="col">Foto Menu</th>
                                  </tr>
                                </thead>
-                               <tbody id='DatosPlatillo'>
+                               <tbody  id='DatosPlatillo'>
                                
                                </tbody>
                              </table>
                            </div>
+                           <div class="resultado"></div>
                  `;
 }
 
@@ -1763,6 +1890,17 @@ const cargarFiltroPlatillo = (data) =>{
     }
     cont++;
   }
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
+  }
 }
 
 function filtrarGestionPlatillo(){
@@ -1807,6 +1945,17 @@ const cargarFiltroGestionPlatillo =(data)=>{
             `;
     }
     cont++;
+  }
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
   }
 }
 ///////////////////////////////////////////GESTION MENU CRUD////////////////////////////////////////////////
@@ -1853,11 +2002,12 @@ const cargarCabeceraGestionPlatillos = () =>{
                                   <th></th>
                                 </tr>
                                 </thead>
-                                <tbody id='DatosGestionPlatillos'>
+                                <tbody  id='DatosGestionPlatillos'>
                                  
                                 </tbody>
                               </table>
                             </div>
+                            <div class="resultado"></div>
                   `;
 }
 
@@ -2151,6 +2301,7 @@ function ImprimirSolicitudes(){
         }).then(res=>{
           cargarCabeceraTablaSolicitudes();
           cargarFilasSolicitudes(res.data.items);
+          console.log(res.data.items);
         }).catch(function(error){
             console.log(error);
         });      
@@ -2177,33 +2328,42 @@ const cargarCabeceraTablaSolicitudes = () =>{
                                    <th scope="col">Telefono</th>
                                    <th scope="col">Ubicacion</th>
                                    <th scope="col">Fecha Solicitud</th>
+                                   <th scope="col"></th>
+                                   <th scope="col"></th>
                                  </tr>
                                </thead>
-                               <tbody id='DatosSolicitud'>
+                               <tbody  id='DatosSolicitud'>
                                
                                </tbody>
                              </table>
                            </div>
+                           <div class="resultado"></div>
                  `;
 }
 
 const cargarFilasSolicitudes = (datos) =>{
   let infoSolicitudes = datos;
+  let cont = 0;
   document.querySelector('#DatosSolicitud').innerHTML = '';
   for (let i = 0; i < infoSolicitudes.length; i++) {
+    if(infoSolicitudes[i].EstadoSolicitud =="En espera"){
+      cont++;
       document.querySelector('#DatosSolicitud').innerHTML += `
                 <tr>
-                  <th>${i+1}</th>
+                  <th>${cont}</th>
                   <td>${infoSolicitudes[i].EstadoSolicitud}</td>
                   <td>${infoSolicitudes[i].Nombre_Local}</td>
                   <td>${infoSolicitudes[i].Nombre_Usuario}</td>
                   <td>${infoSolicitudes[i].Telefono}</td>
                   <td>${infoSolicitudes[i].Ubicacion}</td>
                   <td>${infoSolicitudes[i].FechaSolicitud}</td>
+                  <td><button type="button" class="btn btn-success" onclick="aprobarSolicitud(${infoSolicitudes[i].idsolicitud})">APROBAR</button></td>
+                  <td><button type="button" class="btn btn-danger" onclick="denegarSolicitud(${infoSolicitudes[i].idsolicitud})">DENEGAR</button></td>
                 </tr>
                 `;
-  }
-  console.log("Datos de Solicitud cargados :",infoSolicitudes);
+      }
+      
+    }
 }
 ////////////////////////////////FILTRO SOLICITUDES///////////////////////////////////
 function filtrarSolicitudes(){
@@ -2232,24 +2392,80 @@ const cargarFiltroSolicitudes = (data) =>{
     let nombre_dueno = soli.Nombre_Usuario.toLowerCase();
     let telefono = soli.Telefono.toLowerCase();
     let ubicacion = soli.Ubicacion.toLowerCase();
-    if((nombre_local.indexOf(texto) !==-1) || (nombre_dueno.indexOf(texto) !==-1) || (telefono.indexOf(texto) !==-1)||(ubicacion.indexOf(texto)!==-1)){
-      resultado.innerHTML += `
-      <tr>
-        <th>${cont+1}</th>
-        <td>${soli.EstadoSolicitud}</td>
-        <td>${soli.Nombre_Local}</td>
-        <td>${soli.Nombre_Usuario}</td>
-        <td>${soli.Telefono}</td>
-        <td>${soli.Ubicacion}</td>
-        <td>${soli.FechaSolicitud}</td>
-      </tr>
-      `;
+    if(soli.EstadoSolicitud == 'En espera'){
+      cont++;
+      if((nombre_local.indexOf(texto) !==-1) || (nombre_dueno.indexOf(texto) !==-1) || (telefono.indexOf(texto) !==-1)||(ubicacion.indexOf(texto)!==-1)){
+        resultado.innerHTML += `
+        <tr>
+          <th>${cont}</th>
+          <td>${soli.EstadoSolicitud}</td>
+          <td>${soli.Nombre_Local}</td>
+          <td>${soli.Nombre_Usuario}</td>
+          <td>${soli.Telefono}</td>
+          <td>${soli.Ubicacion}</td>
+          <td>${soli.FechaSolicitud}</td>
+          <td><button type="button" class="btn btn-success" onclick="aprobarSolicitud(${soli.idsolicitud})">APROBAR</button></td>
+          <td><button type="button" class="btn btn-danger" onclick="denegarSolicitud(${soli.idsolicitud})">DENEGAR</button></td>
+        </tr>
+        `;
+      }
     }
-    cont++;
   }
+  let error = document.querySelector('.resultado');
+  error.innerHTML='';
+  if(resultado.innerHTML == ''){
+    error.innerHTML+=`
+    <div class="datosTabla">
+      <div class="sin-busqueda">
+        <h1>No se encontro ningun resultado</h1>
+      </div>
+    </div>
+    `;
+  }
+  console.log(cont);
 }
 
 //////////////////////////////////////////********************************************************/////////////////////////////////////////
+async function aprobarSolicitud(id){
+  console.log(id);
+  await axios({
+    method:'POST',
+    url:'https://api-unahambre.herokuapp.com/api_admin/aceptar_solicitud',
+    data:{
+      "idSolicitud":id
+    },
+    headers: {
+          'access-token': sessionStorage.getItem('token')
+        }
+        }).then(res=>{
+          console.log(res);
+          ImprimirSolicitudes();
+          CantidadLocales();
+          CantidadSolicitudes();
+        }).catch(function(error){
+            console.log(error);
+        });  
+}
+
+async function denegarSolicitud(id){
+  console.log(id);
+  await axios({
+    method:'POST',
+    url:'https://api-unahambre.herokuapp.com/api_admin/rechazar_solicitud',
+    data:{
+      "idSolicitud":id
+    },
+    headers: {
+          'access-token': sessionStorage.getItem('token')
+        }
+        }).then(res=>{
+          ImprimirSolicitudes();
+          CantidadLocales();
+          CantidadSolicitudes();
+        }).catch(function(error){
+            console.log(error);
+        });  
+}
 
 
 
@@ -2348,7 +2564,14 @@ function CantidadSolicitudes(){
         }).then(res=>{
           
           let infoSolicitudes = res.data.items;
-          document.querySelector('#solicitudes').innerHTML = `${infoSolicitudes.length}  Solicitudes`;
+          let cont = 0;
+          for(let i = 0;i < res.data.items.length;i++){
+            if(res.data.items[i].EstadoSolicitud =='En espera'){
+              cont++;
+              document.querySelector('#solicitudes').innerHTML = `${cont}  Solicitudes`;
+            }
+          }
+
         }).catch(function(error){
             console.log(error);
         });   
