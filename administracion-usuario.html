@@ -111,21 +111,20 @@
       
       <!-- Nav Item - Solicitudes -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#solicitud" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" onclick="ImprimirSolicitudes()" href="#">
           <i class="fas fa-envelope-open-text"></i>
           <span>Solicitudes</span>
-          
         </a>
-        <div id="solicitud" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Estado de las Solicitudes:</h6>
-            <a class="collapse-item opcion" onclick="prueba()">Solicitudes en Espera</a>
-            <a class="collapse-item opcion" onclick="">Solicitudes Aprobada</a>
-            <a class="collapse-item opcion" onclick="">Solicitudes Denegadas</a>
-            <a class="collapse-item opcion" onclick="">Mostrar todas...</a>
-        </div>
-      </li> 
+      </li>
 
+      <!-- Nav Item - Solicitudes -->
+      <li class="nav-item">
+        <a class="nav-link" onclick="ImprimirTransacciones()" href="#">
+          <i class="fas fa-cash-register"></i>
+          <span>Transacciones</span>
+        </a>
+      </li>
+      
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
