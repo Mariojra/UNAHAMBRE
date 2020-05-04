@@ -38,47 +38,43 @@
 
     <!--INICIO DEL HEADER-->
     <header class="encabezado">
-        <nav class="navbar">
+        <nav class="navbar navbar-inicial" id="navbar">
             <div class="marca">
                 <div class="contenedor-logo">
                     <div class="logo">
-                        <img class="logo" src="img/logo.png" alt="Logo de la pagina">
-                    </div>
-                    <!--fin logo-->
-                </div>
-                <!--fin contenedor logo-->
+                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
+                    </div><!--fin logo-->
+                </div><!--fin contenedor logo-->
 
                 <div class="text middle">
                     <span>U</span>
-                    <span>N</span>
-                    <span>A</span>
-                    <span>H</span>
-                    <span class="hidden">A</span>
-                    <span class="hidden">M</span>
-                    <span class="hidden">B</span>
-                    <span class="hidden">R</span>
-                    <span class="hidden">E</span>
-                </div>
-                <!--fin animacion nombre-->
+                    <span>n</span>
+                    <span>a</span>
+                    <span>h</span>
+                    <span>a</span>
+                    <span>m</span>
+                    <span>b</span>
+                    <span>r</span>
+                    <span>e</span>
+                </div><!--fin animacion nombre-->
             </div>
 
             <div class="interaccion">
                 <ul>
-                    <li><a class="active" href="index.html">INICIO</a></li>
-                    <li id="ocultar_login"><a href="login.html">INICIAR SESION</a></li>
-                    <li id="ocultar_registro"><a href="registro.html">REGISTRARSE</a></li>
+                    <li><a class="active btn-navbar" href="index.html">Inicio</a></li>
+                    <li><a class="btn-navbar" href="principal.html">Menus</a></li>
+                    <li><a class="btn-navbar" href="#contacto">Contactos</a></li>
+                    <li id="ocultar_login"><a class="btn-navbar" href="login.html">Iniciar Sesion</a></li>
+                    <li id="ocultar_registro"><a class="btn-navbar" href="registro.html">Registrarse</a></li>
                 </ul>
-
+                <label id="icon" class="icon-navbar" style="display: none;">
+                    <i class="fas fa-bars"></i>
+                </label>  
                 <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
                 <div id="mostrar_drop_user">
-                </div>
-
-                <label id="icon">
-                    <i class="fas fa-bars"></i>
-                </label>
+                </div>     
             </div>
         </nav>
-        <div class="separador"></div>
     </header>
     <!--FIN DEL HEADER-->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
