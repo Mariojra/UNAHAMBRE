@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (sessionStorage.getItem('rol') != 0) {
           location.replace('index.html')
         }
-      } else if (pagina_actual == 'administracion-negocio.html') {
+      } else if (pagina_actual == 'administracion-negocio.html' || pagina_actual == 'planes-publicidad.html') {
         if (sessionStorage.getItem('rol') != 1) {
           location.replace('index.html')
         }
@@ -147,5 +147,8 @@ function cerrar_sesion() {
   sessionStorage.removeItem('rol')
   sessionStorage.removeItem('userName')
   sessionStorage.removeItem('userProfile')
+  if(sessionStorage.getItem('idRestaurante') != undefined) {
+    sessionStorage.removeItem('idRestaurante')
+  }
   window.location.assign('login.html')
 }
