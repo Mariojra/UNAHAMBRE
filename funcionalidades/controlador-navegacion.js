@@ -4,20 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
   pagina_actual = pagina_actual_split[pagina_actual_split.length - 1]
   if (sessionStorage.getItem('token') == undefined || sessionStorage.getItem('userID') == undefined) {
     // si el usuario no está logueado
-    
+    document.getElementById('icon').style.display = 'block';
     if (pagina_actual == 'login.html' || pagina_actual == 'principal.html' || pagina_actual == 'recuperar.html' || pagina_actual === 'registro.html' || pagina_actual === 'index.html') {
     } else {
       // para las demas páginas que requieren que el usuario esté logueado   
       window.location.replace('login.html')
     }
   } else {
-    // SI EL USUARIO YA ESTÁ LOGUEADO 
+    // SI EL USUARIO YA ESTÁ LOGUEADO
     if (pagina_actual == 'login.html' || pagina_actual == 'recuperar.html' || pagina_actual == 'registro.html') {
       location.replace('principal.html')
       // el usuario ya está logueado
     } else if (pagina_actual == 'principal.html' || pagina_actual == 'index.html') {
       // no hace nada xD
       Verificar_storage_token()
+      
     } else {
       // si ya está logueado
       // comprobar que el rol en el storage es el mismo que tiene el token

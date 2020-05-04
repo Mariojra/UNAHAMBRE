@@ -1,6 +1,6 @@
 .preloader_centrado {
   height: 100vh;  
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.226);
   display: flex;
   justify-content: center;
   align-items: center;

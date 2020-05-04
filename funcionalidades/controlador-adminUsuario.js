@@ -259,7 +259,7 @@ const cargarFiltroUsuario = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -832,7 +832,7 @@ const cargarFiltroLocal= (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -893,7 +893,7 @@ const cargarFiltroGestionLocales =(data)=>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1311,7 +1311,7 @@ const cargarFiltroMenu = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1367,7 +1367,7 @@ const cargarFiltroGestionMenu =(data)=>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1896,7 +1896,7 @@ const cargarFiltroPlatillo = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1952,7 +1952,7 @@ const cargarFiltroGestionPlatillo =(data)=>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -2417,7 +2417,7 @@ const cargarFiltroSolicitudes = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
