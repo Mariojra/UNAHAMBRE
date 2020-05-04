@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funcionalidades/controlador-navegacion.js"></script>
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/log_user.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/custom-swal.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/planes-publicidad.css">
+    <link rel="stylesheet" href="css/log_user.css">
+    <!-- <link rel="stylesheet" href="css/menu.css"> -->
+    <title>Planes Publicidad</title>
+    <script src="https://kit.fontawesome.com/3268fdf5ed.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+</head>
+
+<body class="hide_scroll">
+
+    <div class="preloader_centrado" id="cargado">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <!--INICIO DEL HEADER-->
+    <header class="encabezado">
+        <nav class="navbar">
+            <div class="marca">
+                <div class="contenedor-logo">
+                    <div class="logo">
+                        <img class="logo" src="img/logo.png" alt="Logo de la pagina">
+                    </div>
+                    <!--fin logo-->
+                </div>
+                <!--fin contenedor logo-->
+
+                <div class="text middle">
+                    <span>U</span>
+                    <span>N</span>
+                    <span>A</span>
+                    <span>H</span>
+                    <span class="hidden">A</span>
+                    <span class="hidden">M</span>
+                    <span class="hidden">B</span>
+                    <span class="hidden">R</span>
+                    <span class="hidden">E</span>
+                </div>
+                <!--fin animacion nombre-->
+            </div>
+
+            <div class="interaccion">
+                <ul>
+                    <li><a class="active" href="index.html">INICIO</a></li>
+                    <li id="ocultar_login"><a href="login.html">INICIAR SESION</a></li>
+                    <li id="ocultar_registro"><a href="registro.html">REGISTRARSE</a></li>
+                </ul>
+
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user">
+                </div>
+
+                <label id="icon">
+                    <i class="fas fa-bars"></i>
+                </label>
+            </div>
+        </nav>
+        <div class="separador"></div>
+    </header>
+    <!--FIN DEL HEADER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="row contenedor-tarjetas">
+
+        <div class="col-sm-3 contenedor-tarjeta">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-titulo">
+                        Básico
+                    </h3>
+                    <div class="precio">
+                        <p>Lps. 300.00 </p>
+                        <span>plan mensual</span>
+
+                    </div>
+                    <hr>
+                    <div class="lista">
+                        <p class="card-text">
+                            Banner personalizable
+                        </p>
+                        <p class="card-text">
+                            Asesoria por email
+                        </p>
+                        <p class="card-text">
+                            No modificación del banner
+                        </p>
+
+                    </div>
+                    <div class="contenedor-boton">
+                        <a href="#" class="btn btn-success" onclick="mostrar_modal('contratar_plan_basico()')">Obtener plan</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3 contenedor-tarjeta">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-titulo">
+                        Intermedio
+                    </h3>
+                    <div class="precio">
+                        <p>Lps. 400.00 </p>
+                        <span>plan mensual</span>
+
+                    </div>
+                    <hr>
+                    <div class="lista">
+                        <p class="card-text">
+                            Banner personalizable
+                        </p>
+                        <p class="card-text">
+                            Publicidad por popups
+                        </p>
+                        <p class="card-text">
+                            Modificación semanal del banner
+                        </p>
+                        <p class="card-text">
+                            Asesoria por email
+                        </p>
+
+                    </div>
+                    <div class="contenedor-boton">
+                        <a href="#" class="btn btn-success" onclick="mostrar_modal('contratar_plan_intermedio()')">Obtener plan</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 contenedor-tarjeta">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-titulo">
+                        Premiun
+                    </h3>
+                    <div class="precio">
+                        <p>Lps. 600.00 </p>
+                        <span>plan mensual</span>
+
+                    </div>
+                    <hr>
+                    <div class="lista">
+                        <p class="card-text">
+                            Banner personalizable
+                        </p>
+                        <p class="card-text">
+                            Publicidad por email
+                        </p>
+                        <p class="card-text">
+                            Asesoria por email
+                        </p>
+                        <p class="card-text">
+                            Modificación diaria del banner
+                        </p>
+                        <p class="card-text">
+                            Asesoria por email
+                        </p>
+
+                    </div>
+                    <div class="contenedor-boton">
+                        <a href="#" class="btn btn-success" onclick="mostrar_modal('contratar_plan_premiun()')">Obtener plan</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal success -->
+    <div class="container">
+        <div class="modal fade" id="modal1">
+            <!-- modal-mg, modal-xs modal-sm-->
+            <div class="modal-dialog modal-xs modal-dialog-centered">
+                <div class="modal-content" style="border-radius: 14px;">
+                    <div class="modal-body text-center">
+                        <h1>Contratar plan de publicidad!</h1>
+                        <hr>
+                        <p>Al contrartar este plan se le enviaran instrucciones, al correo con el que se registró,
+                            en el cual se le brindarán las instrucciones para que su publicidad ya pueda ser visualizada
+                            en la
+                            plataforma. Gracias.
+                        </p>
+                        <hr>
+                        <p>Continuar para contratar plan.</p>
+                    </div>
+                    <div id="botones-modal" class="modal-footer font-weight-normal">
+                        <!-- <button class="btn btn-secondary tex-center " data-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button class="btn btn-primary tex-center ">
+                            Continuar
+                        </button> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <button class="btn btn-primary" type="button" data-toggle='modal' data-target='#modal1'>Mostrar modal</button> -->
+    </div>
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- INICIO DEL FOOTER-->
+
+    <footer class="footer" id="contacto">
+        <div class="contactos">
+            <div class="contacto">
+                <p class="nosotros">Contacto</p>
+                <p class="nosotros">(504)99713638</p>
+                <p class="nosotros">lesman@unah.hn</p>
+            </div>
+            <div class="soporte">
+                <p class="nosotros">Soporte</p>
+                <p class="nosotros">Ayuda y Soporte</p>
+                <p class="nosotros">Recursos</p>
+                <p class="nosotros">Blog</p>
+            </div>
+            <div class="empresa">
+                <p class="nosotros">Empresa</p>
+                <p class="nosotros">Sobre Nosotros</p>
+                <p class="nosotros">Terminos</p>
+            </div>
+        </div>
+        <div class="red-social canal">
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/facebook-f-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/google-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/twitter-brands.svg" alt="">
+            </a>
+            <a class="btn-social" href="#">
+                <img class="icono" src="img/whatsapp-brands.svg" alt="">
+            </a>
+        </div>
+    </footer>
+    <!-- FIN DEL FOOTER-->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <script>
+
+        /**EVENTO DE MENU RESPONSIVE */
+        $(document).ready(function () {
+            $('#icon').click(function () {
+                $('ul').toggleClass('show');
+            });
+        });
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://js.stripe.com/v3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="/funcionalidades//controlador-planes-publicidad.js"></script>
+
+</body>
+
+</html>
