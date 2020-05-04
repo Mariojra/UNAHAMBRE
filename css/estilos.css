@@ -542,6 +542,10 @@ nav #icon {
         font-size: 3rem;
     }
 
+    .dropdown{
+        margin-bottom: 0rem;
+    }
+
     .lema{
         width: 80%;
         font-size: 1.7rem;

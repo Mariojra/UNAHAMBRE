@@ -54,3 +54,9 @@
     height: 100%;
     
 }
+
+.dropbtn{
+    color: black;
+    font-size: 1rem;
+    border: 0.1rem solid black;
+}

@@ -34,7 +34,7 @@
 .contenedor-categorias{
   width: 100%;
   height: auto;
-  
+  margin-top: 4rem;
 }
 
 .categorias{
@@ -77,9 +77,9 @@
 
 .opciones-informacion{
   width: 80%;
-  min-height: 85rem;
-  max-height: 85rem;
-  overflow: auto;
+  min-height: 40rem;
+  height: auto;
+  /* overflow: auto; */
   display: flex;
   justify-content: start;
   align-items: start;
@@ -131,7 +131,17 @@
 
 .btn-seleccionar{
   width: 100%;
-  /* margin-top: 2rem; */
+  background-color: #eb984e;
+  border: 0.1rem solid  #eb984e;
+}
+
+.btn-seleccionar:hover{
+  background-color: #f5cba7;
+  border: 0.1rem solid  #eb984e;
+}
+
+.btn-comprar{
+  width: 100%;
 }
 
 .display-none{
@@ -278,3 +288,15 @@
 /* FIN estilos navegacion compra */
 
 
+.tipo-menu{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+@media (max-width:576px){
+  .busqueda div h1{
+    font-size: 3rem;
+  }
+}

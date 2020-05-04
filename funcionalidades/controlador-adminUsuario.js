@@ -2568,9 +2568,10 @@ function CantidadSolicitudes(){
           for(let i = 0;i < res.data.items.length;i++){
             if(res.data.items[i].EstadoSolicitud =='En espera'){
               cont++;
-              document.querySelector('#solicitudes').innerHTML = `${cont}  Solicitudes`;
+              
             }
           }
+          document.querySelector('#solicitudes').innerHTML = `${cont}  Solicitudes`;
 
         }).catch(function(error){
             console.log(error);
