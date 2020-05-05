@@ -101,12 +101,11 @@ input{
     max-width: 10rem;
 } 
 
-.contenedor-logo,
+/* .contenedor-logo,
 .contenedor-sesion,
 .contenedor-menu{
-    /*border: 1px solid black;*/
     width: 150px;
-}
+} */
 
 .text,.medio{
     width: rem;
@@ -135,7 +134,6 @@ nav li {
 nav a {
     color: #ffffff;
     font-size: 1.8rem;
-    text-transform: uppercase;
     border: 0.1rem solid transparent;
     padding: 0.7rem 1rem;
     border-radius: 0.3rem;
@@ -167,7 +165,7 @@ nav #icon {
 /* estilos contenedor */
 .contenedor-registro{
     width: 100%;
-    padding-bottom: 3rem ;
+    padding-bottom: 4rem !important;
     background: url(../img/registro.jpg), no-repeat;
     background-position: center center;
     background-size: cover;
@@ -221,7 +219,7 @@ nav #icon {
 
 .banner-registro{
     width: 100%;
-    background:  #d5dbdb;
+    background:  #f0b17a98;
 }
 
 div .p-descubri{
@@ -585,4 +583,12 @@ div .p-descubri{
 
 .is-invalidP ~ .invalid-feedbackP{
     display: block;
+}
+
+.terminos{
+    display: flex;
+}
+
+.terminos input{
+    margin-right: 1rem;
 }

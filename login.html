@@ -63,14 +63,15 @@
                     <li><a class="active btn-navbar" href="index.html">Inicio</a></li>
                     <li id="ocultar_registro"><a class="btn-navbar" href="registro.html">Registrarse</a></li>
                 </ul>
-
+                <label id="icon" class="icon-navbar" >
+                    <i class="fas fa-bars"></i>
+                </label>  
                 <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
                 <div id="mostrar_drop_user">
                 </div>     
             </div>
         </nav>
     </header>
-
     <!--FIN DEL HEADER-->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- INICIO DEL MAIN -->
@@ -116,6 +117,15 @@
             </div>
         </form>
     </main>
+    <script>
+        $(window).scroll(() => {
+            if ($("#navbar").offset().top > 150) {
+                $("#navbar").addClass("navbar-scroll")
+            } else {
+                $("#navbar").removeClass("navbar-scroll")
+            }
+        })
+    </script>
     <script src="js/jquery.min.js"></script>
     <!-- <script src="js/popper.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>

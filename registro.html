@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/registro.css">
     <link rel="stylesheet" href="css/custom-swal.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <title>Registro - Unahambre</title>
     <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
     <script src="js/jquery-3.4.1.js">
@@ -39,7 +40,7 @@
     </div>
     <!--INICIO DEL HEADER-->
     <header class="encabezado">
-        <nav class="navbar-registro">
+        <nav class="navbar navbar-inicial" id="navbar">
             <div class="marca">
                 <div class="contenedor-logo">
                     <div class="logo">
@@ -49,28 +50,31 @@
 
                 <div class="text middle">
                     <span>U</span>
-                    <span>N</span>
-                    <span>A</span>
-                    <span>H</span>
-                    <span class="hidden">A</span>
-                    <span class="hidden">M</span>
-                    <span class="hidden">B</span>
-                    <span class="hidden">R</span>
-                    <span class="hidden">E</span>
+                    <span>n</span>
+                    <span>a</span>
+                    <span>h</span>
+                    <span>a</span>
+                    <span>m</span>
+                    <span>b</span>
+                    <span>r</span>
+                    <span>e</span>
                 </div><!--fin animacion nombre-->
             </div>
 
             <div class="interaccion">
                 <ul>
-                    <li><a href="index.html">INICIO</a></li>
-                    <li><a href="principal.html">MENU</a></li>
-                    <li><a href="#unete">ACERCA DE</a></li>
-                    <li><a href="#contacto">CONTACTOS</a></li>
-                    <li><a href="login.html">INICIAR SESION</a></li>
+                    <li><a class="btn-navbar" href="index.html">Inicio</a></li>
+                    <li><a class="btn-navbar" href="principal.html">Menus</a></li>
+                    <li><a class="btn-navbar" href="#contacto">Contactos</a></li>
+                    <li id="ocultar_login"><a class="btn-navbar" href="login.html">Iniciar Sesion</a></li>
+                    <li id="ocultar_registro"><a class="active btn-navbar" href="registro.html">Registrarse</a></li>
                 </ul>
-                <label id="icon">
+                <label id="icon" class="icon-navbar" >
                     <i class="fas fa-bars"></i>
-                </label>       
+                </label>  
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user">
+                </div>     
             </div>
         </nav>
     </header>
@@ -123,11 +127,13 @@
                             </div>
                             <input type="text" placeholder="Identidad o No. cuenta" class="form-control" id="txt-idcuenta">
                             <input type="text" placeholder="Numero telefónico" class="form-control" id="txt-numTel">
-                            <input type="checkbox" id="cbox">
-                            <label for="cbox">Acepto <a href="#">terminos</a> y <a href="#">condiciones</a> del servicio.</label><br>
+                            <div class="terminos">
+                                <input type="checkbox" id="cbox">
+                                <label for="cbox">Acepto <a target="_blank" href="img/TYCUNAHAMBRE.pdf">terminos y condiciones</a> del servicio.</label><br>
+                            </div>
                             <div class="div-btn"><input type="button" value="REGISTRAR" class="btn-registro" id="btn-registro"></div>
                             <!-- <button class="btn-registro">REGISTARSE</button> -->
-                            <p>¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+                            <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
                         </div>    
                     </form>
                 </div>
@@ -146,80 +152,51 @@
     <!----------------------------------------------------------------------------------->
     <!-- INICIO DEL FOOTER-->
 
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="contactos col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <div class="contacto">
-                        <p class="nosotros">Contacto</p>
-                        <p class="nosotros">(504)99713638</p>
-                        <p class="nosotros">lesmanface@unah.hn</p>
-                    </div>
-                    <div class="soporte">
-                        <p class="nosotros">Soporte</p>
-                        <p class="nosotros">Ayuda y Soporte</p>
-                        <p class="nosotros">Recursos</p>
-                        <p class="nosotros">Blog</p>
-                    </div>
-                    <div class="empresa">
-                        <p class="nosotros">Empresa</p>
-                        <p class="nosotros">Sobre Nosotros</p>
-                        <p class="nosotros">Terminos</p>
-                    </div>
+    <footer class=" container-fluid">
+        <div class="row footer">
+            <div class="contactos col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="contacto">
+                    <p class="nosotros">Contacto</p>
+                    <p class="nosotros">(504)99713638</p>
+                    <p class="nosotros">lesman@unah.hn</p>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <ul class="barra-contactos">
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-google"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="soporte">
+                    <p class="nosotros">Soporte</p>
+                    <p class="nosotros">Ayuda y Soporte</p>
+                    <p class="nosotros">Recursos</p>
+                    <p class="nosotros">Blog</p>
+                </div>
+                <div class="empresa">
+                    <p class="nosotros">Empresa</p>
+                    <p class="nosotros">Sobre Nosotros</p>
+                    <p class="nosotros">Terminos</p>
                 </div>
             </div>
+            <div class="red-social canal col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/facebook-f-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/google-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/twitter-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/whatsapp-brands.svg" alt="">
+                </a>
+            </div>
         </div>
-        
     </footer>
+    <script>
+        $(window).scroll(() => {
+            if ($("#navbar").offset().top > 150) {
+                $("#navbar").addClass("navbar-scroll")
+            } else {
+                $("#navbar").removeClass("navbar-scroll")
+            }
+        })
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
