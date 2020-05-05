@@ -190,7 +190,7 @@ function ImprimirPlatillos(){
                     <p class="card-text ">Precio | ${data_platillos[i].Precio}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}')">Agregar al carro</button>
+                    <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}', '${data_platillos[i].Foto_Platillo}')">Agregar al carro</button>
                 </div>
                 </div>
             </div>
@@ -281,7 +281,7 @@ function seleccionMenu(e) {
                             <p class="card-text ">Precio | ${data_platillos[i].Precio}</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}')">Agregar al carro</button>
+                            <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}','${data_platillos[i].Foto_Platillo}')">Agregar al carro</button>
                         </div>
                         </div>
                     </div>
@@ -306,7 +306,7 @@ function seleccionMenu(e) {
                     <p class="card-text ">Precio | ${data_platillos.Precio}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}')">Agregar al carro</button>
+                    <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}', '${data_platillos[i].Foto_Platillo}')">Agregar al carro</button>
                 </div>
                 </div>
             </div>
@@ -319,7 +319,7 @@ function seleccionMenu(e) {
 }
 
 
-function anadirCarro(idPlatillo,nombre,precio){
+function anadirCarro(idPlatillo,nombre,precio, foto){
     let cartRow = document.createElement('div');
     cartRow.classList.add('cart-row');
     cartRow.setAttribute("data-id",idPlatillo);
@@ -338,7 +338,7 @@ function anadirCarro(idPlatillo,nombre,precio){
     }
     let cartContent = `
         <div class="cart-item cart-column">
-          <img class="cart-item-image" src="img/burger2.jpg" width="100px" height="100px">
+          <img class="cart-item-image" src='${foto}' width="100px" height="100px">
           <span class="cart-item-title">${nombre}</span>
         </div>
         <span class="cart-price cart-column">Lps.${precio}</span>
