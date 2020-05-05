@@ -337,14 +337,14 @@ function anadirCarro(idPlatillo,nombre,precio, foto){
         }
     }
     let cartContent = `
-        <div class="cart-item cart-column">
+        <div class="cart-item cart-column foto-nombre-carrito">
           <img class="cart-item-image" src='${foto}' width="100px" height="100px">
           <span class="cart-item-title">${nombre}</span>
         </div>
         <span class="cart-price cart-column">Lps.${precio}</span>
         <div class="cart-quantity cart-column cart-quantity-c">
           <input class="cart-quantity-input" type="number" value="1" min="1" onchange="cambioCantidad(event);">
-          <button class="btn btn-danger" type="button" onclick="eliminarProducto(event)">QUITAR</button>
+          <button class="btn btn-danger btn-cancelar" type="button" onclick="eliminarProducto(event)">X</button>
         </div>
     `;
     cartRow.innerHTML=cartContent;
