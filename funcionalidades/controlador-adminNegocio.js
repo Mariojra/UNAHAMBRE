@@ -15,7 +15,6 @@ const alert_default = Swal.mixin({
 });
  
 
-
 (function($) {
   "use strict"; // Start of use strict
 
@@ -58,40 +57,14 @@ const alert_default = Swal.mixin({
 
 
 window.onload = obtenerRestaurantes();
-window.onload = modalSeleccionRestaurante
 window.onload = cargarMenus();
+window.onload = obtenerTiposPlatillos();
 moment.locale('es')
 var cabecera = document.getElementById('table-cabeceras');
 var filas = document.getElementById('table-filas');
 var timerPedidos;
 
 
-
-
-
-function modalSeleccionRestaurante(){
-  let restaurantes;
-  axios({
-    method:'POST',
-    url:'https://api-unahambre.herokuapp.com/api_propietario/restauranteUsuario',
-    headers: { 'access-token': sessionStorage.getItem('token')},
-    data: {
-      idUsuario:sessionStorage.getItem('userID')
-    }
-}).then(res=>{
-  document.getElementById('restaurantes').innerHTML = ''
-  $('#myModal').modal('show');
-  for (let i = 0; i < res.data.items.length; i++) {
-      document.getElementById('restaurantes').innerHTML += `<div id="restaurante${res.data.items[i].idRestaurante}" class="card"  
-       onclick="setRestaurante(${res.data.items[i].idRestaurante})">${res.data.items[i].Nombre_Local}</div>`
-    
-  }
-  
-}).catch(function(error){
-    console.log(error);
-});  
-
-}
 
 function setRestaurante(id){
   sessionStorage.setItem('idRestaurante', id)
@@ -103,13 +76,20 @@ function setRestaurante(id){
 
 //registro-negocio.html
 
-
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
 
 function obtenerRestaurantes(){
   clearInterval(timerPedidos)
   document.getElementById('tablero').innerHTML = 'Mis Restaurantes'
   document.getElementById('btnAgregar').setAttribute( "onClick", "redirigirRestaurante()");
   document.getElementById('btnAgregar').text = '¡Registrar otro restaurante!'
+ 
   axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_propietario/restauranteUsuario',
@@ -118,17 +98,25 @@ function obtenerRestaurantes(){
       idUsuario:sessionStorage.getItem('userID')
     }
 }).then(res=>{
+
   cargarCabeceraRestaurantes();
   cargarFilasRestaurantes(res.data.items);
   restaurantes = res.data.items;
   document.getElementById('nombreRestaurante').text = res.data.items[0].Nombre_Local
 }).catch(function(error){
-    console.log(error);
+   
 });  
 }
 
 function redirigirRestaurante(){
   window.location.assign('registro-negocio.html')
+}
+
+function redirigirPublicidad(){
+  if(comprobarSeleccionado(sessionStorage.getItem('idRestaurante'))){
+    return;
+  } 
+window.location.assign('planes-publicidad.html')
 }
 
 const cargarCabeceraRestaurantes = () => {
@@ -145,6 +133,7 @@ const cargarCabeceraRestaurantes = () => {
 }
 function cerrarSesion(){
   sessionStorage.removeItem('token');
+  sessionStorage.removeItem('idRestaurante');
 }
 const cargarFilasRestaurantes = (items) => {
   filas.innerHTML = '';
@@ -157,7 +146,7 @@ const cargarFilasRestaurantes = (items) => {
     <td>${items[i].Ubicacion}</td>
     <td>${items[i].EstadoRestaurante}</td>
     <td align='center'>
-    <a href="#" class=" btn btn-sm btn-primary shadow-sm" onclick="setRestaurante(document.getElementById('row${items[i].idRestaurante}').abbr)"><i class="fas fa-check fa-sm text-white-50"></i> Seleccionar Restaurante </a>
+    <button type="button" class="btn btn-sm btn-primary shadow-sm" ${items[i].EstadoRestaurante === 'Activo'?'':'disabled'} onclick="setRestaurante(document.getElementById('row${items[i].idRestaurante}').abbr)"> ${items[i].EstadoRestaurante === 'Activo'?'<i class="fas fa-check fa-sm text-white-50"></i> Seleccionar Restaurante':'<i class="fas fa-ban fa-sm text-white-50"></i> Este restaurante está inactivo'} </button>
     <a href="#" class=" btn btn-sm btn-primary shadow-sm" onclick="eliminarRestaurante(document.getElementById('row${items[i].idRestaurante}').abbr)"><i class="fas fa-trash-alt fa-sm text-white-50"></i> Retirar restaurante </a>
     </td>
     </tr>`  
@@ -177,7 +166,7 @@ function obtenerTiposPlatillos(){
       tipoPlatillo = res.data.items
      
     }).catch(function(error){
-        console.log(error);
+        
     });  
 
     
@@ -198,13 +187,26 @@ function cargarMenus(){
       cargarFilasMenu(res.data.items);
       
     }).catch(function(error){
-        console.log(error);
+      
     }); 
 }
+
+
 var timerPedido;
 function timerPedidoFunc(){
   timerPedido = setInterval(()=>(obtenerPedidos()), 30000);
   
+}
+
+const comprobarSeleccionado = (idRestaurante) =>{
+   if(!idRestaurante){
+    obtenerRestaurantes();
+    alert_default.fire({
+      icon:'error',
+      title:'Debe seleccionar un restaurante'
+    });
+    return true;
+   }
 }
 
 function timerClear(){
@@ -212,6 +214,10 @@ function timerClear(){
 }
 
 function obtenerPedidos(){
+  if(comprobarSeleccionado(sessionStorage.getItem('idRestaurante'))){
+    return;
+  } 
+  clearInterval(timerPedidos)
   document.getElementById('tablero').innerHTML = 'Pedidos Activos'
   document.getElementById('btnAgregar').setAttribute( "onClick", "obtenerPedidos()");
   document.getElementById('btnAgregar').text = '¡Actualizar Pedidos Ahora!'
@@ -227,13 +233,40 @@ function obtenerPedidos(){
     cargarCabeceraPedidos()
     cargarFilasPedidos(res.data.items)
   }).catch(function(error){
-    console.log(error)
+   
   })
 }
 
+function obtenerHistorialGeneral(){
+
+  if(comprobarSeleccionado(sessionStorage.getItem('idRestaurante'))){
+    return;
+  } 
+  clearInterval(timerPedidos)
+  document.getElementById('tablero').innerHTML = 'Historial de Pedidos'
+  document.getElementById('btnAgregar').setAttribute( "onClick", "obtenerHistorialGeneral()");
+  document.getElementById('btnAgregar').text = '¡Actualizar Historial Ahora!'
+  
+  axios({
+    method: 'POST',
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/historialGeneralRestaurante',
+    headers: { 'access-token': sessionStorage.getItem('token')},
+    data: {
+      idRestaurante : sessionStorage.getItem('idRestaurante')
+    }
+  }).then(res=>{
+    cargarCabeceraHistorialGeneral()
+    cargarFilasHistorialGeneral(res.data.items)
+  }).catch(function(error){
+   
+  })
+}
 
 obtenerTiposPlatillos()
 function obtenerMenus(){
+  if(comprobarSeleccionado(sessionStorage.getItem('idRestaurante'))){
+    return;
+  } 
   clearInterval(timerPedidos)
   document.getElementById('tablero').innerHTML = 'Lista de Menus'
   document.getElementById('btnAgregar').setAttribute( "onClick", "mostrarModalAgregarMenu()");
@@ -253,7 +286,7 @@ data: {
   cargarFilasMenu(res.data.items);
   
 }).catch(function(error){
-    console.log(error);
+   
 });  
 
 }
@@ -282,7 +315,67 @@ const cargarFilasMenu = (items) => {
     </tr>`  
   }
 }
+const cargarCabeceraHistorialGeneral = () => {
+  cabecera.innerHTML = '';
+  cabecera.innerHTML = `<th scope="col">ID de Pedido</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Metodo de Pago</th>                          
+                        `
+}
+const cargarFilasHistorialGeneral = (items) => {
+  filas.innerHTML = '';
+  for (let i = 0; i < items.length; i++) {
+    filas.innerHTML += `<tr>
+    <th  scope="row" id="${items[i].Pedido_idPedido}" onClick="desplegarPedido(${items[i].Pedido_idPedido})"> <b>${items[i].Pedido_idPedido}<b></th>
+    <td id="${items[i].Pedido_idPedido}"  onClick="desplegarPedido(${items[i].Pedido_idPedido})" >${items[i].Fecha_Transaccion}</td>
+    <td id="${items[i].Pedido_idPedido}" onClick="desplegarPedido(${items[i].Pedido_idPedido})" >${items[i].Monto}</td>
+    <td id="${items[i].Pedido_idPedido}" onClick="desplegarPedido(${items[i].Pedido_idPedido})" >${items[i].Metodo_Pago_idMetodo_Pago == '1' ? 'Efectivo': 'Tarjeta'}</td>
+    </tr>`  
+  }
+}
 
+
+const desplegarPedido = (pedido) =>{
+  $('#modalPedido').modal('show');
+  var cabeceraPedido = document.getElementById('table-pedido-cabeceras');
+  var filasPedido = document.getElementById('table-pedido-filas');
+  clearInterval(timerPedidos)
+  axios({
+    method: 'POST',
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/obtenerPedidoDetalle',
+    headers: { 'access-token': sessionStorage.getItem('token')},
+    data: {
+      idRestaurante : sessionStorage.getItem('idRestaurante'),
+      idCompra: pedido
+    }
+  }).then(res=>{
+    let items = res.data.items
+  
+    cabeceraPedido.innerHTML = ''
+    cabeceraPedido.innerHTML = `<th scope="col">ID de Pedido</th>
+                              <th scope="col">Platillo</th>
+                              <th scope="col">Ubicacion de Entrega</th>                                
+                              <th scope="col">Precio</th>                         
+                              `
+    filasPedido.innerHTML = ''
+    for (let i = 0; i < items.length; i++) {
+      filasPedido.innerHTML += `<tr id="row">
+                                <th  scope="row" > <b>${items[i].idCompra}<b></th>
+                                <td >${items[i].Nombre}</td>
+                                <td >${items[i].Ubicacion}</td>                            
+                                <td >${items[i].Precio}</td>
+                                </tr>` 
+                                  
+    }
+  }).catch(function(error){
+    
+  })
+
+ 
+
+  
+}
 const cargarCabeceraPedidos = () => {
   cabecera.innerHTML = '';
   cabecera.innerHTML = `<th scope="col">ID de Pedido</th>
@@ -367,7 +460,7 @@ const getHoraLocal= (Hora)=>{
   }
   ).catch(function(error){
     celdaEstado.abbr = antiguoEstado
-    console.log(error)
+    
   })
 
   if(!verificarPedido(idCompra)){
@@ -430,11 +523,14 @@ function moverPedidosAHistorial(idCompra){
       title:'¡Pedidos pasados al historial!'
     });
   }).catch(function(error){
-    console.log(error)
+ 
   })
 }
 
 function obtenerPlatillos(){
+  if(comprobarSeleccionado(sessionStorage.getItem('idRestaurante'))){
+    return;
+  } 
   clearInterval(timerPedidos)
   obtenerTiposPlatillos()
   document.getElementById('tablero').innerHTML = 'Lista de Platillos'
@@ -451,7 +547,7 @@ function obtenerPlatillos(){
     cargarCabeceraPlatillos();
     cargarFilasPlatillos(res.data.items);
   }).catch(function(error){
-    console.log(error)
+  
   });
 }
 
@@ -586,7 +682,14 @@ function mostrarModalMenu(id){
 async function editarMenu(idMenu){
  
   let newNombreMenu = document.getElementById('nombreMenu').value;
-  
+  if(!newNombreMenu){
+    alert_default.fire({
+      icon:'error',
+      title:'Un nuevo nombre de Menu es obligatorio'
+    });
+    $('#editarMenu').modal('hide')
+    return;
+  }
 
     await axios({
       method: 'POST',
@@ -595,19 +698,27 @@ async function editarMenu(idMenu){
       data : {
         idMenu: idMenu,
         nombre: newNombreMenu,
-        foto : 'localhost' 
+        foto : 'localhost' ,
+        idCategoria: 0
       }
       
     }
    
     ).then(res=>{
-      
+      if(res.data.error[1][0].mensaje){
+        alert_default.fire({
+          icon:'error',
+          title: res.data.error[1][0].mensaje
+        });
+      }
+     else {
       alert_default.fire({
         icon:'success',
         title:'Accion realizada con exito'
       });
+     }
     }).catch(function(error){
-      console.log(error)
+      
       alert_default.fire({
         icon:'error',
         title:'No se pudo completar la accion'
@@ -617,27 +728,60 @@ async function editarMenu(idMenu){
   obtenerMenus()
 }
 
-const eliminarMenu = (idMenu) => {
 
-  axios({
-    method: 'POST',
-    url: 'https://api-unahambre.herokuapp.com/api_propietario/eliminar-menu',
-    headers: { 'access-token': sessionStorage.getItem('token')},
-    data: {
-      idMenu: idMenu
+
+const eliminarMenu = (idMenu) => {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: '¿Desea eliminar el Menú?',
+    text: "Esto eliminará también los platillos de este menú ",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si',
+    cancelButtonText: 'No',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.value) {
+      swalWithBootstrapButtons.fire(
+        'Menu eliminado',
+        'Si desea recuperarlo contáctenos vía correo',
+        'success',
+        axios({
+          method: 'POST',
+          url: 'https://api-unahambre.herokuapp.com/api_propietario/eliminar-menu',
+          headers: { 'access-token': sessionStorage.getItem('token')},
+          data: {
+            idMenu: idMenu
+          }
+        }).then(res=>{
+         
+          obtenerMenus()
+        }).catch(function(error){
+          
+          alert_default.fire({
+            icon:'error',
+            title:'No se pudo completar la accion'
+          });
+        })
+
+      )
+    } else if (
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        '¡Cancelado!',
+        'Se ha cancelado la acción',
+        'error'   
+
+      )
     }
-  }).then(res=>{
-    obtenerMenus()
-    alert_default.fire({
-      icon:'success',
-      title:'Accion realizada con exito'
-    });
-  }).catch(function(error){
-    console.log(error)
-    alert_default.fire({
-      icon:'error',
-      title:'No se pudo completar la accion'
-    });
   })
    /**TOAST AQUÍ */
   obtenerMenus()
@@ -658,7 +802,7 @@ const eliminarRestaurante = (idRestaurante) => {
       title:'Accion realizada con exito'
     });
   }).catch(function(error){
-    console.log(error)
+   
     alert_default.fire({
       icon:'error',
       title:'No se pudo completar la accion'
@@ -669,7 +813,6 @@ const eliminarRestaurante = (idRestaurante) => {
 }
 
 const eliminarPlatillo = (idPlatillo) => {
-
   axios({
     method: 'POST',
     url: 'https://api-unahambre.herokuapp.com/api_propietario/g-eliminar-platillo',
@@ -685,7 +828,6 @@ const eliminarPlatillo = (idPlatillo) => {
     })
     obtenerPlatillos();;
   }).catch(function(error){
-    console.log(error)
     alert_default.fire({
       icon:'error',
       title:'No se pudo completar la accion'
@@ -700,6 +842,14 @@ const mostrarModalAgregarMenu = () => {
 
 const agregarMenu = async () => {
   let nombreMenu = document.getElementById('nombreMenuAgregar').value;
+  if(!nombreMenu){
+    alert_default.fire({
+      icon:'error',
+      title:'Un nombre de Menu es obligatorio'
+    });
+    $('#agregarMenu').modal('hide')
+    return
+  }
  await axios({
     method: 'POST',
     url: 'https://api-unahambre.herokuapp.com/api_propietario/insertar-menu',
@@ -709,16 +859,26 @@ const agregarMenu = async () => {
       idRestaurante: sessionStorage.getItem('idRestaurante'),
       fotoMenu: 'localhost/img',
       idCategoria: 0
-
     }
   }).then(res=>{
+  
+    if(res.data.error[1][0].mensaje){
+      alert_default.fire({
+        icon:'error',
+        title: res.data.error[1][0].mensaje
+      });
+    }
+   else {
     alert_default.fire({
       icon:'success',
       title:'Accion realizada con exito'
     });
+   }
+    
+    $('#agregarMenu').modal('hide')
   }
   ).catch(err=>{
-    console.log(err)
+console.log(err)
     alert_default.fire({
       icon:'error',
       title:'No se pudo completar la accion'
@@ -735,13 +895,40 @@ const mostrarModalAgregarPlatillo = () => {
   cargarListaMenusPlatillosAgregar(tipoPlatillo)
 }
 
+const validarCampo = (campo, nombre) => {
+  
+if(!campo ){
+  alert_default.fire({
+    icon:'error',
+    title:'El campo '+nombre+' es obligatorio'
+  });
+  return false;
+}
+return true;
+}
+
 const agregarPlatillo = async () => {
  
   let nombrePlatillo = document.getElementById('nombrePlatilloAgregar').value;
+  if(!validarCampo(nombrePlatillo, 'nombre')){
+    $('#agregarPlatillo').modal('hide')
+    return
+  }
   let descripcionPlatillo = document.getElementById('descripcionPlatilloAgregar').value;
+  if(!validarCampo(descripcionPlatillo, 'descripción')){
+    $('#agregarPlatillo').modal('hide')
+    return
+  }
+  
   let precioPlatillo = document.getElementById('precioPlatilloAgregar').value;
-  let newMenu = document.getElementById('selMenuAgregar').value;
+  if(!validarCampo(precioPlatillo, 'precio')){
+    $('#agregarPlatillo').modal('hide')
+    return
+  }
+  let newMenu = document.getElementById('selMenuAgregar', 'Menu').value;
+  
   let newTipoPlatillo = document.getElementById('selPlatilloAgregar').value;
+  
  await axios({
     method: 'POST',
     url: 'https://api-unahambre.herokuapp.com/api_propietario/insertar-platillo',
@@ -755,13 +942,25 @@ const agregarPlatillo = async () => {
 
     }
   }).then(res=>{
+    if(res.data.error[1][0].mensaje){
+      alert_default.fire({
+        icon:'error',
+        title: res.data.error[1][0].mensaje
+      });
+    }
+   else {
     alert_default.fire({
       icon:'success',
       title:'Accion realizada con exito'
     });
+   }
+
+    $('#agregarPlatillo').modal('hide')
+    
+
   }
   ).catch(err=>{
-    console.log(err)
+    
     alert_default.fire({
       icon:'error',
       title:'No se pudo completar la accion'
@@ -778,6 +977,7 @@ function mostrarModalPlatillo(rowId){
   cargarListaMenus(menus, menuSeleccionado)
   obtenerTiposPlatillos()
   cargarListaMenusPlatillos(tipoPlatillo, tipoPlatilloSeleccionado)
+  document.getElementById('hiddenIdPlatillo').value = document.getElementById(("rowId"+rowId)).abbr 
   document.getElementById('nombrePlatillo').value = document.getElementById(("rowNombre"+rowId)).abbr 
   document.getElementById('descripcionPlatillo').value = document.getElementById("rowDescripcion"+rowId).abbr
   document.getElementById('precioPlatillo').value = document.getElementById("rowPrecio"+rowId).abbr
@@ -785,31 +985,59 @@ function mostrarModalPlatillo(rowId){
   
 }
 async function editarPlatillo(){
- 
+  let idPlatillo  = document.getElementById('hiddenIdPlatillo').value;
   let newNombre = document.getElementById('nombrePlatillo').value;
+  if(!validarCampo(newNombre, 'nombre')){
+    $('#editarPlatillo').modal('hide')
+    return
+  }
   let newDescripcion = document.getElementById('descripcionPlatillo').value;
+  if(!validarCampo(newDescripcion, 'descripción')){
+    $('#editarPlatillo').modal('hide')
+    return
+  }
   let newPrecio = document.getElementById('precioPlatillo').value;
-  let newMenu = document.getElementById('selMenu').value;
+  if(!validarCampo(newPrecio, 'precio')){
+    $('#editarPlatillo').modal('hide')
+    return
+  }
+
+  let newMenu = document.getElementById('selMenu');
+  let idMenu = newMenu.options[newMenu.selectedIndex].value;
+  
   let newTipoPlatillo = document.getElementById('selPlatillo').value;
     await axios({
       method: 'PUT',
       url: 'https://api-unahambre.herokuapp.com/api_propietario/admin_local_modificar-platillo',
       headers: { 'access-token': sessionStorage.getItem('token')},
       data : {
+        idPlatillo,
         nombrePlatillo: newNombre,
         descripcion: newDescripcion,
         precio : newPrecio,
-        idMenu : newMenu,
+        idMenu,
         idTipoPlatillo : newTipoPlatillo
 
       }
+     
     }).then(res=>{
+      
+
+      $('#editarPlatillo').modal('hide')
+      if(res.data.error[1][0].mensaje){
+        alert_default.fire({
+          icon:'error',
+          title: res.data.error[1][0].mensaje
+        });
+      }
+     else {
       alert_default.fire({
         icon:'success',
         title:'Accion realizada con exito'
       });
+     }
     }).catch(function(error){
-      console.log(error)
+    
       alert_default.fire({
         icon:'error',
         title:'No se pudo completar la accion'
