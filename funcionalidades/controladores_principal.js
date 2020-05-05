@@ -299,7 +299,7 @@ function seleccionMenu(e) {
             document.querySelector('#cambioDeInformacion').innerHTML  += `
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_platillos.idPlatillo}">
                 <div class="card shadow tamanioTarjeta" >
-                <img src="img/burger2.jpg" class="card-img-top img-c" alt="...">
+                <img src="${data_platillos[i].Foto_Platillo}" class="card-img-top img-c" alt="...">
                 <div class="card-body">
                     <h5 class="card-title h1 text-info">${data_platillos.Nombre}</h5>
                     <p class="card-text ">Descripcion | ${data_platillos.Descripcion}</p>
@@ -338,7 +338,7 @@ function anadirCarro(idPlatillo,nombre,precio){
     }
     let cartContent = `
         <div class="cart-item cart-column">
-          <img class="cart-item-image" src="img/burger2.jpg" width="100" height="100">
+          <img class="cart-item-image" src="img/burger2.jpg" width="100px" height="100px">
           <span class="cart-item-title">${nombre}</span>
         </div>
         <span class="cart-price cart-column">Lps.${precio}</span>
