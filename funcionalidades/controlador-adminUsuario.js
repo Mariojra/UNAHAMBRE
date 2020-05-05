@@ -636,6 +636,7 @@ async function eliminarUsuario(id,rol){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
+          console.log(res);
         }).catch(function(error){
             console.log(error);
         });  
