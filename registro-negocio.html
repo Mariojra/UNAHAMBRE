@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/registro.css">
     <link rel="stylesheet" href="css/registro-negocio.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <!-- <link rel="stylesheet" href="css/custom-swal.css"> -->
     <link rel="stylesheet" href="css/smart_wizard_theme_arrows.min.css">
     <link href="css/smart_wizard.css" rel="stylesheet" type="text/css" />
@@ -31,40 +32,39 @@
 <body>
     <!--INICIO DEL HEADER-->
     <header class="encabezado">
-        <nav class="navbar-registro">
+        <nav class="navbar navbar-inicial" id="navbar">
             <div class="marca">
                 <div class="contenedor-logo">
                     <div class="logo">
-                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
+                        <img  class="logo" src="img/logo-unahambre.png" alt="Logo de la pagina">
                     </div><!--fin logo-->
                 </div><!--fin contenedor logo-->
 
                 <div class="text middle">
                     <span>U</span>
-                    <span>N</span>
-                    <span>A</span>
-                    <span>H</span>
-                    <span class="hidden">A</span>
-                    <span class="hidden">M</span>
-                    <span class="hidden">B</span>
-                    <span class="hidden">R</span>
-                    <span class="hidden">E</span>
+                    <span>n</span>
+                    <span>a</span>
+                    <span>h</span>
+                    <span>a</span>
+                    <span>m</span>
+                    <span>b</span>
+                    <span>r</span>
+                    <span>e</span>
                 </div><!--fin animacion nombre-->
             </div>
 
             <div class="interaccion">
                 <ul>
-                    <li><a href="principal.html">INICIO</a></li>
-                    <li><a href="#unete">ACERCA DE</a></li>
-                    <li><a href="#contacto">CONTACTOS</a></li>
-                    <li><a id="ocultar_login" href="login.html">INICIAR SESION</a></li>
+                    <li><a class="active btn-navbar" href="index.html">Inicio</a></li>
+                    <li><a class="btn-navbar" href="principal.html">Menus</a></li>
+                    <li><a class="btn-navbar" href="#contacto">Contactos</a></li>
                 </ul>
-                
-                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
-                <div id="mostrar_drop_user"></div>
-                <label id="icon">
+                <label id="icon" class="icon-navbar">
                     <i class="fas fa-bars"></i>
-                </label>       
+                </label>  
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user">
+                </div>     
             </div>
         </nav>
     </header>
@@ -94,7 +94,7 @@
                                 <div id="step-1">
 
                                     <div id="form-step-0" role="form" data-toggle="validator">
-                                        <div class="form-group">
+                                        <div class="form-group input-registros">
                                             <label for="name">Nombre del Local:</label>
                                             <input type="text" class="form-control" name="name" id="n-local" placeholder="Ejm: Casa de Pizza" required>
                                             <div class="help-block with-errors"></div>
@@ -125,13 +125,6 @@
                                 <div id="step-3" class="paso-final">
                                     <h2>¡TU SOLICITUD ESTÁ A PUNTO DE SER PROCESADA, FINALIZA Y PRONTO TE NOTIFICAREMOS SU APROBACIÓN!</h2>
                                     <div id="form-step-2" role="form" data-toggle="validator">
-                                        <!-- <div class="row align-items-center justify-content-center form-group">
-                                            <div class="col-8"><label for="terms">Acepto los terminos y condiciones</label></div>
-                                            <div class="col-1"><input type="checkbox" id="terms" data-error="Acepta los terminos y condiciones" required></div>
-                                            
-                                            
-                                            <div class="help-block with-errors"></div>
-                                        </div> -->
                                     </div>
                 
                 
@@ -148,82 +141,51 @@
     <!----------------------------------------------------------------------------------->
     <!-- INICIO DEL FOOTER-->
 
-    <footer class="footer">
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="contactos col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <div class="contacto">
-                        <p class="nosotros">Contacto</p>
-                        <p class="nosotros">(504)99713638</p>
-                        <p class="nosotros">lesmanface@unah.hn</p>
-                    </div>
-                    <div class="soporte">
-                        <p class="nosotros">Soporte</p>
-                        <p class="nosotros">Ayuda y Soporte</p>
-                        <p class="nosotros">Recursos</p>
-                        <p class="nosotros">Blog</p>
-                    </div>
-                    <div class="empresa">
-                        <p class="nosotros">Empresa</p>
-                        <p class="nosotros">Sobre Nosotros</p>
-                        <p class="nosotros">Terminos</p>
-                    </div>
+    <footer class=" container-fluid">
+        <div class="row footer">
+            <div class="contactos col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="contacto">
+                    <p class="nosotros">Contacto</p>
+                    <p class="nosotros">(504)99713638</p>
+                    <p class="nosotros">lesman@unah.hn</p>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <ul class="barra-contactos">
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-google"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="soporte">
+                    <p class="nosotros">Soporte</p>
+                    <p class="nosotros">Ayuda y Soporte</p>
+                    <p class="nosotros">Recursos</p>
+                    <p class="nosotros">Blog</p>
+                </div>
+                <div class="empresa">
+                    <p class="nosotros">Empresa</p>
+                    <p class="nosotros">Sobre Nosotros</p>
+                    <p class="nosotros">Terminos</p>
                 </div>
             </div>
+            <div class="red-social canal col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/facebook-f-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/google-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/twitter-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/whatsapp-brands.svg" alt="">
+                </a>
+            </div>
         </div>
-        
     </footer>
-
+    <script>
+        $(window).scroll(() => {
+            if ($("#navbar").offset().top > 150) {
+                $("#navbar").addClass("navbar-scroll")
+            } else {
+                $("#navbar").removeClass("navbar-scroll")
+            }
+        })
+    </script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -240,5 +202,6 @@
     <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="funcionalidades/controlador-negocio.js"></script>
+    <script src="funcionalidades/controlador-icono.js"></script>
 </body>
 </html>

@@ -44,9 +44,9 @@ function ImprimirRestaurantes(){
                 var data_restaurante = res.data.items;
                 for (let i = 0; i < data_restaurante.length; i++) {
                     document.querySelector('#cambioDeInformacion').innerHTML += `
-                                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_restaurante[i].idRestaurante}">
+                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_restaurante[i].idRestaurante}">
                                             <div class="card shadow tamanioTarjeta" >
-                                                <img src="img/burger2.jpg" class="card-img-top img-c" alt="...">
+                                                <img src="${data_restaurante[i].Foto_Restaurante}" class="card-img-top img-c" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title h1 text-info">${data_restaurante[i].Nombre_Local}</h5>
                                                     <p class="card-text ">Telefono | ${data_restaurante[i].Telefono}</p>
@@ -81,7 +81,7 @@ function ImprimirMenus() {
         var data_menus = res.data.items;
         for (let i = 0; i < data_menus.length; i++) {
             document.querySelector('#cambioDeInformacion').innerHTML += `
-                                       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                                       <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu">
                                            <div class="card shadow tamanioTarjeta" >
                                            <img src="img/burger2.jpg" class="card-img-top img-c" alt="...">
                                            <div class="card-body">
@@ -106,7 +106,7 @@ function ImprimirCategorias(){
     document.querySelector('#seleccion').innerHTML = 'Categorias';
     document.querySelector('#cambioDeInformacion').innerHTML = '';
     document.querySelector('#cambioDeInformacion').innerHTML += `
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu">
                         <div class="card shadow tamanioTarjeta" >
                         <img src="img/burger2.jpg" class="card-img-top img-c" alt="...">
                         <div class="card-body">
@@ -175,22 +175,22 @@ function ImprimirPlatillos(){
         method:'GET',
         url:'https://api-unahambre.herokuapp.com/api_producto/g_mostrar_platillos'
     }).then(res=>{
-        console.log(res)
+       console.log(res)
        document.querySelector('#seleccion').innerHTML = 'Platillos';
        document.querySelector('#cambioDeInformacion').innerHTML = '';
-       var data_platillos = res.data.items[0];
+       var data_platillos = res.data.items;
        for (let i = 0; i < data_platillos.length; i++) {
         document.querySelector('#cambioDeInformacion').innerHTML  += `
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_platillos[i].idPlatillo}">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_platillos[i].idPlatillo}">
                 <div class="card shadow tamanioTarjeta" >
-                <img src="img/burger2.jpg" class="card-img-top img-c" alt="...">
+                <img src="${data_platillos[i].Foto_Platillo}" class="card-img-top img-c" alt="...">
                 <div class="card-body">
                     <h5 class="card-title h1 text-info">${data_platillos[i].Nombre}</h5>
                     <p class="card-text ">Descripcion | ${data_platillos[i].Descripcion}</p>
                     <p class="card-text ">Precio | ${data_platillos[i].Precio}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-success btn-seleccionar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}')">Agregar al carro</button>
+                    <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}', '${data_platillos[i].Foto_Platillo}')">Agregar al carro</button>
                 </div>
                 </div>
             </div>
@@ -227,10 +227,10 @@ function seleccionRestaurante(e){
                         // console.log(data_menu[i].Foto_Menu)
                     }
                     document.querySelector('#cambioDeInformacion').innerHTML += `
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_menu[i].idMenu}">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_menu[i].idMenu}">
                             <div class="card shadow tamanioTarjeta" >
                                 <img src="${data_menu[i].Foto_Menu}" class="card-img-top img-c" alt="...">
-                                <div class="card-body">
+                                <div class="card-body tipo-menu">
                                     <h5 class="card-title h1 text-info">${data_menu[i].Tipo_Menu}</h5>
                                 </div>
                                 <div class="card-footer">
@@ -268,20 +268,20 @@ function seleccionMenu(e) {
        document.querySelector('#seleccion').innerHTML = titulo_paso.replace('menu',nombreMenu.toLowerCase());
        document.querySelector('#cambioDeInformacion').innerHTML = '';
        let data_platillos = res.data.items;
-    //    console.log(data_platillos)
+       console.log(data_platillos)
        if(data_platillos.length != undefined){
             for (let i = 0; i < data_platillos.length; i++) {
                 document.querySelector('#cambioDeInformacion').innerHTML  += `
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_platillos[i].idPlatillo}">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_platillos[i].idPlatillo}">
                         <div class="card shadow tamanioTarjeta" >
-                        <img src="img/burger2.jpg" class="card-img-top img-c" alt="...">
+                        <img src="${data_platillos[i].Foto_Platillo}" class="card-img-top img-c" alt="...">
                         <div class="card-body">
                             <h5 class="card-title h1 text-info">${data_platillos[i].Nombre}</h5>
                             <p class="card-text ">Descripcion | ${data_platillos[i].Descripcion}</p>
                             <p class="card-text ">Precio | ${data_platillos[i].Precio}</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-success btn-seleccionar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}')">Agregar al carro</button>
+                            <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}','${data_platillos[i].Foto_Platillo}')">Agregar al carro</button>
                         </div>
                         </div>
                     </div>
@@ -297,16 +297,16 @@ function seleccionMenu(e) {
 
        } else {
             document.querySelector('#cambioDeInformacion').innerHTML  += `
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_platillos.idPlatillo}">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_platillos.idPlatillo}">
                 <div class="card shadow tamanioTarjeta" >
-                <img src="img/burger2.jpg" class="card-img-top img-c" alt="...">
+                <img src="${data_platillos[i].Foto_Platillo}" class="card-img-top img-c" alt="...">
                 <div class="card-body">
                     <h5 class="card-title h1 text-info">${data_platillos.Nombre}</h5>
                     <p class="card-text ">Descripcion | ${data_platillos.Descripcion}</p>
                     <p class="card-text ">Precio | ${data_platillos.Precio}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-success btn-seleccionar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}')">Agregar al carro</button>
+                    <button class="btn btn-success btn-comprar" onclick="anadirCarro('${data_platillos[i].idPlatillo}','${data_platillos[i].Nombre}','${data_platillos[i].Precio}', '${data_platillos[i].Foto_Platillo}')">Agregar al carro</button>
                 </div>
                 </div>
             </div>
@@ -319,7 +319,7 @@ function seleccionMenu(e) {
 }
 
 
-function anadirCarro(idPlatillo,nombre,precio){
+function anadirCarro(idPlatillo,nombre,precio, foto){
     let cartRow = document.createElement('div');
     cartRow.classList.add('cart-row');
     cartRow.setAttribute("data-id",idPlatillo);
@@ -337,14 +337,14 @@ function anadirCarro(idPlatillo,nombre,precio){
         }
     }
     let cartContent = `
-        <div class="cart-item cart-column">
-          <img class="cart-item-image" src="img/burger2.jpg" width="100" height="100">
+        <div class="cart-item cart-column foto-nombre-carrito">
+          <img class="cart-item-image" src='${foto}' width="100px" height="100px">
           <span class="cart-item-title">${nombre}</span>
         </div>
         <span class="cart-price cart-column">Lps.${precio}</span>
         <div class="cart-quantity cart-column cart-quantity-c">
           <input class="cart-quantity-input" type="number" value="1" min="1" onchange="cambioCantidad(event);">
-          <button class="btn btn-danger" type="button" onclick="eliminarProducto(event)">QUITAR</button>
+          <button class="btn btn-danger btn-cancelar" type="button" onclick="eliminarProducto(event)">X</button>
         </div>
     `;
     cartRow.innerHTML=cartContent;

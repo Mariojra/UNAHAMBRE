@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/registro.css">
     <title>UNAHAMBRE</title>
     <script src="funcionalidades/controlador-navegacion.js"></script>
     <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/log_user.css">
     <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
     <script src="js/jquery-3.4.1.js"></script>
-  <script>
-      $(document).ready(function(){
-          $('#icon').click(function(){
-              $('ul').toggleClass('show'); 
-          })
-      });
-  </script>
+    <script>
+        $(document).ready(function(){
+            $('#icon').click(function(){
+                $('ul').toggleClass('show'); 
+            })
+        });
+    </script>
 <body class="hide_scroll">
   
     <div class="preloader_centrado" id="cargado">
@@ -37,65 +36,56 @@
     
     <!--INICIO DEL HEADER-->
     <header class="encabezado">
-        <nav class="navbar-registro">
+        <nav class="navbar navbar-inicial" id="navbar">
             <div class="marca">
                 <div class="contenedor-logo">
                     <div class="logo">
-                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
+                        <img  class="logo" src="img/logo-unahambre.png" alt="Logo de la pagina">
                     </div><!--fin logo-->
                 </div><!--fin contenedor logo-->
 
                 <div class="text middle">
                     <span>U</span>
-                    <span>N</span>
-                    <span>A</span>
-                    <span>H</span>
-                    <span class="hidden">A</span>
-                    <span class="hidden">M</span>
-                    <span class="hidden">B</span>
-                    <span class="hidden">R</span>
-                    <span class="hidden">E</span>
+                    <span>n</span>
+                    <span>a</span>
+                    <span>h</span>
+                    <span>a</span>
+                    <span>m</span>
+                    <span>b</span>
+                    <span>r</span>
+                    <span>e</span>
                 </div><!--fin animacion nombre-->
             </div>
 
             <div class="interaccion">
                 <ul>
-                    <li><a class="active" href="index.html">INICIO</a></li>
-                    <li><a href="principal.html">MENU</a></li>
-                    <li><a href="#contacto">CONTACTOS</a></li>
-                    <li><a id="ocultar_login" href="login.html">INICIAR SESION</a></li>
-                    <li><a id="ocultar_registro" href="registro.html">REGISTRARSE</a></li>
-                    <li></li>
-                   
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">PERFIL</a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a id="cerrar-sesion" class="dropdown-item" href="index.html" onclick="cerrarSesion()">CERRAR SESION</a>
-                            <a id="cerrar-sesion" class="dropdown-item" href="informacion-perfil.html">VER MI INFORMACION</a>
-                        </div>
-
-                    </li> -->
-
+                    <li><a class="active btn-navbar" href="index.html">Inicio</a></li>
+                    <li><a class="btn-navbar" href="principal.html">Menus</a></li>
+                    <li><a class="btn-navbar" href="#contacto">Contactos</a></li>
+                    <li id="ocultar_login"><a class="btn-navbar" href="login.html">Iniciar Sesion</a></li>
+                    <li id="ocultar_registro"><a class="btn-navbar" href="registro.html">Registrarse</a></li>
                 </ul>
-                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
-                <div id="mostrar_drop_user"></div>
-
-                <label id="icon">
+                <label id="icon" class="icon-navbar">
                     <i class="fas fa-bars"></i>
-                </label>       
+                </label>  
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user">
+                </div>     
             </div>
         </nav>
     </header>
     <!--FIN DEL HEADER-->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
+    
     <!-- INICIO DEL MAIN-->
 
     <main class="main">
         <!-----------------------------------BUSQUEDA---------------------------------------------->
         <section class="busqueda">
             <h1>Tu comida de siempre, a tu disposición</h1>
-            <a href="principal.html" class="yellow">BUSCAR COMIDA</a>
+            <p class="lema">¡El primer sitio web que te permite ordenar comidas y bebidas de tus restaurantes favoritos en UNAH-CU!</p>
+            <a href="principal.html" class="yellow">Haz tu pedido</a>
         </section> <!--fin busqueda-->
 
 
@@ -206,13 +196,6 @@
 
                     </div>
                 </div>
-
-        
-        
-    
-                    
-
-
             </div>
             
     
@@ -220,27 +203,22 @@
         <!-- Fin de Preguntas y Respuestas -->
         
         <!-----------------------------------INVITACION-------------------------------------------->
+        
         <section class="invitacion">
-               <!-----------------------------------NEGOCIO-------------------------------------------->
-        <div class="registro-negocio container-fluid">
-            <div class="row justify-content-center">
-                <div class="texto-negocio col">
-                    <h3 id="unete">¡UNETE A NOSOTROS!</h3>
-                    <p>
-                        El objetivo primordial del grupo es, con dedicacion y esfuerzo, conseguir
-                        <br>
-                        la confianza de nuestros  clientes y ofrecer la mejor calidad de todos  
-                        <br> 
-                        nuestros servicios, mediante continua innovacion para elevar las ganancias 
-                        <br>
-                        y el exito que dia con dia demanda la sociedad a todos nuestros afiliados.
-                         
-                    </p>
-                    <a id="redireccionar-n" class="btn-negocio btn btn-primary btn-large" href="registro-negocio.html">REGISTRAR MI NEGOCIO</a>
-
+            <div class="container-fluid registro-negocio">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 texto-negocio col">
+                        <h3 id="unete">¡UNETE A NOSOTROS!</h3>
+                        <p class="lema-nosotros">
+                            El objetivo primordial del grupo es, con dedicacion y esfuerzo, conseguir la confianza de nuestros  clientes y ofrecer la mejor calidad de todos nuestros servicios, mediante continua innovacion para elevar las ganancias y el exito que dia con dia demanda la sociedad a todos nuestros afiliados.
+                        </p>
+                    </div>
+                    <div class="col-xl-6 div-btn-registro">
+                        <a  class=" yellow btn-negocio btn btn-primary btn-large" href="registro-negocio.html">REGISTRAR MI NEGOCIO</a>
+                    </div>
                 </div>
             </div>
-        </div> 
+               <!-----------------------------------NEGOCIO-------------------------------------------->
         <!-- FIN DE NEGOCIO -->
         </section> <!--fin invitacion-->
     </main>
@@ -249,90 +227,62 @@
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- INICIO DEL FOOTER-->
 
-    <footer class="footer">
-        <div class="modificacion container-fluid">
-            <div class="row">
-                <div class="contactos col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <div class="contacto">
-                        <p class="nosotros">Contacto</p>
-                        <p class="nosotros">(504)99713638</p>
-                        <p class="nosotros">lesmanface@unah.hn</p>
-                    </div>
-                    <div class="soporte">
-                        <p class="nosotros">Soporte</p>
-                        <p class="nosotros">Ayuda y Soporte</p>
-                        <p class="nosotros">Recursos</p>
-                        <p class="nosotros">Blog</p>
-                    </div>
-                    <div class="empresa">
-                        <p class="nosotros">Empresa</p>
-                        <p class="nosotros">Sobre Nosotros</p>
-                        <p class="nosotros">Terminos</p>
-                    </div>
+    <footer class=" container-fluid">
+        <div class="row footer">
+            <div class="contactos col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="contacto">
+                    <p class="nosotros">Contacto</p>
+                    <p class="nosotros">(504)99713638</p>
+                    <p class="nosotros">lesman@unah.hn</p>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <ul class="barra-contactos">
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-google"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="soporte">
+                    <p class="nosotros">Soporte</p>
+                    <p class="nosotros">Ayuda y Soporte</p>
+                    <p class="nosotros">Recursos</p>
+                    <p class="nosotros">Blog</p>
+                </div>
+                <div class="empresa">
+                    <p class="nosotros">Empresa</p>
+                    <p class="nosotros">Sobre Nosotros</p>
+                    <p class="nosotros">Terminos</p>
                 </div>
             </div>
+            <div class="red-social canal col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/facebook-f-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/google-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/twitter-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/whatsapp-brands.svg" alt="">
+                </a>
+            </div>
         </div>
-        
     </footer>
     <!-- FIN DEL FOOTER-->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- <script src="js/jquery-3.4.1.slim.min.js"></script> -->
+    <!-- Script para cambiar el color del navbar -->
+    <script>
+        $(window).scroll(() => {
+            if ($("#navbar").offset().top > 150) {
+                $("#navbar").addClass("navbar-scroll")
+            } else {
+                $("#navbar").removeClass("navbar-scroll")
+            }
+        })
+    </script>
     <script src="js/popper.min.js"></script>
-
     <!-- iconos  -->
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
     <script src="js/bootstrap.min.js"></script>
     <script src="funcionalidades/controlador-landing.js"></script>
+    <script src="funcionalidades/controlador-icono.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>

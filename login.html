@@ -37,40 +37,41 @@
     </div>
     <!--INICIO DEL HEADER-->
     <header class="encabezado">
-        <nav class="navbar">
+        <nav class="navbar navbar-inicial" id="navbar">
             <div class="marca">
                 <div class="contenedor-logo">
                     <div class="logo">
-                        <img  class="logo" src="img/logo.png" alt="Logo de la pagina">
+                        <img  class="logo" src="img/logo-unahambre.png" alt="Logo de la pagina">
                     </div><!--fin logo-->
                 </div><!--fin contenedor logo-->
 
                 <div class="text middle">
-                    <span class="span-white">U</span>
-                    <span class="span-white">N</span>
-                    <span class="span-white">A</span>
-                    <span class="span-white">H</span>
-                    <span class="hidden span-white">A</span>
-                    <span class="hidden span-white">M</span>
-                    <span class="hidden span-white">B</span>
-                    <span class="hidden span-white">R</span>
-                    <span class="hidden span-white">E</span>
+                    <span>U</span>
+                    <span>n</span>
+                    <span>a</span>
+                    <span>h</span>
+                    <span>a</span>
+                    <span>m</span>
+                    <span>b</span>
+                    <span>r</span>
+                    <span>e</span>
                 </div><!--fin animacion nombre-->
             </div>
 
             <div class="interaccion">
                 <ul>
-                    <li><a class="active" href="index.html">INICIO</a></li>
-                    <li><a href="registro.html">REGISTRARSE</a></li>
-                    <li><a href="#contacto">CONTACTOS</a></li>
+                    <li><a class="active btn-navbar" href="index.html">Inicio</a></li>
+                    <li id="ocultar_registro"><a class="btn-navbar" href="registro.html">Registrarse</a></li>
                 </ul>
-                <label id="icon">
+                <label id="icon" class="icon-navbar">
                     <i class="fas fa-bars"></i>
-                </label>       
+                </label>  
+                <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+                <div id="mostrar_drop_user">
+                </div>     
             </div>
         </nav>
     </header>
-
     <!--FIN DEL HEADER-->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- INICIO DEL MAIN -->
@@ -116,6 +117,15 @@
             </div>
         </form>
     </main>
+    <script>
+        $(window).scroll(() => {
+            if ($("#navbar").offset().top > 150) {
+                $("#navbar").addClass("navbar-scroll")
+            } else {
+                $("#navbar").removeClass("navbar-scroll")
+            }
+        })
+    </script>
     <script src="js/jquery.min.js"></script>
     <!-- <script src="js/popper.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
@@ -123,5 +133,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="funcionalidades/controlador-login.js"></script>
+    <script src="funcionalidades/controlador-icono.js"></script>
 </body>
 </html>

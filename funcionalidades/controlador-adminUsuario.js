@@ -79,7 +79,7 @@ function ImprimirTransacciones(){
     }).then(res=>{
       cargarCabeceraTablaTransacciones();
       cargarFilasTransacciones(res.data.items);
-      console.log(res);
+      
     }).catch(function(error){
         console.log(error);
     });
@@ -200,7 +200,6 @@ const cargarFilasUsuarios = (datos) =>{
                </tr>
                `;
             }
-  console.log("Datos de Usuarios cargados :", infoUsuarios)
 }
 
 //////////////////////////////////FILTRO DE USUARIOS////////////////////////////////////////////
@@ -259,7 +258,7 @@ const cargarFiltroUsuario = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -606,8 +605,6 @@ function infoModalEditarUsuario(fila,rol,id){
   document.querySelector('#NombreModal').value =Nombre
   document.querySelector('#ApellidosModal').value =Apellidos
   document.querySelector('#UsuarioModal').value =Nombre_Usuario
-  // document.querySelector('#prueba').value = Nombre_Usuario
-   console.log("Fila:",cadenaFila,"  idUsuario: ",idUsuario,"  Nombres: ",Nombre,"  Apellidos: ",Apellidos,"  Nombre Usuario: ",Nombre_Usuario,"  Rol: ",Administrador,"  Foto Perfil: ",Foto_Perfil)
 }
 
 function infoModalEliminarUsuario(fila,rol,id){
@@ -639,7 +636,7 @@ async function eliminarUsuario(id,rol){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log("Se elimino el usuario")
+          console.log(res);
         }).catch(function(error){
             console.log(error);
         });  
@@ -681,7 +678,6 @@ async function editarUsuario(id,rol){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res)
         }).catch(function(error){
             console.log(error);
         });  
@@ -700,8 +696,6 @@ async function editarUsuario(id,rol){
   }else if(rol == 2){
     GestionUsuarioComun();
   }  
-
-  console.log(id,nombres,apellidos,usuario)
 }
 
 
@@ -723,7 +717,6 @@ function ImprimirLocales(){
           }).then(res=>{
             cargarCabeceraTablaLocales();
             cargarFilasLocales(res.data.items);
-            console.log(res.data.items);
           }).catch(function(error){
               console.log(error);
           });      
@@ -782,7 +775,6 @@ const cargarFilasLocales = (datos) =>{
     }
    
   }
-  console.log("Datos de Locales cargados: ",infoLocales)
 }
 
 /////////////////////////////////////////FILTROS DE LOCALES///////////////////////////////////////////////
@@ -832,7 +824,7 @@ const cargarFiltroLocal= (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -848,7 +840,6 @@ function filtrarGestionLocales(){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res.data.items)
           cargarFiltroGestionLocales(res.data.items);
         }).catch(function(error){
             console.log(error);
@@ -893,7 +884,7 @@ const cargarFiltroGestionLocales =(data)=>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -910,7 +901,6 @@ function GestionLocales(){
         }).then(res=>{
           cargarCabeceraGestionLocales();
           cargarFilasGestionLocales(res.data.items);
-          console.log("info ",res.data.items);
         }).catch(function(error){
             console.log(error);
         });  
@@ -975,7 +965,6 @@ const cargarFilasGestionLocales = (datos) =>{
     }
     
   }
-  console.log("Datos de Locales cargados: ",infoLocales)
 }
 /////////////////MODALES PARA EDITAR Y ELIMINAR LOCALES//////////////////////////
 function infoModalEditarLocal(fila,id){
@@ -1028,8 +1017,6 @@ function infoModalEditarLocal(fila,id){
   document.querySelector('#UbicacionRestaurante').value = ubicacion;
   document.querySelector('#CorreoRestaurante').value = correo;
   document.querySelector('#TelefonoRestaurante').value = telefono;
-  
-  console.log(fila,id)
 }
 
 function infoModalEliminarLocal(id){
@@ -1081,7 +1068,6 @@ function infoModalAgregarMenu(idRestaurante){
 async function agregarMenu(id){
   let nombreRestaurante = document.querySelector('#NombreMenu').value;
   let idcategoria = document.querySelector('#categoriaMenu').value;
-  console.log(id,nombreRestaurante,idcategoria);
   await axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_admin/admin_global_agregar_menu',
@@ -1095,8 +1081,6 @@ async function agregarMenu(id){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res.data)
-          console.log(res.data.error[1]);
           let mensaje = res.data.error[1][0].mensaje
 
           if(mensaje == null){
@@ -1128,7 +1112,6 @@ async function editarLocal(id){
   let telefono = document.querySelector('#TelefonoRestaurante').value;
   let ubicacion = document.querySelector('#UbicacionRestaurante').value;
   let correo = document.querySelector('#CorreoRestaurante').value;
-  console.log(restaurante,id)
   await axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_admin/modificar-local',
@@ -1143,7 +1126,6 @@ async function editarLocal(id){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res)
         }).catch(function(error){
             console.log(error);
         });  
@@ -1170,7 +1152,6 @@ async function eliminarLocal(id){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log("Se elimino el usuario")
         }).catch(function(error){
             console.log(error);
         });  
@@ -1261,7 +1242,6 @@ const cargarFilasMenus = (datos) =>{
       </tr>
       `;
    }
-  console.log("Datos de Menus cargados :" ,infoMenus);
 }
 ////////////////////////////////FILTRO MENUS///////////////////////////////////
 function filtrarMenus(){
@@ -1311,7 +1291,7 @@ const cargarFiltroMenu = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1367,7 +1347,7 @@ const cargarFiltroGestionMenu =(data)=>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1444,7 +1424,6 @@ const cargarFilasGestionMenus = (datos) =>{
      </tr>
      `;
   }
-  console.log("Datos de Menus cargados: ",infoMenus)
 }
 /////////////////MODALES PARA EDITAR Y ELIMINAR LOCALES//////////////////////////
 function infoModalEditarMenu(fila,id,idcategoria){
@@ -1632,7 +1611,6 @@ async function agregarNuevoMenu(){
   let idRestaurante = document.querySelector('#NombreLocal').value;
   let nombreRestaurante = document.querySelector('#NombreMenu').value;
   let idcategoria = document.querySelector('#categoriaMenu').value;
-  console.log(idRestaurante)
   await axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_admin/admin_global_agregar_menu',
@@ -1687,7 +1665,7 @@ async function editarMenu(id){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res)
+          console.log(res);
         }).catch(function(error){
             console.log(error);
         });  
@@ -1708,7 +1686,6 @@ async function agregarPlatillo(id){
   let DescripcionPlatillo = document.querySelector('#DescripcionPlatillo').value;
   let PrecioPlatillo = document.querySelector('#PrecioPlatillo').value;
   let CategoriaPlatillo = document.querySelector('#CategoriaPlatillo').value;
-  console.log(NombrePlatillo,DescripcionPlatillo,PrecioPlatillo,CategoriaPlatillo)
   await axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_admin/admin_global_agregar_platillo',
@@ -1746,7 +1723,7 @@ async function agregarPlatillo(id){
 }
 
 async function eliminarMenu(id){
-  
+  console.log(id);
   await axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_admin/admin_global_borrar_menu',
@@ -1757,7 +1734,7 @@ async function eliminarMenu(id){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          
+          console.log(res);
         }).catch(function(error){
             console.log(error);
         });  
@@ -1843,7 +1820,7 @@ const cargarFilasPlatillos = (datos) =>{
                 </tr>
                 `;
   }
-  console.log("Datos de Platillos cargados :",infoPlatillo);
+  
 }
 
 ////////////////////////////////FILTRO PLATILLOS///////////////////////////////////
@@ -1896,7 +1873,7 @@ const cargarFiltroPlatillo = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1952,7 +1929,7 @@ const cargarFiltroGestionPlatillo =(data)=>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
@@ -1967,7 +1944,6 @@ function GestionPlatillo(){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res)
           cargarCabeceraGestionPlatillos();
           cargarFilasGestionPlatillos(res.data.items);
         }).catch(function(error){
@@ -2030,7 +2006,6 @@ const cargarFilasGestionPlatillos = (datos) =>{
      </tr>
      `;
   }
-  console.log("Datos de Menus cargados: ",infoPlatillos)
 }
 ////////////////MODALES PARA EDITAR Y ELIMINAR LOCALES//////////////////////////
 function infoModalEditarPlatillo(fila,id,tipoPlatillo){
@@ -2097,7 +2072,6 @@ function infoModalEditarPlatillo(fila,id,tipoPlatillo){
 
 function infoModalEliminarPlatillo(id){
   let idPlatillo = id
-  console.log(idPlatillo)
   document.querySelector('#botonEliminarPlatillo').innerHTML = '';
   document.querySelector('#botonEliminarPlatillo').innerHTML = `
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -2120,7 +2094,6 @@ function NuevoPlatillo(){
 }
 
 function infoModalNuevoPlatillo(data){
-  console.log("datos para menu:", data)
   document.querySelector('#contenido_modal_agregar_platillo').innerHTML='';
   document.querySelector('#contenido_modal_agregar_platillo').innerHTML=`
   <div class="modal-header">
@@ -2204,7 +2177,6 @@ async function editarPlatillo(id){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res)
         }).catch(function(error){
             console.log(error);
         });  
@@ -2301,7 +2273,6 @@ function ImprimirSolicitudes(){
         }).then(res=>{
           cargarCabeceraTablaSolicitudes();
           cargarFilasSolicitudes(res.data.items);
-          console.log(res.data.items);
         }).catch(function(error){
             console.log(error);
         });      
@@ -2417,17 +2388,15 @@ const cargarFiltroSolicitudes = (data) =>{
     error.innerHTML+=`
     <div class="datosTabla">
       <div class="sin-busqueda">
-        <h1>No se encontro ningun resultado</h1>
+        <h1>No se encontró ningun resultado</h1>
       </div>
     </div>
     `;
   }
-  console.log(cont);
 }
 
 //////////////////////////////////////////********************************************************/////////////////////////////////////////
 async function aprobarSolicitud(id){
-  console.log(id);
   await axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_admin/aceptar_solicitud',
@@ -2448,7 +2417,6 @@ async function aprobarSolicitud(id){
 }
 
 async function denegarSolicitud(id){
-  console.log(id);
   await axios({
     method:'POST',
     url:'https://api-unahambre.herokuapp.com/api_admin/rechazar_solicitud',
@@ -2568,9 +2536,10 @@ function CantidadSolicitudes(){
           for(let i = 0;i < res.data.items.length;i++){
             if(res.data.items[i].EstadoSolicitud =='En espera'){
               cont++;
-              document.querySelector('#solicitudes').innerHTML = `${cont}  Solicitudes`;
+              
             }
           }
+          document.querySelector('#solicitudes').innerHTML = `${cont}  Solicitudes`;
 
         }).catch(function(error){
             console.log(error);
@@ -2582,7 +2551,6 @@ CantidadSolicitudes();
 
 
 function validarSelect(etiqueta){
-  console.log(etiqueta.value);
   if(etiqueta.value == 0){
     document.getElementById('boton').disabled=true;
   }else{
@@ -2599,7 +2567,6 @@ function validarCampoVacio(etiqueta){
 }
 
 function validarCorreo(etiqueta){
-  console.log(etiqueta.value);
   let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if(re.test(etiqueta.value) || (etiqueta.value.trim()  == "")){
     document.getElementById('boton').disabled=false;
@@ -2612,7 +2579,6 @@ function validarTelefono(etiqueta){
   let telefono = etiqueta.value;
   let digito = parseInt(telefono);
   let re = /^([0-9])*$/
-  console.log(Number.isInteger(digito),digito);
   if((telefono.length>=8 && !isNaN(digito) && Number.isInteger(digito) && re.test(telefono)) || (telefono.trim() =="")){
     document.getElementById('boton').disabled=false;
   }else{

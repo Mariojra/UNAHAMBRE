@@ -1,13 +1,14 @@
 .dropbtn {
     background-color: rgba(0, 0, 0, 0) !important;
-    color: black !important;
+    color: white;
     padding: 0px !important;
-    font-size: 16px !important;
+    font-size: 1.5rem ;
     border: none !important;
     cursor: pointer !important;
     padding: 0px !important;
     margin: 0px !important;
 }
+
 
 .dropdown {
     position: relative !important;
@@ -54,23 +55,7 @@
     display: block;
 }
 
-/* 
-.dropdown-content a {
-    font-size: 14px !important;
-    margin: 0px !important;
-    padding: 10px !important;
-    color: rgb(87, 4, 80) !important;
-    text-decoration: none !important;
-    display: block;
-}
- **/
 
-
-/* .dropdown-content hr {
-    margin: 0px;
-    padding: 0px;
-    border: 0.0px solid rgb(199, 191, 191);
-} */
 
 .ancla:hover {
     background-color: #dfdfdf !important;
@@ -83,4 +68,8 @@
 
 .dropdown:hover .dropbtn {
     background-color: rgba(0, 0, 0, 0) !important;
+}
+
+#mostrar_drop_user{
+    margin-right: 2rem;
 }
