@@ -81,7 +81,7 @@
       <li class="nav-item">
         <a class="nav-link pointerOption" onclick="obtenerRestaurantes(); timerClear()">
             <i class="fas fa-store"></i>
-          <span>Mis Negocios</span></a>
+          <span>Mis Restaurantes</span></a>
       </li>
 
 
@@ -104,7 +104,17 @@
           <span>Pedidos Activos</span></a>
       </li>
 
-      
+      <li class="nav-item">
+        <a class="nav-link pointerOption" onclick="obtenerHistorialGeneral(); timerClear()">
+            <i class="fas fa-tasks"></i>
+            <span>Historial de Pedidos</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link pointerOption" onclick="redirigirPublicidad(); timerClear()">
+            <i class="fas fa-map"></i>
+            <span>Publicidad</span></a>
+      </li>
       <!-- Nav Item - Solicitudes -->
      
 
@@ -236,7 +246,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="agregarMenu()">Guardar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -277,7 +287,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="agregarPlatillo()">Guardar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
@@ -293,14 +303,17 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <input type="hidden" id="hiddenIdMenu" name="custId" value="12">
-            <label for="nombreMenu">Nuevo nombre:</label>
-            <input type="text" id="nombreMenu" class="form-control">
-          </div>
+          <form >
+
+            <div class="form-group">
+              <input type="hidden" id="hiddenIdMenu" name="custId" value="12">
+              <label for="nombreMenu">Nuevo nombre:</label>
+              <input type="text" id="nombreMenu" class="form-control" >
+            </div>
+          </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick="editarMenu(document.getElementById('hiddenIdMenu').value)">Guardar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="editarMenu(document.getElementById('hiddenIdMenu').value)" id="btnGuardar">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -320,48 +333,57 @@
           <div class="form-group">
             <input type="hidden" id="hiddenIdPlatillo" value="12">
             <label for="nombreMenu">Nombre:</label>
-            <input type="text" id="nombrePlatillo" class="form-control">
+            <input type="text" id="nombrePlatillo" class="form-control" >
           </div>
           <div class="form-group">
             <label for="imagenMenu">Descripcion:</label>
-            <input type="text" id="descripcionPlatillo" class="form-control">
+            <input type="text" id="descripcionPlatillo" class="form-control" >
           </div>
         
         <div class="form-group">
           <label for="imagenMenu">Precio:</label>
-          <input type="text" id="precioPlatillo" class="form-control">
+          <input type="text" id="precioPlatillo" class="form-control" >
         </div>
         <div class="form-group">
           <label for="sel1">Menu:</label>
-          <select class="form-control" id="selMenu">           
+          <select class="form-control" id="selMenu" >           
           </select>
         </div>
         <div class="form-group">
           <label for="sel1">Tipo de Platillo:</label>
-          <select class="form-control" id="selPlatillo">           
+          <select class="form-control" id="selPlatillo" >           
           </select>
         </div>
       </div>
      
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="editarPlatillo()">Guardar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
       </div>
     </div>
     <!-- Modal selección restaurante-->
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="modalPedido" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header card-header-title">
-            <h4 class="modal-title card-element-title">¿Qué restaurante quieres visualizar?</h4>
+            <h4 class="modal-title card-element-title">Detalles del pedido</h4>
           </div>
           <div class="modal-body">
-            <div class="card-content clearfix" id="restaurantes">
+           
+              <div class="row" id='contenido'>
+                <table  class="table table-hover"  >
+                  <thead class="thead-dark">
+                    <tr id="table-pedido-cabeceras">
+                    </tr>
+                  </thead>
+                  <tbody id="table-pedido-filas" >
               
+                  </tbody>
+                </table>
             </div>
-          </div>
+         
         </div>
       </div>
     </div>
