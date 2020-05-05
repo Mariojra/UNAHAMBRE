@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   var pagina_actual = window.location.pathname
   var pagina_actual_split = pagina_actual.split('/')
   pagina_actual = pagina_actual_split[pagina_actual_split.length - 1]
+  
+  // 
   if (sessionStorage.getItem('token') == undefined || sessionStorage.getItem('userID') == undefined) {
     // si el usuario no está logueado
     
@@ -131,6 +133,7 @@ function usuario_log() {
             <a class="ancla" href="informacion-perfil.html">Perfil</a>            
             <a class="ancla" style="display: ${mostrar_1};" id="mi_local_op" href="administracion-negocio.html">Mi local</a>            
             <a class="ancla" style="display: ${mostrar_0};" id="administracion_op" href="administracion-usuario.html">Administración</a>
+            <a class="ancla" href="principal.html">Menus</a>
             <a class="ancla" href="#">Mi historial</a>
             <a class="ancla" style="display: ${mostrar};"  id="registrar_negocio_op" href="registro-negocio.html">Registrar negocio</a>
             <a class="ancla" href="#" onclick="cerrar_sesion()">Cerrar Sesión</a>   
