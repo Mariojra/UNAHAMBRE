@@ -869,9 +869,9 @@ const cargarFiltroGestionLocales =(data)=>{
         <td id="row${i}Ubicacion">${infoLocales[i].Ubicacion}</td>
         <td id="row${i}Telefono">${infoLocales[i].Telefono}</td>
         <td id="row${i}Correo">${infoLocales[i].Correo}</td>
-        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#edi">Editar</button></td>
-        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#eli">Eliminar</button></td>
-        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#agre">Agregar Menu</button></td>
+        <td><button class="btn btn-primary" type="button" data-toggle="modal"onclick="infoModalEditarLocal(${i},${infoLocales[i].idRestaurante})" data-target="#ModalEditarLocal">Editar</button></td>
+        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modalAgregarMenu"onclick="infoModalAgregarMenu(${infoLocales[i].idRestaurante})">Menu</button></td>      
+        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModalEliminarLocal" onclick="infoModalEliminarLocal(${infoLocales[i].idRestaurante})">Eliminar</button></td>
       </tr>
       `;
       }
@@ -1595,7 +1595,7 @@ function infoModalAgregarNuevoMenu(data){
   `;
   document.querySelector('#NombreLocal').innerHTML ='';
   document.querySelector('#NombreLocal').innerHTML +=`
-    <option value="0">Seleccione una categoria</option>
+    <option value="0">Seleccione un local</option>
   `;
 
   for(let i=0;i<infoLocales.length;i++){
@@ -2118,7 +2118,7 @@ function infoModalNuevoPlatillo(data){
                 <input type="number" valor="0" id="PrecioPlatillo" class="form-control" name="PrecioPlatillo" min="1" step="0.01">
               </div>
               <div class="col-12"><br>
-                <label for="">Menu:</label>
+                <label for="">Categoria:</label>
                 <select class="form-control" name="" id="CategoriaPlatillo" required>
                   <option value="0">Seleccione una categoria</option>
                   <option value="1">Entrada</option>
@@ -2131,7 +2131,7 @@ function infoModalNuevoPlatillo(data){
                 </select>
               </div>
               <div class="col-12"><br>
-                <label for="menu">Categoria:</label>
+                <label for="menu">Menu:</label>
                 <select class="form-control" name="menu" id="NombreMenu"  required>
                   
                 </select>
@@ -2146,7 +2146,7 @@ function infoModalNuevoPlatillo(data){
   `;
   document.querySelector('#NombreMenu').innerHTML = '';
   document.querySelector('#NombreMenu').innerHTML +=`
-  <option value="-1">Seleccione una categoria</option>
+  <option value="-1">Seleccione un menu</option>
   `;
   for(let i=0;i<data.length;i++){
     
