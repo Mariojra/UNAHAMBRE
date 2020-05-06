@@ -556,7 +556,8 @@ const cargarCabeceraPlatillos = ()=> {
   cabecera.innerHTML = `<th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th> 
-                        <th scope="col">Precio</th> 
+                        <th scope="col">Precio</th>
+                        <th scope="col" style="text-align:center">Imagen</th>  
                         <th scope="col">Menu</th> 
                         <th scope="col">Tipo de Platillo</th> 
                         <th scope="col" style='text-align:center'>Acciones</th> 
@@ -572,6 +573,7 @@ const cargarFilasPlatillos = (items) => {
     <td id="rowNombre${items[i].idPlatillo}" abbr="${items[i].Nombre}">${items[i].Nombre}</td>
     <td id="rowDescripcion${items[i].idPlatillo}" abbr="${items[i].Descripcion}">${items[i].Descripcion}</td>
     <td id="rowPrecio${items[i].idPlatillo}" abbr="${items[i].Precio}">L. ${items[i].Precio} </td>
+    <th id="rowImagen${items[i].idPlatillo}" style="text-align:center"><img src="${items[i].Foto_Platillo}" class="img_menu" alt="Imagen del platillo"></td>
     <td id="rowMenu${items[i].idPlatillo}" abbr="${items[i].Menu_idMenu}">${obtenerNombreMenus(menus, items[i].Menu_idMenu )} </td>
     <td id="rowTipoPlatillo${items[i].idPlatillo}" abbr="${items[i].Tipo_Platillo_idTipo_Platillo}">${obtenerNombrePlatillos(tipoPlatillo, items[i].Tipo_Platillo_idTipo_Platillo )} </td>
     <td align='center'> 
