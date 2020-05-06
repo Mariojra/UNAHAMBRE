@@ -1,0 +1,33 @@
+.margin-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-size{
+    max-width: 46rem;
+    min-height: 14rem;
+}
+
+.icon-margin{
+    margin-right: 0.5rem;
+}
+
+[data-tooltip]{
+    cursor: pointer;
+}
+
+[data-tooltip]:hover::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0.5rem;
+    background: rgba(0,0,0,0.7);
+    padding: 1rem;
+    color: #FFFFEF;
+}
+
+.p-small{
+    margin-top: 1rem;
+}
