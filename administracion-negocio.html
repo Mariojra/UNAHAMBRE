@@ -311,6 +311,8 @@
               <input type="text" id="nombreMenu" class="form-control" >
             </div>
           </form>
+          <label for="imgMenu-uploader">Cambiar foto menu</label>
+          <input type="file" id="imgMenu-uploader" style="color: white;" >
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="editarMenu(document.getElementById('hiddenIdMenu').value)" id="btnGuardar">Guardar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -354,8 +356,9 @@
           <select class="form-control" id="selPlatillo" >           
           </select>
         </div>
+        <label for="imgPlatillo-uploader">Cambiar foto platillo</label>
+        <input type="file" id="imgPlatillo-uploader" style="color: white;">
       </div>
-     
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="editarPlatillo()">Guardar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
