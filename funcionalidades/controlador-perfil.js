@@ -1,7 +1,7 @@
 window.onload = info_usuarios();
 
 //CONFIGURACION PREDETERMINADA SWEETALERTS
-let alert_default = Swal.mixin({
+const alert_default = Swal.mixin({
   timer: 3000,
   timerProgressBar: true,
   onOpen: (modal)=>{

@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         method:'GET',
         url: 'https://api-unahambre.herokuapp.com/api_usuario/mostrar_pedidos',
         headers:{
-            'access-token': sessionStorage.getItem('token')
+            'access-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiVXN1YXJpbyI6ImNhcmxvcyIsImlkIjoyLCJyb2wiOjAsImlhdCI6MTU4ODc5MjA3OSwiZXhwIjoxNTg4ODc4NDc5fQ.pgX-9mR7egadjojJe5-Qymjhlz6henDGfeejgWsmorM'
+            // sessionStorage.getItem('token')
         }
     }).then(res=>{
         console.log(res.data.items);
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             </div>`;
         }
-        document.getElementById('container').innerHTML += container;
+        document.getElementById('id-container').innerHTML += container;
     })
 });
 

@@ -6,6 +6,8 @@
     <script src="funcionalidades/controlador-navegacion.js"></script>
     <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/log_user.css">
     <link rel="stylesheet" href="css/historial.css">
     <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
     <title></title>
@@ -24,13 +26,64 @@
         <div></div>
       </div>
     </div>
-    <h1>Historial de mis pedidos</h1>
-    <div class="container" id="container">
+    <header class="encabezado">
+      <nav class="navbar navbar-inicial" id="navbar">
+          <div class="marca">
+              <div class="contenedor-logo">
+                  <div class="logo">
+                      <img  class="logo" src="img/logo-unahambre.png" alt="Logo de la pagina">
+                  </div><!--fin logo-->
+              </div><!--fin contenedor logo-->
+
+              <div class="text middle">
+                  <span>U</span>
+                  <span>n</span>
+                  <span>a</span>
+                  <span>h</span>
+                  <span>a</span>
+                  <span>m</span>
+                  <span>b</span>
+                  <span>r</span>
+                  <span>e</span>
+              </div><!--fin animacion nombre-->
+          </div>
+
+          <div class="interaccion">
+              <ul>
+                  <li><a class="btn-navbar" href="index.html">Inicio</a></li>
+                  <li><a class=" active btn-navbar" href="principal.html">Menus</a></li>
+                  <li><a class="btn-navbar" href="#contacto">Contactos</a></li>
+                  <li id="ocultar_login"><a class="btn-navbar" href="login.html">Iniciar Sesion</a></li>
+                  <li id="ocultar_registro"><a class="btn-navbar" href="registro.html">Registrarse</a></li>
+              </ul>
+              <label id="icon" class="icon-navbar">
+                  <i class="fas fa-bars"></i>
+              </label>  
+              <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+              <div id="mostrar_drop_user">
+              </div>     
+          </div>
+      </nav>
+    </header>
+    <div class="separador"></div>
+    <div class="container" id="id-container">
       
     </div>
-      
     
+
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+      $(window).scroll(() => {
+          if ($("#navbar").offset().top > 150) {
+              $("#navbar").addClass("navbar-scroll")
+          } else {
+              $("#navbar").removeClass("navbar-scroll")
+          }
+      })
+  </script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="funcionalidades/controlador-historial.js"></script>
 </body>
 </html>

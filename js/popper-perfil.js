@@ -19,7 +19,7 @@ $("#menu-toggle").click(function(e) {
 // });
 
 $("#pedidos").on('click',function () {
-    $('#contenido-perfil').load('historial.html',function (data) {
+    $('#contenido-perfil').load('historial2.html',function (data) {
         
     })
 })
