@@ -72,7 +72,7 @@ function realizar_pago(id, orden, total, ubicacion, metodoPago) {
                 //   available to this file, so you can provide it as parameter here
                 //     //   instead of the {{CHECKOUT_SESSION_ID}} placeholder.
                 sessionId: id
-            }).then(function (result) {
+            }).then( async function (result) {
                 await alert_default.fire({
                     icon: 'success',
                     title: 'No es posible realizar el pedido, intenta más tarde..'
@@ -97,7 +97,7 @@ function realizar_pago(id, orden, total, ubicacion, metodoPago) {
 
     }).catch(err => {
         console.log(err)
-        await alert_default.fire({
+        alert_default.fire({
             icon: 'success',
             title: 'No es posible realizar el pedido, intenta más tarde..'
         });

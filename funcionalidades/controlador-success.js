@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         }).catch(err => {
-            alert('No se ha podido realizar el pedido, intentalo más tarde...')
             console.log(err)
         })
     } else {
