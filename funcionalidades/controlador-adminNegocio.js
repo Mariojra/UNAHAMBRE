@@ -1048,3 +1048,65 @@ async function editarPlatillo(){
 }
 
 
+/**<<<<<<<<<<<<<<<<  Manejo de imagenes  >>>>>>>>>>>>>>>>>>>>>> */
+const imgUploader = document.getElementById('imgMenu-uploader')
+const imgUploader_platillo = document.getElementById('imgPlatillo-uploader')
+
+imgUploader.addEventListener('change', (e) => {
+
+  const file = e.target.files[0]
+   let fd = new FormData();
+   fd.append("image", file);
+
+   axios({
+     url: 'https://api-unahambre.herokuapp.com/api_propietario/cambiar_foto_menu',
+     method: 'POST',
+     data: fd,
+     headers: {
+       'id-menu': document.getElementById('hiddenIdMenu').value,
+       'access-token': sessionStorage.getItem('token')
+     }
+   }).then(res => {
+     alert_default.fire({
+       icon: 'success',
+       title: 'Foto de menu cambiada'
+     });
+     obtenerMenus()
+   }).catch(err => {
+     console.log(err);
+     alert_default.fire({
+       icon: 'error',
+       title: 'la foto del menu no ha sido cambiada'
+     });
+   });
+})
+
+
+
+imgUploader_platillo.addEventListener('change', (e) => {
+  const file = e.target.files[0]
+  let fd = new FormData();
+  fd.append("image", file);
+
+  axios({
+    url: 'https://api-unahambre.herokuapp.com/api_propietario/cambiar_foto_platillo',
+    method: 'POST',
+    data: fd,
+    headers: {
+      'id-platillo': document.getElementById('hiddenIdPlatillo').value,
+      'access-token': sessionStorage.getItem('token')
+    }
+  }).then(res => {
+    alert_default.fire({
+      icon: 'success',
+      title: 'Foto de platillo cambiada'
+    });
+    obtenerPlatillos()
+  }).catch(err => {
+    console.log(err);
+    alert_default.fire({
+      icon: 'error',
+      title: 'la foto del platillo no ha sido cambiada'
+    });
+  });
+})
