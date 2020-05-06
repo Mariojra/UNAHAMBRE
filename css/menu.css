@@ -129,6 +129,10 @@
   font-size: 2rem;
 }
 
+.btn{
+  width: auto;
+}
+
 .btn-seleccionar{
   width: 100%;
   background-color: #eb984e;
@@ -312,4 +316,8 @@
   .foto-nombre-carrito{
     display: inline;
   }
+}
+
+#metodo-pago option{
+  font-size: 1.6rem;
 }

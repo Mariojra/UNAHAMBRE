@@ -175,7 +175,7 @@ function ImprimirPlatillos(){
         method:'GET',
         url:'https://api-unahambre.herokuapp.com/api_producto/g_mostrar_platillos'
     }).then(res=>{
-       console.log(res)
+    //    console.log(res)
        document.querySelector('#seleccion').innerHTML = 'Platillos';
        document.querySelector('#cambioDeInformacion').innerHTML = '';
        var data_platillos = res.data.items;
@@ -268,7 +268,7 @@ function seleccionMenu(e) {
        document.querySelector('#seleccion').innerHTML = titulo_paso.replace('menu',nombreMenu.toLowerCase());
        document.querySelector('#cambioDeInformacion').innerHTML = '';
        let data_platillos = res.data.items;
-       console.log(data_platillos)
+    //    console.log(data_platillos)
        if(data_platillos.length != undefined){
             for (let i = 0; i < data_platillos.length; i++) {
                 document.querySelector('#cambioDeInformacion').innerHTML  += `
@@ -412,9 +412,23 @@ document.getElementById('btn-compra').addEventListener('click',function(){
             info_orden.push(json_orden);
             
         }
-       
-        realizar_pago(id, info_orden, total)
-        return id, info_orden, total;
+        $('#modal-confirmar').modal('show');
+        document.getElementById('finalizar-pedido').addEventListener('click',function(){
+            // console.log('estas en el boton final')
+            let textUbicacion = document.getElementById('ubicacion');
+            if(textUbicacion.value==''){
+                textUbicacion.className+=' is-invalid';
+            } else{
+                let ubicacion = textUbicacion.value;
+                let metodo_pago = document.getElementById('metodo-pago').value;
+                metodo_pago = parseInt(metodo_pago);
+                realizar_pago(id, info_orden, total,ubicacion,metodo_pago)
+                return id, info_orden, total,ubicacion,metodo_pago;
+            }
+        })
+
+        // realizar_pago(id, info_orden, total)
+        // return id, info_orden, total;
 
     } else {
         Toast.fire({
@@ -423,3 +437,7 @@ document.getElementById('btn-compra').addEventListener('click',function(){
         });
     }
 });
+
+// document.getElementById('lanzar').addEventListener('click',()=>{
+//     $('#modal-confirmar').modal('show');
+// })

@@ -5,6 +5,7 @@ function realizar_pago(id, orden, total, ubicacion, metodoPago) {
     var monto = total
     var descripcion = 'Descripción pedido: '
     var idProductos = ''
+    console.log(metodoPago);
     // var ubicacion = 'unah'  //cambiar
     // var ubicacion = ubicacion_pedido
 
@@ -74,7 +75,7 @@ function realizar_pago(id, orden, total, ubicacion, metodoPago) {
                 sessionId: id
             }).then( async function (result) {
                 await alert_default.fire({
-                    icon: 'success',
+                    icon: 'error',
                     title: 'No es posible realizar el pedido, intenta más tarde..'
                 });
                 window.location.assign('index.html')
@@ -90,7 +91,7 @@ function realizar_pago(id, orden, total, ubicacion, metodoPago) {
             }
         } else {
             await alert_default.fire({
-                icon: 'success',
+                icon: 'error',
                 title: 'No es posible realizar el pedido, intenta más tarde..'
             });
         }
@@ -98,7 +99,7 @@ function realizar_pago(id, orden, total, ubicacion, metodoPago) {
     }).catch(err => {
         console.log(err)
         alert_default.fire({
-            icon: 'success',
+            icon: 'error',
             title: 'No es posible realizar el pedido, intenta más tarde..'
         });
     })
