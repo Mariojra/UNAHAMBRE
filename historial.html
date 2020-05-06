@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funcionalidades/controlador-navegacion.js"></script>
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/log_user.css">
+    <link rel="stylesheet" href="css/historial.css">
+    <script src="https://kit.fontawesome.com/3268fdf5ed.js" ></script>
+    <title></title>
+</head>
+<body class="hide_scroll">
+  
+    <div class="preloader_centrado" id="cargado">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <header class="encabezado">
+      <nav class="navbar navbar-scroll" id="navbar">
+          <div class="marca">
+              <div class="contenedor-logo">
+                  <div class="logo">
+                      <img  class="logo" src="img/logo-unahambre.png" alt="Logo de la pagina">
+                  </div><!--fin logo-->
+              </div><!--fin contenedor logo-->
+
+              <div class="text middle">
+                  <span>U</span>
+                  <span>n</span>
+                  <span>a</span>
+                  <span>h</span>
+                  <span>a</span>
+                  <span>m</span>
+                  <span>b</span>
+                  <span>r</span>
+                  <span>e</span>
+              </div><!--fin animacion nombre-->
+          </div>
+
+          <div class="interaccion">
+              <ul>
+                  <li><a class="btn-navbar" href="index.html">Inicio</a></li>
+                  <li><a class=" active btn-navbar" href="principal.html">Menus</a></li>
+                  <li><a class="btn-navbar" href="#contacto">Contactos</a></li>
+                  <li id="ocultar_login"><a class="btn-navbar" href="login.html">Iniciar Sesion</a></li>
+                  <li id="ocultar_registro"><a class="btn-navbar" href="registro.html">Registrarse</a></li>
+              </ul>
+              <label id="icon" class="icon-navbar">
+                  <i class="fas fa-bars"></i>
+              </label>  
+              <!-- FOTO, INFO USUARIO CUANDO ESTÁ LOGUEADO -->
+              <div id="mostrar_drop_user">
+              </div>     
+          </div>
+      </nav>
+    </header>
+    <div class="separador"></div>
+    <div class="titulo-historial">
+        <h3>Historial de Pedidos</h3>
+    </div>
+    <hr>
+    <div class="container-fluid" >
+        <div class="row fila-tarjeta" id="id-container">
+
+        </div>
+        
+    </div>
+    <footer class=" container-fluid">
+        <div class="row footer">
+            <div class="contactos col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="contacto">
+                    <p class="nosotros">Contacto</p>
+                    <p class="nosotros">(504)99713638</p>
+                    <p class="nosotros">lesman@unah.hn</p>
+                </div>
+                <div class="soporte">
+                    <p class="nosotros">Soporte</p>
+                    <p class="nosotros">Ayuda y Soporte</p>
+                    <p class="nosotros">Recursos</p>
+                    <p class="nosotros">Blog</p>
+                </div>
+                <div class="empresa">
+                    <p class="nosotros">Empresa</p>
+                    <p class="nosotros">Sobre Nosotros</p>
+                    <p class="nosotros">Terminos</p>
+                </div>
+            </div>
+            <div class="red-social canal col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/facebook-f-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/google-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/twitter-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/whatsapp-brands.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="funcionalidades/controlador-historial.js"></script>
+    <script src="funcionalidades/controlador-icono.js"></script>
+</body>
+</html>
