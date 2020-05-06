@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         method:'GET',
         url: 'https://api-unahambre.herokuapp.com/api_usuario/mostrar_pedidos',
         headers:{
-            'access-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiVXN1YXJpbyI6ImNhcmxvcyIsImlkIjoyLCJyb2wiOjAsImlhdCI6MTU4ODc5MjA3OSwiZXhwIjoxNTg4ODc4NDc5fQ.pgX-9mR7egadjojJe5-Qymjhlz6henDGfeejgWsmorM'
-            // sessionStorage.getItem('token')
+            'access-token': sessionStorage.getItem('token')
         }
     }).then(res=>{
         console.log(res.data.items);
@@ -50,24 +49,24 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(arreglo)
         // console.log(divPlatillos(arreglo[1]));
         for (let i = 0; i < arreglo.length; i++) {
-            container += `<div class="card mb-3 margin-auto card-size bg-secondary text-white" style="max-width:46rem;" data-idCompra="${arreglo[i][0].idCompra}">
-                                <div class="row no-gutters card-size">
-                                <div class="col-md-4">
+            container += `
+                        <div class="text-white col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-idCompra="${arreglo[i][0].idCompra}">
+                            <div class="row no-gutters card-size contenido-pedido">
+                                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                                     <img src="${arreglo[i][1].Foto_Platillo}" class="card-img" alt="..." style="height: 100%;">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                                     <div class="card-body">
-                                    <h5 class="card-title">${arreglo[i][0].fecha}</h5>
-                                    <p class="card-text">Se pago con: ${pago(arreglo[i][0].Metodo_Pago_idMetodo_Pago)}</p>
-                                    <p class="card-text"><i class="fas fa-map-marker-alt icon-margin"></i>Ubicacion: ${arreglo[i][0].Ubicacion}</p>
-                                    <div id="platillos">
-                                        ${divPlatillos(arreglo[i])}
-                                    </div>
-                                    
+                                        <h5 class="card-title">${arreglo[i][0].fecha}</h5>
+                                        <p class="card-text">Se pago con: ${pago(arreglo[i][0].Metodo_Pago_idMetodo_Pago)}</p>
+                                        <p class="card-text"><i class="fas fa-map-marker-alt icon-margin"></i>Ubicacion: ${arreglo[i][0].Ubicacion}</p>
+                                        <div id="platillos">
+                                            ${divPlatillos(arreglo[i])}
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
-                            </div>`;
+                            </div>
+                        </div>`;
         }
         document.getElementById('id-container').innerHTML += container;
     })

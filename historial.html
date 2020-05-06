@@ -27,7 +27,7 @@
       </div>
     </div>
     <header class="encabezado">
-      <nav class="navbar navbar-inicial" id="navbar">
+      <nav class="navbar navbar-scroll" id="navbar">
           <div class="marca">
               <div class="contenedor-logo">
                   <div class="logo">
@@ -66,24 +66,57 @@
       </nav>
     </header>
     <div class="separador"></div>
-    <div class="container" id="id-container">
-      
+    <div class="titulo-historial">
+        <h3>Historial de Pedidos</h3>
     </div>
-    
+    <hr>
+    <div class="container-fluid" >
+        <div class="row fila-tarjeta" id="id-container">
 
+        </div>
+        
+    </div>
+    <footer class=" container-fluid">
+        <div class="row footer">
+            <div class="contactos col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="contacto">
+                    <p class="nosotros">Contacto</p>
+                    <p class="nosotros">(504)99713638</p>
+                    <p class="nosotros">lesman@unah.hn</p>
+                </div>
+                <div class="soporte">
+                    <p class="nosotros">Soporte</p>
+                    <p class="nosotros">Ayuda y Soporte</p>
+                    <p class="nosotros">Recursos</p>
+                    <p class="nosotros">Blog</p>
+                </div>
+                <div class="empresa">
+                    <p class="nosotros">Empresa</p>
+                    <p class="nosotros">Sobre Nosotros</p>
+                    <p class="nosotros">Terminos</p>
+                </div>
+            </div>
+            <div class="red-social canal col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/facebook-f-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/google-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/twitter-brands.svg" alt="">
+                </a>
+                <a class="btn-social" href="#">
+                    <img class="icono" src="img/whatsapp-brands.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/jquery.min.js"></script>
-    <script>
-      $(window).scroll(() => {
-          if ($("#navbar").offset().top > 150) {
-              $("#navbar").addClass("navbar-scroll")
-          } else {
-              $("#navbar").removeClass("navbar-scroll")
-          }
-      })
-  </script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="funcionalidades/controlador-historial.js"></script>
+    <script src="funcionalidades/controlador-icono.js"></script>
 </body>
 </html>
