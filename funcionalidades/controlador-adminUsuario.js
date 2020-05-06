@@ -2118,7 +2118,7 @@ function infoModalNuevoPlatillo(data){
                 <input type="number" valor="0" id="PrecioPlatillo" class="form-control" name="PrecioPlatillo" min="1" step="0.01">
               </div>
               <div class="col-12"><br>
-                <label for="">Menu:</label>
+                <label for="">Categoria:</label>
                 <select class="form-control" name="" id="CategoriaPlatillo" required>
                   <option value="0">Seleccione una categoria</option>
                   <option value="1">Entrada</option>
@@ -2131,7 +2131,7 @@ function infoModalNuevoPlatillo(data){
                 </select>
               </div>
               <div class="col-12"><br>
-                <label for="menu">Categoria:</label>
+                <label for="menu">Menu:</label>
                 <select class="form-control" name="menu" id="NombreMenu"  required>
                   
                 </select>
