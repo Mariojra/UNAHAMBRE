@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'access-token': sessionStorage.getItem('token')
         }
     }).then(res=>{
-        console.log(res.data.items);
+        // console.log(res.data.items);
         let data = res.data.items;
         let arreglo = [];
         let miniArreglo = [];
@@ -46,14 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
-        console.log(arreglo)
+        // console.log(arreglo)
         // console.log(divPlatillos(arreglo[1]));
         for (let i = 0; i < arreglo.length; i++) {
             container += `
                         <div class="text-white col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-idCompra="${arreglo[i][0].idCompra}">
                             <div class="row no-gutters card-size contenido-pedido">
                                 <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                    <img src="${arreglo[i][1].Foto_Platillo}" class="card-img" alt="..." style="height: 100%;">
+                                    <img src="${arreglo[i][0].Foto_Platillo}" class="card-img" alt="..." style="height: 100%;">
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                                     <div class="card-body">
