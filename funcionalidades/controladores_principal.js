@@ -217,37 +217,86 @@ function seleccionRestaurante(e){
         url: 'https://api-unahambre.herokuapp.com/api_producto/menus_restaurante',
         data: datos
     }).then(res=>{
-        // console.log(res)
-        document.querySelector('#seleccion').innerHTML = '<a href="#" id="a-restaurant">'+ nombreRestaurante.toLowerCase() + '</a> <span>/ menu</span>';
-                document.querySelector('#cambioDeInformacion').innerHTML = '';
-                let data_menu = res.data.items;
-                for (let i = 0; i < data_menu.length; i++) {
-                    if (data_menu[i].Foto_Menu == undefined || data_menu == null || data_menu[i].Foto_Menu.length<100){
-                        data_menu[i].Foto_Menu='img/burger2.jpg';
-                        // console.log(data_menu[i].Foto_Menu)
-                    }
-                    document.querySelector('#cambioDeInformacion').innerHTML += `
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_menu[i].idMenu}">
-                            <div class="card shadow tamanioTarjeta" >
-                                <img src="${data_menu[i].Foto_Menu}" class="card-img-top img-c" alt="...">
-                                <div class="card-body tipo-menu">
-                                    <h5 class="card-title h1 text-info">${data_menu[i].Tipo_Menu}</h5>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-secondary btn-seleccionar">Seleccionar</button>
-                                </div>
-                            </div>
+        // console.log(datos.idRestaurante)
+        document.querySelector('#seleccion').innerHTML = `<a href="javascript:void(0);" id="a-restaurant" data-id="${datos.idRestaurante}"> ${nombreRestaurante.toLowerCase()} </a> <span>/ menu</span>`;
+        document.getElementById('a-restaurant').addEventListener('click',breadcrumb);
+        document.querySelector('#cambioDeInformacion').innerHTML = '';
+        let data_menu = res.data.items;
+        for (let i = 0; i < data_menu.length; i++) {
+            if (data_menu[i].Foto_Menu == undefined || data_menu == null || data_menu[i].Foto_Menu.length<100){
+                data_menu[i].Foto_Menu='img/burger2.jpg';
+                // console.log(data_menu[i].Foto_Menu)
+            }
+            document.querySelector('#cambioDeInformacion').innerHTML += `
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_menu[i].idMenu}">
+                    <div class="card shadow tamanioTarjeta" >
+                        <img src="${data_menu[i].Foto_Menu}" class="card-img-top img-c" alt="...">
+                        <div class="card-body tipo-menu">
+                            <h5 class="card-title h1 text-info">${data_menu[i].Tipo_Menu}</h5>
                         </div>
-                                            `;
-                }
-                let botones = document.getElementsByClassName('btn-secondary');
-                for (let i = 0; i < botones.length; i++) {
-                    let boton = botones[i];
-                    boton.addEventListener('click',seleccionMenu)
-                }
+                        <div class="card-footer">
+                            <button class="btn btn-secondary btn-seleccionar">Seleccionar</button>
+                        </div>
+                    </div>
+                </div>
+                                    `;
+        }
+        let botones = document.getElementsByClassName('btn-secondary');
+        for (let i = 0; i < botones.length; i++) {
+            let boton = botones[i];
+            boton.addEventListener('click',seleccionMenu)
+        }
     }).catch(err=>{
         console.log(err);
     });
+}
+
+function breadcrumb(e){
+    // console.log(e.target.dataset.id)
+    // console.log(e)
+    e.preventDefault();
+    let nombreRestaurante= e.target.innerText;
+    let id = e.target.dataset.id;
+    let datos = {
+        idRestaurante: id
+    }
+    axios({
+        method:'POST',
+        url: 'https://api-unahambre.herokuapp.com/api_producto/menus_restaurante',
+        data: datos
+    }).then(res=>{
+        console.log(res);
+        document.querySelector('#seleccion').innerHTML = '';
+        document.querySelector('#seleccion').innerHTML = `<a href="javascript:void(0);" id="a-restaurant" data-id="${datos.idRestaurante}"> ${nombreRestaurante.toLowerCase()} </a> <span>/ menu</span>`;
+        document.querySelector('#cambioDeInformacion').innerHTML = '';
+        let data_menu = res.data.items;
+        for (let i = 0; i < data_menu.length; i++) {
+            if (data_menu[i].Foto_Menu == undefined || data_menu == null || data_menu[i].Foto_Menu.length<100){
+                data_menu[i].Foto_Menu='img/burger2.jpg';
+                // console.log(data_menu[i].Foto_Menu)
+            }
+            document.querySelector('#cambioDeInformacion').innerHTML += `
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12 tarjetaMenu" data-id="${data_menu[i].idMenu}">
+                    <div class="card shadow tamanioTarjeta" >
+                        <img src="${data_menu[i].Foto_Menu}" class="card-img-top img-c" alt="...">
+                        <div class="card-body tipo-menu">
+                            <h5 class="card-title h1 text-info">${data_menu[i].Tipo_Menu}</h5>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-secondary btn-seleccionar">Seleccionar</button>
+                        </div>
+                    </div>
+                </div>
+                                    `;
+        }
+        let botones = document.getElementsByClassName('btn-secondary');
+        for (let i = 0; i < botones.length; i++) {
+            let boton = botones[i];
+            boton.addEventListener('click',seleccionMenu)
+        }
+    }).catch(err=>{
+        console.log(err);
+    })
 }
 
 function seleccionMenu(e) {
@@ -266,6 +315,7 @@ function seleccionMenu(e) {
     }).then(res=>{
         // console.log(res);
        document.querySelector('#seleccion').innerHTML = titulo_paso.replace('menu',nombreMenu.toLowerCase());
+       document.getElementById('a-restaurant').addEventListener('click',breadcrumb);
        document.querySelector('#cambioDeInformacion').innerHTML = '';
        let data_platillos = res.data.items;
     //    console.log(data_platillos)

@@ -31,11 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let arreglo = [];
         let miniArreglo = [];
         let container = ``;
-        let j = 0;
         for (let i = 0; i < data.length; i++) {
             if(i==0){
                 miniArreglo.push(data[i]);
-
             } else {
                 if(data[i].idCompra==data[i-1].idCompra){
                     miniArreglo.push(data[i])
@@ -46,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+        arreglo.push(miniArreglo);
         // console.log(arreglo)
         // console.log(divPlatillos(arreglo[1]));
         for (let i = 0; i < arreglo.length; i++) {
