@@ -58,3 +58,9 @@
     height: 8rem;
     background: #d35400;
 }
+
+
+.contenedor-historial{
+    min-height: 55vh;
+    height: auto;
+}
