@@ -40,7 +40,7 @@
     </div>
     <!--INICIO DEL HEADER-->
     <header class="encabezado">
-        <nav class="navbar navbar-inicial" id="navbar">
+        <nav class="navbar navbar-scroll" id="navbar">
             <div class="marca">
                 <div class="contenedor-logo">
                     <div class="logo">
@@ -173,15 +173,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        $(window).scroll(() => {
-            if ($("#navbar").offset().top > 150) {
-                $("#navbar").addClass("navbar-scroll")
-            } else {
-                $("#navbar").removeClass("navbar-scroll")
-            }
-        })
-    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
