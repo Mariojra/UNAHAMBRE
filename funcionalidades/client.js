@@ -100,7 +100,7 @@ function realizar_pago(id, orden, total, ubicacion, metodoPago) {
         console.log(err)
         alert_default.fire({
             icon: 'error',
-            title: 'No es posible realizar el pedido, intenta más tarde..'
+            title: 'Debes estar logueado para poder realizar un pedido'
         });
     })
 

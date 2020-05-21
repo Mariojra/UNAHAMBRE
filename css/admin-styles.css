@@ -2,3 +2,7 @@
     font-size: 1rem;
     color:black;
 }
+
+.contenedor-negocio{
+    overflow-x: auto;
+}
