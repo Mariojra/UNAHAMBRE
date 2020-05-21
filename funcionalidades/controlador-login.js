@@ -135,3 +135,11 @@ function validarCampoVacio(id){
         return true;
     }
 }
+
+function pressIntro(e){
+    if (e.keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
+        let boton = document.getElementById("btn-login");
+        boton.click();
+    }
+}

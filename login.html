@@ -87,7 +87,7 @@
                 <div class="row">
                     <div class="col-12">
                         <label for="txt-usuario" class="label-login">Usuario</label>
-                        <input type="text" id="txt-usuario" class="form-control input-login" autofocus>
+                        <input type="text" id="txt-usuario" class="form-control input-login" autofocus onkeypress="pressIntro(event);">
                         <!-- <div class="invalid-feedback">
                             Campo vacío.
                         </div>  -->
@@ -100,7 +100,7 @@
                             <button type="button" class="btn-login-ojo" id="btn-login-ojo">
                                 <i class="far fa-eye" id="ojo"></i>
                             </button>
-                            <input type="password" id="txt-pass" class="form-control input-login">
+                            <input type="password" id="txt-pass" class="form-control input-login" onkeypress="pressIntro(event);">
                         </div>
                         <!-- <div class="invalid-feedback">
                             Campo vacío.

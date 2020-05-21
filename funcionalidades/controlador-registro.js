@@ -117,8 +117,8 @@ function validarEmail(email) {
 
 function validarContrasena(pwd,id) {
     // console.log(id);
-    var rePassMedia= /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
-    var rePassFuerte = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
+    var rePassMedia= /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    var rePassFuerte = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
     if (rePassFuerte.test(pwd)) {
         document.getElementById(id).classList.remove("is-invalidP");
         document.getElementById(id).classList.add("is-validP");
