@@ -48,20 +48,27 @@ $("#btn-registro").click(function() {
                 contrasena:$("#txt-pwd").val(),
                 correo:$("#txt-email").val()
             };
-            console.log(datos);
+            // console.log(datos);
             axios({
                 method:'POST',
                 url:'https://api-unahambre.herokuapp.com/api_usuario/registrar_usuario',
                 data:datos
 
             }).then(res=>{
-                console.log(res.data)
+                console.log(res)
                 // alert("Usuario registrado con exito");
-                alert_defaults.fire({
-                    icon:'success',
-                    title: 'Usuario registrado con exito'
-                });
-                location.replace('login.html')
+                if (res.data.error[1][0].mensaje!=null){
+                    alert_defaults.fire({
+                        icon:'error',
+                        title: res.data.error[1][0].mensaje
+                    })
+                } else {
+                    alert_defaults.fire({
+                        icon:'success',
+                        title: 'Usuario registrado con exito'
+                    });
+                    location.replace('login.html')
+                }
             }).catch(err=>{
                 console.log(err)
                 alert_defaults.fire({
