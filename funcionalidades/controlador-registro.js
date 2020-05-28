@@ -23,7 +23,7 @@ const alert_defaults = Swal.mixin({
 
 //peticion registrar usuario
 $("#btn-registro").click(function() {
-    console.log("el click funciona correctamente");
+    // console.log("el click funciona correctamente");
     if (
         validarCampoVacio("#txt-nombres")&&
         validarCampoVacio("#txt-apellidos")&&
