@@ -4,11 +4,35 @@
 /**EVENTO DE MENU RESPONSIVE */
 $(document).ready(function(){
     axios({
+        method: 'GET',
+        url: 'https://api-unahambre.herokuapp.com/api_producto/pop_ups'
+    }).then(res => {
+        setTimeout(function(){
+            $.colorbox({
+            href: res.data.items.Foto_Pop_ups,
+            
+            className: "cta",
+            width: 500,
+            scalePhotos: true,
+            height: 500,
+            reposition: true,
+            maxWidth: "70%",
+            maxHeight: "70%"
+    
+    
+            });
+        }, 5000);
+        // console.log(res.data.items.Foto_Pop_ups)
+    }).catch(err => {
+        console.log(err)
+    })
+
+    axios({
         method:'GET',
         url:'https://api-unahambre.herokuapp.com/api_producto/banners'
     }).then(res=>{
-        console.log(res);
-        let img_banner=`<img src="img/banner.png" class="img-banner" onclick="banner(${res.data.items.Restaurante_idRestaurante},'${res.data.items.Nombre_Local}')" data-plan="${res.data.items.Plan_idPlan}">`
+        // console.log(res);
+        let img_banner=`<img src="${res.data.items.Banner}" class="img-banner" onclick="banner(${res.data.items.Restaurante_idRestaurante},'${res.data.items.Nombre_Local}')" data-plan="${res.data.items.Plan_idPlan}">`
         document.getElementById('banner').innerHTML= img_banner;
     }).catch(err=>{
         console.log(err);

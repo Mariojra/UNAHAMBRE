@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     
             });
-        }, 8000);
-        console.log(res.data.items.Foto_Pop_ups)
+        }, 5000);
+        // console.log(res.data.items.Foto_Pop_ups)
     }).catch(err => {
         console.log(err)
     })
@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
         method:'GET',
         url:'https://api-unahambre.herokuapp.com/api_producto/banners'
     }).then(res=>{
-        console.log(res);
-        let img_banner=`<img src="img/banner.png" class="img-banner" onclick="redireccionar()" data-plan="${res.data.items.Plan_idPlan}">`
+        // console.log(res);
+        let img_banner=`<img src="${res.data.items.Banner}" class="img-banner" onclick="redireccionar()" data-plan="${res.data.items.Plan_idPlan}">`
         document.getElementById('banner').innerHTML= img_banner;
     }).catch(err=>{
         console.log(err);
