@@ -706,7 +706,29 @@ nav #icon {
     }
 }
 
+/* ESTILOS BANNERS */
 
+.div-banner{
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-banner .img-banner{
+    height: 180px;
+    width: 90%;
+    cursor: pointer;
+}
+
+@media (max-width:576px){
+    .div-banner .img-banner{
+        height: 120px;
+    }
+}
+
+/* FIN ESTILOS BANNERS */
 
 
 /******************************************************FIN CSS LANDING PAGE**************************************************************/
