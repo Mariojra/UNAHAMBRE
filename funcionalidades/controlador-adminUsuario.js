@@ -2407,7 +2407,6 @@ async function aprobarSolicitud(id){
           'access-token': sessionStorage.getItem('token')
         }
         }).then(res=>{
-          console.log(res);
           ImprimirSolicitudes();
           CantidadLocales();
           CantidadSolicitudes();
@@ -2603,7 +2602,6 @@ function ImprimirPublicidad() {
       'access-token': sessionStorage.getItem('token')
     }
   }).then(res => {
-    console.log(res.data)
     document.querySelector('#Tablas').innerHTML = '';
     document.querySelector('#Tablas').innerHTML += `
                             <div class="col-xl-12 navTabla">
@@ -2642,26 +2640,170 @@ function ImprimirPublicidad() {
 const cargarFilasPublicidad = (datos) => {
   let infoTransacciones = datos;
   document.querySelector('#DatosPublicidad').innerHTML = '';
+  var plan
 
   for (let i = 0; i < infoTransacciones.length; i++) {
+    if (infoTransacciones[i].Plan_idPlan === 0){
+      plan = 'Básico'      
+    } else if (infoTransacciones[i].Plan_idPlan === 1) {
+      plan = 'Intermedio'      
+    } else {
+      plan = 'Premium'      
+    }
     document.querySelector('#DatosPublicidad').innerHTML += `
                <tr>
                  <th>${i + 1}</th>
-                 <th>${infoTransacciones[i].Usuario_idUsuario}</th>
-                 <th>${infoTransacciones[i].Restaurante_idRestaurante}</th>
-                 <th>${infoTransacciones[i].Plan_idPlan}</th>
-                <td><img src="${infoTransacciones[i].Banner}" class="img_menu" alt="imagen perfil"></td>
-                <td><img src="${infoTransacciones[i].Foto_Pop_ups}" class="img_menu" alt="imagen perfil"></td>
+                 <th>${infoTransacciones[i].Nombre_Usuario}</th>
+                 <th>${infoTransacciones[i].Nombre_Local}</th>
+                 <th>${plan}</th>
+                <td><img src="${infoTransacciones[i].Banner}" class="img_menu" alt="imagen perfil" data-toggle="modal" onclick="infoModalEditarPublicidadBanner(${infoTransacciones[i].idRestaurante_has_publicidad},'${infoTransacciones[i].Banner}','${infoTransacciones[i].Foto_Pop_ups}')"  data-target="#ModalEditarPublicidad"></td>
+                <td><img src="${infoTransacciones[i].Foto_Pop_ups}" class="img_menu" alt="imagen perfil" data-toggle="modal" onclick="infoModalEditarPublicidad(${infoTransacciones[i].idRestaurante_has_publicidad},'${infoTransacciones[i].Banner}','${infoTransacciones[i].Foto_Pop_ups}')"  data-target="#ModalEditarPublicidad"></td>
                 <th>${infoTransacciones[i].Fecha}</th>
                 <th>${infoTransacciones[i].Menu_idMenu}</th>
                 <th>${infoTransacciones[i].Platillo_idPlatillo}</th>     
-              <td><button class="btn btn-primary" type="button" data-toggle="modal" onclick="infoModalEditarPublicidad(${infoTransacciones[i].Usuario_idUsuario},${infoTransacciones[i].Banner},${infoTransacciones[i].Foto_Pop_ups})"  data-target="#ModalEditarPublicidad">Editar</button></td>      
+              
 
                </tr>
                `;
   }
+
+  
+}
+
+function infoModalEditarPublicidad(id, banner, popup) {
+      let idPlatillo = id;
+  
+      document.querySelector('#contenido_modal_editar_publicidad').innerHTML = '';
+  
+      document.querySelector('#contenido_modal_editar_publicidad').innerHTML = `
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Publicidad</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        <div class="modal-body" >
+                          <!--FORMULARIO DE EDITAR LOCAL-->
+                            <form>
+                            <div class="row">
+                              <div class="col">
+                              </div>
+                              <div class="col-12" style="padding-bottom: -20px;">
+                                <label for="UbicacionRestaurante">Pop-up:</label>
+                                <img src="${popup}" alt="imagen pop up" width="70%" height="60%" style="padding-bottom: 10px;">
+                                <label for="UbicacionRestaurante">Cambiar imagen pop up:</label>                 
+                                <input type="text" id="enlacePopUp" class="form-control" placeholder="Ingresa url de la nueva imagen">                                                  
+                              </div>
+                               <div class="col-12">
+                              </div>
+                            </div>
+                          </form>
+  
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="button" id="boton"  class="btn btn-primary" onclick="editarPopUp(${id})">Guardar Cambios</button>
+                        </div>            
+    `;
+    
+}
+    
+function editarPopUp(id) {
+
+  console.log(id, document.querySelector('#enlacePopUp').value)
+
+  axios({
+    method: 'POST',
+    url: 'https://api-unahambre.herokuapp.com/api_admin/editar_pop_up',
+    headers: {
+      'access-token': sessionStorage.getItem('token')
+    },
+    data: {
+      "id": id,
+      "popup": document.querySelector('#enlacePopUp').value
+    },
+  }).then(res => {
+    $('#ModalEditarPublicidad').modal('hide')
+    //AQUI DEBE IR LA ALERTA DE SE EDITO CORRECTAMENTE EL USUARIO
+    alert_default.fire({
+      icon: 'success',
+      title: 'Se edito correctamente'
+    }) 
+    ImprimirPublicidad();
+
+  }).catch(function (error) {
+    console.log(error);
+  });
 }
 
 
 
+// editar banner ------------------------------------------------------------------
+function infoModalEditarPublicidadBanner(id, banner, popup) {
+  let idPlatillo = id;
 
+  document.querySelector('#contenido_modal_editar_publicidad').innerHTML = '';
+
+  document.querySelector('#contenido_modal_editar_publicidad').innerHTML = `
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Publicidad</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        <div class="modal-body" >
+                          <!--FORMULARIO DE EDITAR LOCAL-->
+                            <form>
+                            <div class="row">
+                              <div class="col">
+                              </div>
+                              <div class="col-12" style="padding-bottom: -20px;">
+                                <label for="UbicacionRestaurante">Banner:</label>
+                                <img src="${banner}" alt="imagen pop up" width="80%" height="40%" style="padding-bottom: 10px;">
+                                <label for="UbicacionRestaurante">Cambiar imagen del banner:</label>                 
+                                <input type="text" id="enlaceBanner" class="form-control" placeholder="Ingresa url de la nueva imagen">                                                  
+                              </div>
+                               <div class="col-12">
+                              </div>
+                            </div>
+                          </form>
+  
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="button" id="boton"  class="btn btn-primary" onclick="editarBanner(${id})">Guardar Cambios</button>
+                        </div>            
+    `;
+
+}
+
+function editarBanner(id) {
+
+  console.log(id, document.querySelector('#enlaceBanner').value)
+
+  axios({
+    method: 'POST',
+    url: 'https://api-unahambre.herokuapp.com/api_admin/editar_banner',
+    headers: {
+      'access-token': sessionStorage.getItem('token')
+    },
+    data: {
+      "id": id,
+      "banner": document.querySelector('#enlaceBanner').value
+    },
+  }).then(res => {
+    $('#ModalEditarPublicidad').modal('hide')
+    //AQUI DEBE IR LA ALERTA DE SE EDITO CORRECTAMENTE EL USUARIO
+    alert_default.fire({
+      icon: 'success',
+      title: 'Se edito correctamente'
+    })
+    ImprimirPublicidad();
+
+  }).catch(function (error) {
+    console.log(error);
+  });
+}
+
+
+// 1109
