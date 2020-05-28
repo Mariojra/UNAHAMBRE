@@ -2594,5 +2594,74 @@ function validarTelefono(etiqueta){
 
 
 
+function ImprimirPublicidad() {
+  document.getElementById('tablero_botones').style.display = 'none'
+  axios({
+    method: 'GET',
+    url: 'https://api-unahambre.herokuapp.com/api_admin/mostrar_publicidad_contratada',
+    headers: {
+      'access-token': sessionStorage.getItem('token')
+    }
+  }).then(res => {
+    console.log(res.data)
+    document.querySelector('#Tablas').innerHTML = '';
+    document.querySelector('#Tablas').innerHTML += `
+                            <div class="col-xl-12 navTabla">
+                            <p class="h2 font-weight-bold text-success py-2">Publicidad Contratada</p>
+                          </div>
+                          <div class="col-xl-12">
+                            <table class="table">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Usuario</th>
+                                  <th scope="col">idRestaurante</th>
+                                  <th scope="col">Plan</th>
+                                  <th scope="col">Banner</th>
+                                  <th scope="col">Pop-ups</th>
+                                  <th scope="col">Fecha</th>
+                                  <th scope="col">idMenu</th>
+                                  <th scope="col">idPlatillo</th>
+                                  <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody  id='DatosPublicidad'>
+                               
+                              </tbody>
+                            </table>
+                          </div>
+                `;
+
+    cargarFilasPublicidad(res.data.items);
+
+  }).catch(function (error) {
+    console.log(error);
+  });
+}
+
+const cargarFilasPublicidad = (datos) => {
+  let infoTransacciones = datos;
+  document.querySelector('#DatosPublicidad').innerHTML = '';
+
+  for (let i = 0; i < infoTransacciones.length; i++) {
+    document.querySelector('#DatosPublicidad').innerHTML += `
+               <tr>
+                 <th>${i + 1}</th>
+                 <th>${infoTransacciones[i].Usuario_idUsuario}</th>
+                 <th>${infoTransacciones[i].Restaurante_idRestaurante}</th>
+                 <th>${infoTransacciones[i].Plan_idPlan}</th>
+                <td><img src="${infoTransacciones[i].Banner}" class="img_menu" alt="imagen perfil"></td>
+                <td><img src="${infoTransacciones[i].Foto_Pop_ups}" class="img_menu" alt="imagen perfil"></td>
+                <th>${infoTransacciones[i].Fecha}</th>
+                <th>${infoTransacciones[i].Menu_idMenu}</th>
+                <th>${infoTransacciones[i].Platillo_idPlatillo}</th>     
+              <td><button class="btn btn-primary" type="button" data-toggle="modal" onclick="infoModalEditarPublicidad(${infoTransacciones[i].Usuario_idUsuario},${infoTransacciones[i].Banner},${infoTransacciones[i].Foto_Pop_ups})"  data-target="#ModalEditarPublicidad">Editar</button></td>      
+
+               </tr>
+               `;
+  }
+}
+
+
 
 
